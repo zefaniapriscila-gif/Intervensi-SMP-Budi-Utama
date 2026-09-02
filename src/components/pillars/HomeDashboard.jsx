@@ -407,12 +407,10 @@ export default function HomeDashboard({
           </div>
         ) : (
           <div className="bg-sunny-50 rounded-2xl p-4 text-[13px] text-slate-700 border border-sunny-200 leading-relaxed">
-            <p className="font-bold text-sunny-700 mb-1.5">Catatan Self-Regulated Learning:</p>
-            "Ketika merasa overwhelmed dengan LinkedIn, ingat bahwa tiap orang memiliki kurva adaptasi yang berbeda.
-            Latihan 10 menit lebih bernilai dari overthinking 2 jam."
+            <p className="font-bold text-sunny-700 mb-1.5">Catatan Self-Regulated Learning (Guo, 2022):</p>
+            "Ketika merasa overwhelmed dengan linimasa media sosial, ingat bahwa tiap individu memiliki kurva adaptasi transisi yang unik (Arnett, 2000). Latihan mikro 15 menit lebih bernilai dari overthinking 2 jam."
           </div>
         )}
-
         <div className="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between text-[12px]">
           <span className="text-slate-500">Progres efikasi diri</span>
           <button

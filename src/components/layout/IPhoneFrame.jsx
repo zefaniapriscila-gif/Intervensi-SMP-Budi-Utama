@@ -36,17 +36,54 @@ export default function IPhoneFrame({
   return (
     <div className="relative flex items-center justify-center w-full h-full lg:h-auto">
       
-      {/* Outer iPhone Titanium Frame (Desktop) / Native Mobile Container */}
-      <div className="w-full max-w-full lg:max-w-[400px] h-[100dvh] lg:h-[844px] bg-[#181a20] lg:rounded-[55px] lg:p-[10px] lg:shadow-[0_25px_80px_-15px_rgba(0,0,0,0.2),0_0_0_1px_rgba(0,0,0,0.1)] relative flex flex-col justify-between overflow-hidden transition-all duration-300">
+      {/* Outer Phone Wrapper (Permits side buttons to protrude outside the chassis) */}
+      <div className="relative w-full max-w-full lg:max-w-[402px] h-[100dvh] lg:h-[846px] flex items-center justify-center">
         
-        {/* Physical Side Buttons (Desktop only) */}
-        <div className="hidden lg:block absolute -left-[12px] top-[115px] w-[3px] h-[28px] bg-slate-600 rounded-l-md" /> {/* Action Button */}
-        <div className="hidden lg:block absolute -left-[12px] top-[160px] w-[3px] h-[48px] bg-slate-600 rounded-l-md" /> {/* Vol Up */}
-        <div className="hidden lg:block absolute -left-[12px] top-[218px] w-[3px] h-[48px] bg-slate-600 rounded-l-md" /> {/* Vol Down */}
-        <div className="hidden lg:block absolute -right-[12px] top-[170px] w-[3px] h-[70px] bg-slate-600 rounded-r-md" /> {/* Power Button */}
+        {/* ================= PHYSICAL SIDE BUTTONS (AESTHETIC ONLY) ================= */}
+        
+        {/* LEFT SIDE BUTTONS */}
+        {/* 1. Action Button */}
+        <div 
+          className="hidden lg:block absolute -left-[3.5px] top-[118px] w-[4.5px] h-[32px] bg-gradient-to-r from-[#242730] via-[#454a59] to-[#1d2026] rounded-l-[3px] shadow-[inset_1px_1px_1px_rgba(255,255,255,0.3),-2px_2px_4px_rgba(0,0,0,0.5)] z-0" 
+          aria-hidden="true"
+        />
+        
+        {/* 2. Volume Up Button */}
+        <div 
+          className="hidden lg:block absolute -left-[3.5px] top-[166px] w-[4.5px] h-[54px] bg-gradient-to-r from-[#242730] via-[#454a59] to-[#1d2026] rounded-l-[3px] shadow-[inset_1px_1px_1px_rgba(255,255,255,0.3),-2px_2px_4px_rgba(0,0,0,0.5)] z-0" 
+          aria-hidden="true"
+        />
+        
+        {/* 3. Volume Down Button */}
+        <div 
+          className="hidden lg:block absolute -left-[3.5px] top-[232px] w-[4.5px] h-[54px] bg-gradient-to-r from-[#242730] via-[#454a59] to-[#1d2026] rounded-l-[3px] shadow-[inset_1px_1px_1px_rgba(255,255,255,0.3),-2px_2px_4px_rgba(0,0,0,0.5)] z-0" 
+          aria-hidden="true"
+        />
 
-        {/* Inner Screen Display (Rounded 46px on Desktop, Overflow Hidden for Clean Curves) */}
-        <div className="screen-clip relative w-full h-full bg-[#f5f5fa] flex flex-col select-none">
+        {/* RIGHT SIDE BUTTONS */}
+        {/* 4. Power / Side / On-Off Button */}
+        <div 
+          className="hidden lg:block absolute -right-[3.5px] top-[172px] w-[4.5px] h-[80px] bg-gradient-to-l from-[#242730] via-[#454a59] to-[#1d2026] rounded-r-[3px] shadow-[inset_-1px_1px_1px_rgba(255,255,255,0.3),2px_2px_4px_rgba(0,0,0,0.5)] z-0" 
+          aria-hidden="true"
+        />
+
+        {/* 5. Camera Control / Capture Button (iPhone 16 style) */}
+        <div 
+          className="hidden lg:block absolute -right-[3px] top-[545px] w-[3.5px] h-[48px] bg-gradient-to-l from-[#1e2026] via-[#383d4a] to-[#16181d] rounded-r-[2.5px] shadow-[inset_-1px_0_1px_rgba(255,255,255,0.2),1px_1px_3px_rgba(0,0,0,0.4)] z-0" 
+          aria-hidden="true"
+        />
+
+        {/* ================= TITANIUM CHASSIS FRAME ================= */}
+        <div className="w-full h-full bg-[#181a20] lg:rounded-[55px] lg:p-[10px] lg:ring-1 lg:ring-white/10 lg:shadow-[0_25px_80px_-15px_rgba(0,0,0,0.25),0_0_0_1px_rgba(255,255,255,0.06),0_12px_30px_rgba(0,0,0,0.18)] relative flex flex-col justify-between overflow-hidden z-10 transition-all duration-300">
+          
+          {/* Subtle Antenna Band Highlights on chassis edges */}
+          <div className="hidden lg:block absolute left-0 top-[75px] w-[3px] h-[5px] bg-[#3a3f4d] z-20 pointer-events-none" />
+          <div className="hidden lg:block absolute left-0 bottom-[85px] w-[3px] h-[5px] bg-[#3a3f4d] z-20 pointer-events-none" />
+          <div className="hidden lg:block absolute right-0 top-[75px] w-[3px] h-[5px] bg-[#3a3f4d] z-20 pointer-events-none" />
+          <div className="hidden lg:block absolute right-0 bottom-[85px] w-[3px] h-[5px] bg-[#3a3f4d] z-20 pointer-events-none" />
+
+          {/* Inner Screen Display (Rounded 46px on Desktop, Overflow Hidden for Clean Curves) */}
+          <div className="screen-clip relative w-full h-full bg-[#f5f5fa] flex flex-col select-none">
 
           {/* Integrated iOS Top Bar (Status Bar & Dynamic Island on the SAME Row) */}
           <div className="screen-top w-full bg-[#f5f5fa]/95 backdrop-blur-md pt-3.5 pb-2.5 px-6 flex items-center justify-between z-40 shrink-0 border-b border-black/[0.02]">
@@ -112,5 +149,7 @@ export default function IPhoneFrame({
       </div>
 
     </div>
-  );
+
+  </div>
+);
 }

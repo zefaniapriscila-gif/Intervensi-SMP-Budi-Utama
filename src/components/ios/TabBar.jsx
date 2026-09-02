@@ -8,12 +8,13 @@ import {
   Users
 } from 'lucide-react';
 
+// `ink` = warna teks saat tab aktif. Kuning pakai tinta gelap supaya tetap terbaca.
 export const TABS = [
-  { id: 'home', label: 'Home', icon: Home, badge: null, active: 'bg-slate-900', badgeColor: 'bg-slate-900' },
-  { id: 'situation', label: 'Situation', icon: Compass, badge: 'STT', active: 'bg-mint-500', badgeColor: 'bg-mint-500' },
-  { id: 'self', label: 'Self', icon: Sparkles, badge: 'VIA', active: 'bg-grape-500', badgeColor: 'bg-grape-500' },
-  { id: 'strategies', label: 'Growth', icon: Target, badge: '3', active: 'bg-sunny-500', badgeColor: 'bg-sunny-500' },
-  { id: 'support', label: 'Support', icon: Users, badge: '27', active: 'bg-coral-500', badgeColor: 'bg-blossom-500' },
+  { id: 'home', label: 'Home', icon: Home, badge: null, active: 'bg-slate-900', ink: 'text-white', badgeColor: 'bg-slate-900' },
+  { id: 'situation', label: 'Situation', icon: Compass, badge: 'STT', active: 'bg-mint-500', ink: 'text-white', badgeColor: 'bg-mint-500' },
+  { id: 'self', label: 'Self', icon: Sparkles, badge: 'VIA', active: 'bg-grape-500', ink: 'text-white', badgeColor: 'bg-grape-500' },
+  { id: 'strategies', label: 'Growth', icon: Target, badge: '3', active: 'bg-sunny-500', ink: 'text-slate-900', badgeColor: 'bg-sunny-700' },
+  { id: 'support', label: 'Support', icon: Users, badge: '27', active: 'bg-coral-500', ink: 'text-white', badgeColor: 'bg-blossom-500' },
 ];
 
 export default function TabBar({ activeTab, onTabChange }) {
@@ -34,7 +35,7 @@ export default function TabBar({ activeTab, onTabChange }) {
               transition={{ type: 'spring', stiffness: 420, damping: 34 }}
               className={`relative flex items-center justify-center gap-1.5 h-11 rounded-[18px] transition-colors duration-200 ${
                 isActive
-                  ? `${tab.active} text-white px-3.5 shadow-md`
+                  ? `${tab.active} ${tab.ink} px-3.5 shadow-md`
                   : 'text-slate-400 hover:text-slate-700 hover:bg-slate-100 w-11 shrink-0'
               }`}
             >
