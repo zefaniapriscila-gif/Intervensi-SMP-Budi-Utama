@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------
+   Type scale
+   Ukuran dasar dinaikkan + line-height & letter-spacing per ukuran.
+   Teks kecil dapat tracking netral supaya tidak terlihat padat.
+   --------------------------------------------------------------- */
+@theme {
+  --text-2xs: 0.6875rem;      /* 11px */
+  --text-2xs--line-height: 1.4;
+  --text-2xs--letter-spacing: 0.002em;
+
+  --text-xs: 0.8125rem;       /* 13px */
+  --text-xs--line-height: 1.5;
+  --text-xs--letter-spacing: 0em;
+
+  --text-sm: 0.9375rem;       /* 15px */
+  --text-sm--line-height: 1.5;
+  --text-sm--letter-spacing: -0.006em;
+
+  --text-base: 1.0625rem;     /* 17px */
+  --text-base--line-height: 1.45;
+  --text-base--letter-spacing: -0.011em;
+
+  --text-lg: 1.1875rem;       /* 19px */
+  --text-lg--line-height: 1.35;
+  --text-lg--letter-spacing: -0.015em;
+
+  --text-xl: 1.375rem;        /* 22px */
+  --text-xl--line-height: 1.3;
+  --text-xl--letter-spacing: -0.019em;
+
+  --text-2xl: 1.625rem;       /* 26px */
+  --text-2xl--line-height: 1.25;
+  --text-2xl--letter-spacing: -0.022em;
+}
+
+@layer base {
+  :root {
+    --font-ios: "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Inter", "Plus Jakarta Sans", "Helvetica Neue", Arial, sans-serif;
+    --screen-radius: 0px; /* full-bleed di mobile */
+  }
+
+  body {
+    font-family: var(--font-ios);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #f6f8fb;
+    color: #09090b;
+    margin: 0;
+    padding: 0;
+    /* Tracking diatur per ukuran lewat @theme, bukan global. */
+    letter-spacing: normal;
+  }
+
+  @media (min-width: 1024px) {
+    :root { --screen-radius: 46px; }
+  }
+
+  strong, b {
+    font-weight: 600;
+  }
+}
+
+/* Glassmorphism Refraction & Apple Card Styles */
+.ios-glass {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.ios-glass-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.03), 0 2px 6px -1px rgba(0, 0, 0, 0.01);
+}
+
+.ios-card {
+  background: #ffffff;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.03);
+}
+
+.ios-phone-shadow {
+  box-shadow: 0 30px 90px -20px rgba(0, 0, 0, 0.18), 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+/* Layar iPhone: elemen ber-backdrop-filter tidak ikut ter-clip oleh
+   border-radius induk di Chrome/Safari, jadi sudutnya sendiri yang
+   dibulatkan supaya tidak muncul sudut putih. */
+.screen-clip {
+  border-radius: var(--screen-radius);
+  overflow: hidden;
+  isolation: isolate;
+}
+.screen-clip > .screen-top {
+  border-top-left-radius: var(--screen-radius);
+  border-top-right-radius: var(--screen-radius);
+}
+.screen-clip > .screen-bottom {
+  border-bottom-left-radius: var(--screen-radius);
+  border-bottom-right-radius: var(--screen-radius);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
