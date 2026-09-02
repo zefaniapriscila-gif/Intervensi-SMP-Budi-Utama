@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import MainLayout from './components/layout/MainLayout';
 import HomeDashboard from './components/pillars/HomeDashboard';
 import Pillar1Situation from './components/pillars/Pillar1Situation';
@@ -9,10 +10,16 @@ import CognitiveOrchestratorModal from './components/pillars/CognitiveOrchestrat
 import { MOCK_PERSONAS, DEMO_STAGES } from './data/essayData';
 
 export default function App() {
+  const [activePersonaId, setActivePersonaId] = useState('venta');
   const [activePersona, setActivePersona] = useState(MOCK_PERSONAS[0]);
   const [activeStageId, setActiveStageId] = useState('overview');
   const [activeTab, setActiveTab] = useState('home');
   const [isCOEOpen, setIsCOEOpen] = useState(false);
+
+  useEffect(() => {
+    const found = MOCK_PERSONAS.find(p => p.id === activePersonaId) || MOCK_PERSONAS[0];
+    setActivePersona(found);
+  }, [activePersonaId]);
 
   const handleTabChange = (newTab) => {
     setActiveTab(newTab);
@@ -60,6 +67,7 @@ export default function App() {
 
   const handleResetData = () => {
     const defaultPersona = MOCK_PERSONAS.find(p => p.id === activePersona.id) || MOCK_PERSONAS[0];
+    const defaultPersona = MOCK_PERSONAS.find(p => p.id === activePersonaId) || MOCK_PERSONAS[0];
     setActivePersona(JSON.parse(JSON.stringify(defaultPersona)));
     setActiveStageId('overview');
     setActiveTab('home');
@@ -73,6 +81,10 @@ export default function App() {
       onTabChange={handleTabChange}
       activePersona={activePersona}
       onSelectPersona={(p) => setActivePersona(p)}
+      onSelectPersona={(p) => {
+        setActivePersonaId(p.id);
+        setActivePersona(p);
+      }}
       onOpenCOE={() => setIsCOEOpen(true)}
       onResetData={handleResetData}
     >
