@@ -113,3 +113,46 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* ---------------------------------------------------------------
+   Growth color system
+   Pastel surface + deep ink pair untuk tiap domain 4S.
+   surface = background kartu, ink = teks/ikon di atas surface.
+   --------------------------------------------------------------- */
+@theme {
+  --color-blossom-50: #fff3f5;
+  --color-blossom-100: #ffdde4;
+  --color-blossom-200: #ffc4d0;
+  --color-blossom-500: #f2637d;
+  --color-blossom-700: #b3273f;
+
+  --color-grape-50: #f4f1ff;
+  --color-grape-100: #e3dcff;
+  --color-grape-200: #cfc3ff;
+  --color-grape-500: #7c5cf0;
+  --color-grape-700: #4f2fbe;
+
+  --color-mint-50: #ecfaf4;
+  --color-mint-100: #c9f1e2;
+  --color-mint-200: #a6e7cf;
+  --color-mint-500: #17b183;
+  --color-mint-700: #0a7355;
+
+  --color-sunny-50: #fff9e6;
+  --color-sunny-100: #ffedb5;
+  --color-sunny-200: #ffe08a;
+  --color-sunny-500: #e5a100;
+  --color-sunny-700: #94660a;
+
+  --color-coral-50: #fff3ec;
+  --color-coral-100: #ffdbc8;
+  --color-coral-200: #ffc3a4;
+  --color-coral-500: #f4713d;
+  --color-coral-700: #b8410f;
+
+  --color-azure-50: #eef6ff;
+  --color-azure-100: #d3e7ff;
+  --color-azure-200: #b0d4ff;
+  --color-azure-500: #3b86e0;
+  --color-azure-700: #1a539c;
+}

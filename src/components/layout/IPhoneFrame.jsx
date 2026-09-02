@@ -46,10 +46,10 @@ export default function IPhoneFrame({
         <div className="hidden lg:block absolute -right-[12px] top-[170px] w-[3px] h-[70px] bg-slate-600 rounded-r-md" /> {/* Power Button */}
 
         {/* Inner Screen Display (Rounded 46px on Desktop, Overflow Hidden for Clean Curves) */}
-        <div className="screen-clip relative w-full h-full bg-[#f4f6f9] flex flex-col select-none">
+        <div className="screen-clip relative w-full h-full bg-[#f5f5fa] flex flex-col select-none">
 
           {/* Integrated iOS Top Bar (Status Bar & Dynamic Island on the SAME Row) */}
-          <div className="screen-top w-full bg-[#f4f6f9]/95 backdrop-blur-md pt-3.5 pb-2.5 px-6 flex items-center justify-between z-40 shrink-0 border-b border-black/[0.02]">
+          <div className="screen-top w-full bg-[#f5f5fa]/95 backdrop-blur-md pt-3.5 pb-2.5 px-6 flex items-center justify-between z-40 shrink-0 border-b border-black/[0.02]">
 
             {/* Left: Clock */}
             <div className="w-[60px] flex items-center">
@@ -102,7 +102,7 @@ export default function IPhoneFrame({
           </div>
 
           {/* Bottom Dock Navigation & Home Indicator */}
-          <div className="screen-bottom w-full shrink-0 z-40 bg-white/95 backdrop-blur-xl border-t border-slate-200/80">
+          <div className="screen-bottom w-full shrink-0 z-40 bg-[#f5f5fa] pt-2">
             <TabBar activeTab={activeTab} onTabChange={onTabChange} />
             <HomeIndicator dark={true} onClick={() => onTabChange('home')} />
           </div>

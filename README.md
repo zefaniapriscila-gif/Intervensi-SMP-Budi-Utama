@@ -1,4 +1,4 @@
-# CORE AI • Emerging Adulthood Life Transition Platform
+# Growth • Emerging Adulthood Life Transition Platform
 
 > Interactive prototype for the academic framework integrating **Schlossberg's Transition Theory (STT 4S Model)**, **Personal Growth Initiative (PGI)**, and **Cognitive Orchestration Engine (COE)** with Apple iOS 18 design language.
 

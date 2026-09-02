@@ -14,7 +14,7 @@ export default function DynamicIsland({ currentPillarName, onOpenCOE }) {
         className={`bg-black text-white cursor-pointer select-none transition-all flex items-center justify-between overflow-hidden shadow-sm ${
           isExpanded
             ? 'w-[280px] py-2.5 px-3.5 rounded-[24px] ring-1 ring-white/20'
-            : 'w-[105px] h-[28px] px-2.5 rounded-full'
+            : 'w-[120px] h-[28px] px-2.5 rounded-full'
         }`}
       >
         {!isExpanded ? (
@@ -32,7 +32,7 @@ export default function DynamicIsland({ currentPillarName, onOpenCOE }) {
 
             {/* Right micro badge */}
             <div className="flex items-center gap-0.5 text-[9px] font-bold tracking-tight text-slate-300">
-              <span>CORE</span>
+              <span>Growth</span>
             </div>
           </div>
         ) : (
@@ -49,7 +49,7 @@ export default function DynamicIsland({ currentPillarName, onOpenCOE }) {
                   <Brain className="w-3.5 h-3.5 text-white" />
                 </div>
                 <div>
-                  <p className="text-[10.5px] font-bold text-white leading-none">CORE AI</p>
+                  <p className="text-[10.5px] font-bold text-white leading-none">Growth</p>
                   <p className="text-[8.5px] text-slate-400 mt-0.5">Live Socratic Companion</p>
                 </div>
               </div>

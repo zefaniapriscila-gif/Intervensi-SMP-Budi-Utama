@@ -1,8 +1,8 @@
 // Theoretical Framework & Structured Content based on the Academic Essay:
-// "Navigasi Transisi Emerging Adulthood Melalui CORE AI & Schlossberg's Transition Theory (STT 4S Model)"
+// "Navigasi Transisi Emerging Adulthood Melalui Growth & Schlossberg's Transition Theory (STT 4S Model)"
 
 export const APP_INFO = {
-  name: "CORE AI",
+  name: "Growth",
   subtitle: "Emerging Adulthood Transition Platform",
   tagline: "Navigasi Masa Dewasa Awal dengan Pendekatan 4S Terintegrasi & Cognitive Orchestration Engine",
   version: "2.4.0 (iOS 18 Edition)",
