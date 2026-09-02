@@ -1,40 +1,44 @@
 // Theoretical Framework & Structured Content based on the Academic Essay:
-// "Navigasi Transisi Emerging Adulthood Melalui CORE AI & Schlossberg's Transition Theory (STT 4S Model)"
+// "GROWTH: Platform Personal Development untuk Emerging Adult Berbasis Schlossberg's Transition Theory (STT 4S Model) & Personal Growth Initiative (PGI)"
 
 export const APP_INFO = {
-  name: "CORE AI",
-  subtitle: "Emerging Adulthood Transition Platform",
-  tagline: "Navigasi Masa Dewasa Awal dengan Pendekatan 4S Terintegrasi & Cognitive Orchestration Engine (COE)",
-  version: "2.5.0 (iOS 18 Edition)",
+  name: "GROWTH",
+  subtitle: "Personal Development Platform untuk Emerging Adults",
+  tagline: "Navigasi Transisi Hidup Menuju Kedewasaan dengan Pendekatan 4S Terintegrasi (Situation, Self, Strategies, Support) & Personal Growth Initiative (PGI)",
+  version: "3.0.0 (iOS 18 Edition)",
   frameworks: [
     { 
-      name: "CORE AI & Cognitive Orchestration Engine (COE)", 
-      desc: "Ekstensi sistem internal yang mengubah structured prompting dari perintah manual menjadi alur kognitif yang mengintegrasikan tiga intervensi: Socratic method, Reflective Modal, dan Scaffolding guna memitigasi cognitive offloading, meningkatkan berpikir kritis, serta mengasah working memory dan kemampuan retrieval information (Esai Bab 2.1)." 
-    },
-    { 
       name: "Schlossberg's Transition Theory (STT - 4S Model)", 
-      desc: "Landasan teoritis navigasi transisi hidup signifikan dengan menggunakan model 4S (Situation, Self, Support, Strategies) untuk koping adaptif dan pengembangan self-growth (Schlossberg, 1984 dalam Strong, 2026; Esai Bab 2.2)." 
+      desc: "Landasan teoritis gagasan yang menjelaskan bagaimana individu menavigasi transisi hidup signifikan menggunakan model 4S (domain Situation, Self, Support, dan Strategies) untuk koping dan beradaptasi secara optimal (Schlossberg, 1984 dalam Strong, 2026; Esai Bab 2.2)." 
     },
     { 
       name: "Personal Growth Initiative (PGI)", 
-      desc: "Keterlibatan proaktif individu untuk mengembangkan diri dalam menghadapi transisi dan perubahan masa emerging adulthood (Robitschek, 1998 dalam Verdoodt et al., 2026; Saraswati et al., 2023)." 
+      desc: "Keterlibatan proaktif individu untuk mengembangkan diri dalam menghadapi peristiwa dan transisi penting kehidupan, mengintegrasikan aspek pendidikan, karier, kesehatan mental, hingga dukungan sosial (Robitschek, 1998 dalam Verdoodt et al., 2026; Saraswati et al., 2023; Esai Bab 1.2 & 2.1)." 
+    },
+    { 
+      name: "Emerging Adulthood (EA) & Failure to Launch", 
+      desc: "Karakteristik psikologis masa transisi dewasa awal (Arnett, 2000; Reifman et al., 2007; Saikkonen et al., 2018; Reed-Fitzke et al., 2021) serta pencegahan sindrom failure to launch, isolasi sosial, loneliness, dan distres psikologis (Berger et al., 2026; Kato et al., 2017, 2019; Lebowitz, 2016; Yuniaty & Hamidah, 2020; SKI 2023; Esai Bab 1.1 & 2.5)." 
     },
     { 
       name: "Values in Action (VIA) Character Strengths", 
-      desc: "Klasifikasi kekuatan karakter positif manusia non-patologis sebagai 'bahasa umum' modal eksplorasi identitas (Niemiec, 2020; Esai Bab 2.3 Pilar 2)." 
+      desc: "Klasifikasi kekuatan karakter positif manusia sebagai 'bahasa umum' untuk memahami modal kapasitas positif diri non-patologis dalam proses eksplorasi identitas (Niemiec, 2020; Esai Bab 2.3.2)." 
     },
     { 
       name: "Narrative Identity & Dynamic Identity Status", 
-      desc: "Pemaknaan kisah hidup melalui integrasi pengalaman masa lalu (McAdams, 2018) dan representasi profil diri dinamis eksplorasi-komitmen (Marcia, 1966)." 
+      desc: "Pemaknaan kisah hidup melalui integrasi pengalaman masa lalu konkret (McAdams, 2018) dan representasi profil diri dinamis berbasis eksplorasi dan komitmen berkelanjutan (Marcia, 1966; Erikson, 1969; Shelley et al., 2020; Esai Bab 2.3.2)." 
     },
     { 
-      name: "Self-Determination Theory & Mastery Experiences", 
-      desc: "Pemenuhan kebutuhan kompetensi psikologis (Deci et al., 2017), pemecahan milestone realistis (Pilcher et al., 2022), akumulasi keberhasilan kecil (Bandura, 1997), dan evaluasi proses mandiri (Guo, 2022; Esai Bab 2.3 Pilar 3)." 
+      name: "Self-Determination Theory, Goal Realism & Mastery Experiences", 
+      desc: "Pemenuhan kebutuhan kompetensi psikologis (Deci et al., 2017), pemecahan target besar menjadi milestone realistis (Pilcher et al., 2022), akumulasi pengalaman keberhasilan melalui latihan mikro (Bandura, 1997), dan evaluasi proses belajar mandiri (Guo, 2022; Esai Bab 2.3.3)." 
     },
     { 
-      name: "Collective Resilience & Psychological Safety", 
-      desc: "Kelompok kecil terkurasi (Growth Circle) berbasis kesamaan nilai & tujuan (Luzanil & Menaldi, 2022; Forsyth, 2018) serta papan apresiasi Celebrate Wins untuk melawan comparison trap." 
+      name: "Collective Resilience, Shared Journey & Belonging", 
+      desc: "Kelompok kecil terkurasi (Growth Circle) berbasis kesamaan values dan target (Luzanil & Menaldi, 2022; Forsyth, 2018) dengan prompt 2-mingguan proses-oriented, serta papan Celebrate Wins untuk melawan comparison trap media sosial (Esai Bab 2.3.4)." 
     },
+    { 
+      name: "Agile Development, Pilot Testing & Net Promoter Score (NPS)", 
+      desc: "Implementasi iteratif Scrum (Irfansyah et al., 2026) melalui pilot testing kolaborasi universitas (Career Center & Fakultas Psikologi), diukur menggunakan metrik pengguna, kualitatif open questions, dan Net Promoter Score (Reichheld, 2003; Esai Bab 2.4 & 2.5)." 
+    }
   ]
 };
 
@@ -43,13 +47,13 @@ export const DEMO_STAGES = [
     id: "overview",
     tab: "home",
     number: "0",
-    title: "Overview & Widget Hub",
+    title: "Overview & Dashboard 4S",
     shortTitle: "Overview",
-    subtitle: "Tampilan Utama Berbasis Widget iOS",
-    problem: "Emerging adults (18-29 tahun) menghadapi periode paling tidak stabil dalam hidup (Saikkonen et al., 2018) dengan risiko future anxiety, isolasi sosial, dan fenomena failure to launch (Berger et al., 2026; Kato et al., 2017).",
-    mechanism: "CORE AI mengintegrasikan 4 domain psikologis (4S: Situation, Self, Strategies, Support) ke dalam satu mekanisme terpadu yang berkesinambungan didukung oleh Cognitive Orchestration Engine (COE).",
-    outcome: "Pengguna memiliki dashboard terpadu yang memantau perkembangan emosi, identitas, kebiasaan mikro, dan koneksi sosial.",
-    actionPrompt: "Lihat ringkasan 4S di tampilan Home iPhone di sebelah kanan."
+    subtitle: "Pusat Integrasi PGI & 4 Domain Transisi STT",
+    problem: "Solusi bagi emerging adult masih terfragmentasi (pendidikan, karir, kesehatan mental terpisah), memicu future anxiety, kesepian, dan risiko failure to launch (Arnett, 2000; Berger et al., 2026).",
+    mechanism: "GROWTH mengintegrasikan 4 domain psikologis (4S: Situation, Self, Strategies, Support) ke dalam satu ekosistem terpadu berkesinambungan yang memfasilitasi Personal Growth Initiative (PGI).",
+    outcome: "Pengguna memiliki dashboard holistik untuk memantau pemahaman realitas situasi, modal kekuatan diri, akumulasi kemajuan mikro, dan koneksi sosial yang suportif.",
+    actionPrompt: "Lihat ringkasan 4S Model dan aktivitas PGI di tampilan iPhone."
   },
   {
     id: "pilar1",
@@ -58,14 +62,14 @@ export const DEMO_STAGES = [
     title: "Pilar 1: Situation (Life Transition)",
     shortTitle: "1. Situation",
     subtitle: "Intercept, Validate, Acceptance, Confidence",
-    problem: "Kecemasan masa depan (future anxiety) yang bersifat kabur, perasaan bersalah, dan anggapan bahwa diri 'aneh' atau 'gagal' saat mengalami tekanan transisi.",
-    mechanism: "3 Proses Berkesinambungan: (1) Transition Mapping (penamaan konkret situasi nyata), (2) Challenge Assessment (skor 4 domain + psikoedukasi validasi normalitas respons), (3) Acceptance Framework (dikotomi kendali & Evolution Domain).",
-    outcome: "Pengguna bergeser dari rasa 'hanyut' menuju kejelasan peta situasi dan penerimaan sadar sebelum melangkah ke kekuatan diri.",
-    bridgeQuote: "Sekarang kita sudah tahu medan perangnya. Yuk, kita lihat bekal apa saja yang sudah kamu miliki.",
+    problem: "Future anxiety yang bersifat kabur, perasaan bersalah, merasa 'sendirian', 'aneh', atau 'gagal' saat menghadapi stresor transisi menuju kedewasaan (Reed-Fitzke et al., 2021; Lane et al., 2017).",
+    mechanism: "3 Proses Berkesinambungan: (1) Transition Mapping (penamaan konkret transisi nyata), (2) Challenge Assessment (penilaian 4 domain 1-10 + psikoedukasi validasi normalitas respon), (3) Acceptance Framework (dikotomi kendali & Evolution Domain).",
+    outcome: "Pengguna tidak lagi merasa 'hanyut' dalam situasi, melainkan memiliki gambaran situasi yang jelas sebagai fondasi sebelum mengenali kekuatan diri (Pilar 2) dan strategi bertumbuh (Pilar 3).",
+    bridgeQuote: "Sekarang kita sudah tahu peta situasi transisi. Mari kita telusuri modal kekuatan positif yang melekat pada dirimu!",
     subSteps: [
-      { id: "1.1", name: "Transition Mapping", desc: "Memilih kategori transisi nyata & menuliskan narasi konkret untuk memecah future anxiety." },
-      { id: "1.2", name: "Challenge Assessment & Validasi", desc: "Skor tingkat kesulitan 1-10 di 4 domain & edukasi validasi 78%+ emerging adult mengalaminya." },
-      { id: "1.3", name: "Acceptance & Evolution Domain", desc: "Memisahkan hal dalam kendali vs di luar kendali -> Confidence terbangun." }
+      { id: "1.1", name: "Transition Mapping", desc: "Memilih transisi dominan EA & menuliskan narasi konkret untuk memecah future anxiety." },
+      { id: "1.2", name: "Challenge Assessment & Validasi", desc: "Skor tingkat kesulitan 1-10 di 4 domain (Psikologis, Sosial, Finansial, Karir) & validasi bahwa 78%+ emerging adult mengalami fase serupa." },
+      { id: "1.3", name: "Acceptance & Evolution Domain", desc: "Memisahkan hal dalam kendali vs hal yang diterima/dilepaskan (luar kendali) -> Evolution Domain Card terbangun." }
     ]
   },
   {
@@ -75,14 +79,14 @@ export const DEMO_STAGES = [
     title: "Pilar 2: Self (Discovery)",
     shortTitle: "2. Self",
     subtitle: "Strength Mapping, Narrative Identity, Dynamic Profile",
-    problem: "Low self-concept dan krisis identitas pada emerging adult yang merasa tidak memiliki kapasitas atau terjebak dalam label negatif.",
-    mechanism: "3 Tahapan Berkesinambungan: (1) VIA Strength Mapping (Niemiec, 2020), (2) Identity Timeline menghubungkan pengalaman masa lalu (McAdams, 2018), dan (3) Profil Discovery dinamis berdasarkan eksplorasi & komitmen (Marcia, 1966).",
-    outcome: "Membangun pemahaman diri dinamis bukan label permanen, sebagai modalitas psikologis untuk melangkah maju.",
-    bridgeQuote: "Kekuatanmu sudah terpetakan. Saatnya merancang strategi bertumbuh!",
+    problem: "Low self-concept, kebingungan identitas, dan krisis arah pada masa emerging adulthood (Erikson, 1969; Shelley et al., 2020).",
+    mechanism: "3 Tahapan Berkesinambungan: (1) Values in Action (VIA) Strength Mapping (Niemiec, 2020), (2) Identity Timeline menghubungkan pengalaman masa lalu konkret (McAdams, 2018), dan (3) Profil Discovery dinamis berbasis eksplorasi dan komitmen (Marcia, 1966).",
+    outcome: "Membangun representasi diri dinamis (bukan label kepribadian statis/permanen) sebagai modalitas psikologis untuk melangkah maju dalam transisi hidup.",
+    bridgeQuote: "Kekuatanmu sudah terpetakan melalui kisah perjuangan nyata. Saatnya merancang strategi bertumbuh!",
     subSteps: [
-      { id: "2.1", name: "VIA Strength Mapping", desc: "Identifikasi 3 kekuatan karakter positif utama (Curiosity, Bravery, Persistence)." },
-      { id: "2.2", name: "Identity Timeline", desc: "Menghubungkan kekuatan karakter dengan momen perjuangan masa lalu (McAdams narrative)." },
-      { id: "2.3", name: "Profil Discovery", desc: "Representasi diri dinamis berdasarkan eksplorasi & komitmen (Marcia dynamic identity)." }
+      { id: "2.1", name: "Strength Mapping (VIA)", desc: "Mengenali 3 kekuatan karakter positif utama manusia (seperti Curiosity, Bravery, Persistence) sebagai modal awal." },
+      { id: "2.2", name: "Identity Timeline", desc: "Menghubungkan kekuatan karakter dengan momen perjuangan masa lalu (Narrative Identity McAdams)." },
+      { id: "2.3", name: "Profil Discovery", desc: "Integrasi kekuatan dan kisah hidup menjadi profil diri dinamis eksplorasi-komitmen (Marcia dynamic identity status)." }
     ]
   },
   {
@@ -92,14 +96,14 @@ export const DEMO_STAGES = [
     title: "Pilar 3: Strategies (Navigating Growth)",
     shortTitle: "3. Strategies",
     subtitle: "Capacity Building & Mastery Experiences",
-    problem: "Low self-confidence, kebingungan menentukan arah, dan overwhelmed oleh target besar tanpa langkah konkret.",
-    mechanism: "3 Proses: (1) Adaptive Roadmap memecah tujuan besar sesuai kapasitas (Pilcher et al., 2022; Deci et al., 2017), (2) Micro-practice untuk akumulasi Bandura (1997) mastery experiences, dan (3) Progress Reflection evaluasi belajar mandiri (Guo, 2022).",
-    outcome: "Meningkatnya efikasi diri (self-efficacy) melalui keberhasilan berulang pada latihan-latihan kecil terukur dan evaluasi proses berkelanjutan.",
-    bridgeQuote: "Strategimu sudah berjalan. Mari terhubung dengan circle seperjuangan!",
+    problem: "Low self-confidence, kebingungan merumuskan target, dan rasa kewalahan (overwhelmed) oleh tujuan besar tanpa tahapan yang realistis.",
+    mechanism: "3 Proses Berkesinambungan: (1) Adaptive Roadmap memecah tujuan besar menjadi milestone realistis sesuai kapasitas energi mental (Pilcher et al., 2022; Deci et al., 2017), (2) Micro-Practice untuk akumulasi pengalaman keberhasilan Bandura (1997), dan (3) Progress Reflection evaluasi strategi belajar mandiri (Guo, 2022).",
+    outcome: "Meningkatnya efikasi diri (self-efficacy) melalui keberhasilan berulang pada latihan-latihan kecil konsisten dan refleksi proses berkelanjutan.",
+    bridgeQuote: "Strategi bertumbuhmu sudah berjalan. Saatnya terhubung dengan support system seperjuangan!",
     subSteps: [
-      { id: "3.1", name: "Adaptive Roadmap", desc: "Menerjemahkan tujuan besar menjadi milestone realistis sesuai kapasitas energi mental." },
-      { id: "3.2", name: "Micro-Practice (Mastery)", desc: "Latihan kecil harian berulang yang memicu akumulasi keberhasilan kecil (mastery experiences)." },
-      { id: "3.3", name: "Progress Reflection", desc: "Evaluasi strategi proses & pembelajaran mandiri (Self-Regulated Learning)." }
+      { id: "3.1", name: "Adaptive Roadmap", desc: "Menerjemahkan tujuan besar menjadi milestone realistis yang disesuaikan dengan kapasitas individu." },
+      { id: "3.2", name: "Micro-Practice (Mastery)", desc: "Latihan-latihan kecil harian konsisten untuk memicu akumulasi pengalaman keberhasilan (Bandura mastery experiences)." },
+      { id: "3.3", name: "Progress Reflection", desc: "Evaluasi strategi dan proses belajar mandiri (Self-Regulated Learning cycle: arah -> latihan -> refleksi)." }
     ]
   },
   {
@@ -109,30 +113,14 @@ export const DEMO_STAGES = [
     title: "Pilar 4: Support (Collective Resilience)",
     shortTitle: "4. Support",
     subtitle: "Support System, Shared Journey, Belonging",
-    problem: "Isolasi sosial, tidak memiliki support system yang aman, dan fenomena comparison trap di media sosial yang memicu inferioritas.",
-    mechanism: "Mengolah data dari Pilar 2 & 3 untuk membentuk: (1) Growth Circle kelompok kecil terkurasi dengan prompt 2-mingguan proses-oriented (Luzanil & Menaldi, 2022; Forsyth, 2018), dan (2) Celebrate Wins apresiasi progres mikro nyata.",
-    outcome: "Rasa keterhubungan (belonging), normalisasi perjuangan bersama (shared struggle), dan budaya saling mengapresiasi progres nyata.",
-    bridgeQuote: "Kamu tidak sendirian. Kita bertumbuh bersama dalam circle yang aman.",
+    problem: "Social isolation, rasa kesepian, ketiadaan ruang aman untuk bercerita, dan jebakan comparison trap di media sosial (Kato et al., 2019; Lebowitz, 2016).",
+    mechanism: "Mengolah data dari Pilar 2 (values/kekuatan) dan Pilar 3 (milestones/perjuangan) untuk membentuk: (1) Growth Circle kelompok kecil terkurasi dengan prompt 2-mingguan proses-oriented (Luzanil & Menaldi, 2022; Forsyth, 2018), (2) Shared Journey & (3) Celebrate Wins untuk berbagi apresiasi progres nyata.",
+    outcome: "Rasa keterhubungan (belonging), validasi perjuangan bersama (shared struggle), dan budaya saling mengapresiasi progres kecil dalam lingkungan yang aman (psychological safety).",
+    bridgeQuote: "Kamu tidak sendirian dalam transisi ini. Kita bertumbuh bersama dalam circle yang aman dan suportif!",
     subSteps: [
-      { id: "4.1", name: "Growth Circle", desc: "Kelompok kecil 4-6 orang dengan kesamaan values & target + prompt pemantik 2-mingguan proses-oriented." },
-      { id: "4.2", name: "Celebrate Wins & Appreciations", desc: "Papan berbagi progres kecil melawan comparison trap dengan respon apresiasi terstruktur." }
-    ]
-  },
-  {
-    id: "coe",
-    tab: "coe",
-    number: "5",
-    title: "Cognitive Orchestration Engine (COE)",
-    shortTitle: "COE AI Engine",
-    subtitle: "Socratic Method, Reflective Modal, & Scaffolding",
-    problem: "Bahaya cognitive offloading di mana individu menjadi pasif dan bergantung pada AI generik tanpa melatih penalaran kritis.",
-    mechanism: "COE merupakan sistem internal CORE AI yang mengubah structured prompting menjadi alur kognitif melalui 3 intervensi: Socratic method (pertanyaan pemantik), Reflective Modal (jeda sadar), dan Scaffolding (tangga berpikir bergradasi).",
-    outcome: "Pengguna terlatih berpikir kritis, mengasah working memory, meningkatkan kemampuan retrieval information, serta membangun kemandirian kognitif.",
-    bridgeQuote: "COE AI bukan untuk berpikir menggantikanmu, melainkan untuk melatih ketajaman berpikirmu.",
-    subSteps: [
-      { id: "5.1", name: "Socratic Method", desc: "COE membimbing dengan pertanyaan pemantik reflektif bukan sekadar memberi jawaban instan." },
-      { id: "5.2", name: "Reflective Modal", desc: "Jeda sadar untuk memeriksa asumsi kognitif dan emosi pengguna." },
-      { id: "5.3", name: "Cognitive Scaffolding", desc: "Bantuan terstruktur bergradasi sesuai kesiapan kognitif pengguna." }
+      { id: "4.1", name: "Growth Circle", desc: "Kelompok kecil 4-6 orang dengan kesamaan values & target + prompt pemantik 2-mingguan proses-oriented (wajib dijawab agar circle aktif)." },
+      { id: "4.2", name: "Shared Journey & Celebrate Wins", desc: "Papan pengumuman khusus di dalam Growth Circle untuk berbagi progres kecil melawan comparison trap dengan respon apresiasi spesifik anggota." },
+      { id: "4.3", name: "Sesi Selesai / Berkelanjutan", desc: "Rangkuman perjalanan hari ini (Step 16) yang mendorong pengguna untuk terus bertumbuh secara adaptif dan berkelanjutan." }
     ]
   }
 ];
@@ -142,19 +130,16 @@ export const MOCK_PERSONAS = [
     id: "venta",
     name: "Venta Alyqa",
     age: 20,
-    role: "Mahasiswi S1 Semester 5 (Transisi Akademik & Karir)",
     role: "Mahasiswi S1 Semester 3 (Transisi Akademik & Karir)",
     avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
     transition: "Eksplorasi Karir, Beban Akademik & Ekspektasi Mandiri",
-    narrative: "Memasuki semester 5, saya mulai merasakan future anxiety yang tinggi. Melihat teman-teman di media sosial sudah mulai magang di perusahaan ternama dan aktif berprestasi, saya sering terjebak comparison trap dan merasa tertinggal. Ditambah tuntutan tugas kuliah yang padat dan keinginan mulai mandiri secara finansial tanpa terus membebani orang tua, saya sering cemas dan meragukan kapasitas diri sendiri.",
     narrative: "Memasuki semester 3, saya mulai merasakan future anxiety yang tinggi. Melihat teman-teman di media sosial sudah mulai aktif proyek luar kampus dan berprestasi, saya sering terjebak comparison trap dan merasa tertinggal. Ditambah tuntutan tugas kuliah yang semakin padat dan keinginan mulai mandiri secara finansial tanpa terus membebani orang tua, saya sering cemas dan meragukan kapasitas diri sendiri.",
     scores: { psychological: 8, social: 7, financial: 6, career: 9 },
     challenges: {
       psychological: "Kecemasan masa depan (future anxiety) dan sindrom imposter akibat perbandingan linimasa di media sosial.",
       social: "Circle pertemanan mulai terdistraksi kesibukan masing-masing, merasa sungkan bercerita mengenai ketakutan diri.",
       financial: "Mulai belajar mengelola anggaran hidup mandiri dan mencari peluang magang berbayar untuk biaya kuliah.",
-      career: "Tuntutan akademik semester 5 yang padat dan kebingungan menyusun portofolio serta arah karir pasca kampus."
-      career: "Tuntutan akademik semester 3 yang padat dan kebingungan menentukan fokus minat serta menyusun portofolio awal."
+      career: "Bingung memilih peminatan karir yang sesuai antara ekspektasi pribadi dan kebutuhan industri."
     },
     control: {
       canControl: "Konsisten menyelesaikan 1 micro-practice harian, belajar skill baru 20 menit, dan membatasi scrolling medsos.",
@@ -180,7 +165,7 @@ export const MOCK_PERSONAS = [
     milestones: [
       { id: 1, title: "Audit Minat Karir & Penataan Resume Akademik", status: "completed", progress: 100 },
       { id: 2, title: "Targeted Outreach ke 3 Alumni / Supervisor Magang", status: "in_progress", progress: 60 },
-      { id: 3, title: "Simulasi Mock Interview Kognitif & Refleksi COE AI", status: "pending", progress: 0 }
+      { id: 3, title: "Konsultasi Transisi Karir dengan Career Center Universitas", status: "pending", progress: 0 }
     ],
     microPractices: [
       { id: "mp1", title: "Review 1 Materi Kuliah / Skill Magang 20 Menit", duration: "20 min", domain: "Career", completed: true },
@@ -217,9 +202,9 @@ export const MOCK_PERSONAS = [
     id: "dimas",
     name: "Dimas Pratama",
     age: 22,
-    role: "Fresh Graduate Ilmu Komputer",
+    role: "Fresh Graduate Ilmu Komputer (Transisi Karir)",
     avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
-    transition: "Lulus Kuliah & Menanti Karir Pertama",
+    transition: "Lulus Kuliah & Memasuki Dunia Kerja",
     narrative: "Baru saja wisuda 2 bulan lalu. Melihat teman-teman di LinkedIn sudah pasang badge 'Accepted Offer', rasanya cemas luar biasa. Ekspektasi orang tua di kampung juga tinggi, tapi sudah kirim 40 lamaran belum ada panggilan interview. Kadang merasa ijazah ini sia-sia.",
     scores: { psychological: 8, social: 7, financial: 6, career: 9 },
     challenges: {
@@ -247,7 +232,7 @@ export const MOCK_PERSONAS = [
     milestones: [
       { id: 1, title: "Fondasi Portfolio & CV ATS-Friendly", status: "completed", progress: 100 },
       { id: 2, title: "Targeted Outreach ke 5 Alumni Senior Tech", status: "in_progress", progress: 60 },
-      { id: 3, title: "Simulasi Mock Interview Kognitif dengan COE AI", status: "pending", progress: 0 }
+      { id: 3, title: "Simulasi Wawancara Kerja & Konsultasi Portfolio", status: "pending", progress: 0 }
     ],
     microPractices: [
       { id: "mp1", title: "Kirim 1 Pesan Pendek & Sopan ke Alumni di LinkedIn", duration: "10 min", domain: "Career", completed: true },
@@ -265,9 +250,9 @@ export const MOCK_PERSONAS = [
     id: "anindya",
     name: "Anindya Putri",
     age: 24,
-    role: "First-Time Corporate Worker (Merantau)",
+    role: "First-Time Corporate Worker (Transisi Rantau)",
     avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80",
-    transition: "Pindah Kota & Mandiri Pertama Kali (Rantau)",
+    transition: "Pindah Kota & Hidup Mandiri Pertama Kali (Rantau)",
     narrative: "Baru pindah ke Jakarta 3 bulan lalu untuk kerja pertama. Tekanan target kantor tinggi, pulang ke kosan sepi tanpa keluarga atau teman dekat. Sering merasa burnout dan takut tidak mampu bertahan di kota besar.",
     scores: { psychological: 9, social: 9, financial: 5, career: 7 },
     challenges: {
@@ -312,41 +297,46 @@ export const MOCK_PERSONAS = [
 ];
 
 export const TRANSITION_CATEGORIES = [
-  { id: "t1", title: "Eksplorasi Karir, Beban Akademik & Ekspektasi Mandiri", icon: "GraduationCap", desc: "Transisi dunia akademik, pencarian minat karir, dan tuntutan kemandirian." },
-  { id: "t2", title: "Lulus Kuliah & Menanti Karir Pertama", icon: "Briefcase", desc: "Transisi dari dunia terstruktur kampus menuju ketidakpastian dunia kerja profesional." },
-  { id: "t3", title: "Pindah Kota & Rantau Mandiri", icon: "MapPin", desc: "Tantangan adaptasi lingkungan baru, hidup sendiri, dan isolasi sosial/kesepian." },
+  { id: "t1", title: "Lulus Kuliah & Memasuki Dunia Kerja", icon: "Briefcase", desc: "Transisi dari dunia terstruktur kampus menuju ketidakpastian dunia kerja profesional (Esai Bab 2.3.1)." },
+  { id: "t2", title: "Eksplorasi Karir, Beban Akademik & Ekspektasi Mandiri", icon: "GraduationCap", desc: "Transisi masa studi, pencarian peminatan karir, dan tuntutan kemandirian." },
+  { id: "t3", title: "Pindah Kota & Hidup Mandiri Pertama Kali (Rantau)", icon: "MapPin", desc: "Tantangan adaptasi lingkungan baru, hidup sendiri, dan isolasi sosial/kesepian." },
   { id: "t4", title: "Tekanan Finansial Pertama Kali Mandiri", icon: "Coins", desc: "Mengelola anggaran bulanan mandiri tanpa terus bergantung pada orang tua." },
-  { id: "t5", title: "Perubahan Relasi / Dinamika Pertemanan", icon: "HeartCrack", desc: "Circle pertemanan yang menyusut, restrukturisasi relasi interpersonal, dan ekspektasi sosial." }
+  { id: "t5", title: "Perubahan Relasi Interpersonal / Putus Hubungan", icon: "HeartCrack", desc: "Circle pertemanan yang menyusut, restrukturisasi relasi interpersonal, dan ekspektasi sosial." }
 ];
 
 export const VIA_CHARACTER_CATALOG = [
-  { name: "Curiosity (Rasa Ingin Tahu)", category: "Wisdom", desc: "Tertarik pada berbagai hal baru dan antusias bereksplorasi." },
-  { name: "Bravery (Keberanian)", category: "Courage", desc: "Berani mengambil risiko dan bertindak sesuai prinsip meski takut." },
+  { name: "Curiosity (Rasa Ingin Tahu)", category: "Wisdom", desc: "Tertarik pada berbagai hal baru dan antusias bereksplorasi (Esai Bab 2.3.2)." },
+  { name: "Bravery (Keberanian)", category: "Courage", desc: "Berani mengambil risiko dan bertindak sesuai prinsip meski menghadapi ketidakpastian." },
   { name: "Persistence (Kegigihan)", category: "Courage", desc: "Menuntaskan apa yang dimulai dan tidak mudah menyerah pada rintangan." },
-  { name: "Perspective (Kebijaksanaan)", category: "Wisdom", desc: "Mampu memberikan nasihat bijak dan melihat gambaran besar masalah." },
-  { name: "Love of Learning", category: "Wisdom", desc: "Selalu bersemangat menguasai topik atau keahlian baru." },
-  { name: "Hope (Harapan)", category: "Transcendence", desc: "Mengharapkan hal terbaik di masa depan dan berusaha mewujudkannya." }
-];
-
-export const SOCRATIC_PROMPTS = [
-  {
-    topic: "Future Anxiety & Ketakutan Gagal",
-    question: "Apa bukti konkret bahwa satu kebimbangan atau tantangan saat ini menentukan seluruh masa depanmu?",
-    socraticHint: "Pikirkan 1 pengalaman masa lalu ketika kamu pernah merasa cemas namun akhirnya bisa melewatinya."
-  },
-  {
-    topic: "Perbandingan Sosial (Comparison Trap)",
-    question: "Ketika melihat linimasa pencapaian orang lain di media sosial, bagian mana dari perjuangan nyata mereka yang tidak terlihat olehmu?",
-    socraticHint: "Orang biasanya hanya memajang highlight hasil akhir, bukan 90% proses penolakan dan keraguan di baliknya."
-  },
-  {
-    topic: "Dikotomi Kendali (Dichotomy of Control)",
-    question: "Jika kamu memisahkan energimu: Apa 1 tindakan konkret yang 100% berada di bawah kendalimu dalam 24 jam ke depan?",
-    socraticHint: "Fokus pada aksimu sendiri (mikro-tindakan), bukan pada hasil akhir yang ditentukan pihak eksternal."
-  }
+  { name: "Perspective (Kebijaksanaan)", category: "Wisdom", desc: "Mampu memberikan pertimbangan bijak dan melihat gambaran besar masalah." },
+  { name: "Love of Learning", category: "Wisdom", desc: "Selalu bersemangat menguasai topik atau keahlian baru di fase transisi." },
+  { name: "Hope (Harapan & Optimisme)", category: "Transcendence", desc: "Mengharapkan hal terbaik di masa depan dan bergerak mewujudkannya secara bertahap." }
 ];
 
 export const VIA_STRENGTHS_CATALOG = VIA_CHARACTER_CATALOG;
+
+export const GROWTH_REFLECTION_PROMPTS = [
+  {
+    topic: "Memecah Future Anxiety",
+    question: "Apa 1 situasi transisi paling spesifik yang saat ini memicu kecemasanmu, dan fakta nyata apa yang membuktikan kamu pernah melewati fase sulit serupa?",
+    hint: "Penamaan konkret situasi memecah kecemasan yang kabur menjadi langkah nyata (Pilar 1: Situation)."
+  },
+  {
+    topic: "Dikotomi Kendali (Acceptance)",
+    question: "Jika kamu membagi energimu: Apa 1 hal yang harus kamu terima/lepaskan, dan apa 1 tindakan mikro yang 100% berada di bawah kendalimu hari ini?",
+    hint: "Penerimaan sadar mengalokasikan energi mental ke hal produktif (Acceptance Framework)."
+  },
+  {
+    topic: "Kekuatan Karakter (VIA) & Narasi Hidup",
+    question: "Mengingat tantangan yang sedang kamu hadapi, bagaimana kekuatan karakter utamamu pernah terbukti membantumu di masa lalu?",
+    hint: "Narrative Identity (McAdams, 2018) menghubungkan modal kekuatan masa lalu ke perjuangan hari ini."
+  },
+  {
+    topic: "Akumulasi Kemajuan Kecil (Mastery)",
+    question: "Latihan kecil apa yang bisa kamu selesaikan dalam 15 menit ke depan untuk membangun keyakinan efikasi diri (self-efficacy)?",
+    hint: "Keberhasilan kecil berulang membentuk fondasi kompetensi yang kokoh (Bandura, 1997; Deci et al., 2017)."
+  }
+];
 
 export const COMMUNITY_WINS_FEED = [
   { id: 1, author: "Venta A.", tag: "Career", text: "Berhasil menyelesaikan 1 draft proposal magang & resume tanpa overthinking!", applause: 9 },
@@ -355,3 +345,21 @@ export const COMMUNITY_WINS_FEED = [
   { id: 4, author: "Nadia S.", tag: "Habit", text: "Mute notifikasi media sosial selama 4 jam untuk selesaikan modul desain.", applause: 8 }
 ];
 
+export const FLOWCHART_STEPS = [
+  { step: 1, pillar: "Pilar 1 (Situation)", name: "Transition Mapping", desc: "Pengguna memilih transisi utama yang sedang dihadapi dan menuliskan narasi situasi." },
+  { step: 2, pillar: "Pilar 1 (Situation)", name: "Challenge Assessment", desc: "Pengguna menilai tingkat kesulitan (1-10) pada berbagai domain tantangan." },
+  { step: 3, pillar: "Pilar 1 (Situation)", name: "Validation", desc: "Sistem memberikan psikoedukasi dan validasi bahwa tantangan adalah bagian umum EA." },
+  { step: 4, pillar: "Pilar 1 (Situation)", name: "Acceptance Framework", desc: "Pengguna merefleksikan hal yang dapat dikendalikan dan hal yang perlu diterima/dilepaskan." },
+  { step: 5, pillar: "Pilar 1 (Situation)", name: "Evolution Domain", desc: "Sistem merangkum kondisi, tantangan, kontrol, dan acceptance sebagai peta awal." },
+  { step: 6, pillar: "Pilar 1 (Situation)", name: "Menuju Pilar Discovery", desc: "Sistem menegaskan memahami situasi adalah fondasi sebelum mengenali diri." },
+  { step: 7, pillar: "Pilar 2 (Self)", name: "Strength Mapping", desc: "Pengguna mengenali kekuatan karakter diri berdasarkan klasifikasi VIA (Values in Action)." },
+  { step: 8, pillar: "Pilar 2 (Self)", name: "Identity Timeline", desc: "Pengguna menghubungkan kekuatan dengan pengalaman hidup yang membentuk diri." },
+  { step: 9, pillar: "Pilar 2 (Self)", name: "Discovery Profile", desc: "Sistem mengintegrasikan kekuatan dan pengalaman menjadi profil diri yang dinamis." },
+  { step: 10, pillar: "Pilar 3 (Strategies)", name: "Adaptive Roadmap", desc: "Pengguna menentukan tujuan dan merencanakannya menjadi milestone yang realistis." },
+  { step: 11, pillar: "Pilar 3 (Strategies)", name: "Micro-Practice", desc: "Pengguna melakukan latihan kecil secara konsisten untuk mencapai milestone." },
+  { step: 12, pillar: "Pilar 3 (Strategies)", name: "Progress Reflection", desc: "Pengguna mengevaluasi perkembangan, strategi, hambatan, dan hal yang perlu diperbaiki." },
+  { step: 13, pillar: "Pilar 4 (Support)", name: "Growth Circle", desc: "Sistem mencocokkan pengguna dengan kelompok kecil berdasarkan arah dan values yang serupa." },
+  { step: 14, pillar: "Pilar 4 (Support)", name: "Shared Journey", desc: "Anggota saling berbagi tantangan, pengalaman, dan dukungan dalam ruang yang aman." },
+  { step: 15, pillar: "Pilar 4 (Support)", name: "Celebrate Wins", desc: "Pengguna membagikan progres kecil dan menerima apresiasi spesifik dari anggota lain." },
+  { step: 16, pillar: "Pilar 4 (Support)", name: "Sesi Selesai & Berkelanjutan", desc: "Sistem menampilkan rangkuman perjalanan hari ini dan mendorong pertumbuhan berkelanjutan." }
+];

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import DemoSidebar from './DemoSidebar';
 import IPhoneFrame from './IPhoneFrame';
-import { Info } from 'lucide-react';
+import { Info, Award } from 'lucide-react';
 
 export default function MainLayout({
   activeStageId,
@@ -10,7 +10,7 @@ export default function MainLayout({
   onTabChange,
   activePersona,
   onSelectPersona,
-  onOpenCOE,
+  onOpenSummary,
   onResetData,
   children
 }) {
@@ -40,7 +40,7 @@ export default function MainLayout({
         <div className="lg:hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex flex-col justify-end p-4">
           <div className="bg-white text-slate-900 rounded-[28px] p-5 border border-slate-200 shadow-2xl space-y-3 max-h-[75vh] overflow-y-auto">
             <div className="flex items-center justify-between pb-2 border-b border-slate-100">
-              <h3 className="text-[13px] font-bold text-grape-700">Tahapan Alur Demo Prototype</h3>
+              <h3 className="text-[13px] font-bold text-grape-700">Tahapan Alur Prototype GROWTH</h3>
               <button
                 onClick={() => setShowMobileInfo(false)}
                 className="text-slate-400 text-xs font-semibold px-2 py-1"
@@ -49,22 +49,23 @@ export default function MainLayout({
               </button>
             </div>
             <p className="text-[11px] text-slate-600">
-              Prototype ini mengintegrasikan 4 Pilar <strong>Schlossberg STT Model</strong>:
+              Prototype ini mengintegrasikan 4 Pilar <strong>Schlossberg Transition Theory (STT Model 4S)</strong> & <strong>Personal Growth Initiative (PGI)</strong>:
             </p>
             <div className="space-y-1.5 text-[10.5px] text-slate-700">
-              <p className="p-2 bg-mint-50 rounded-xl">• <strong className="text-mint-700">Pilar 1 (Situation):</strong> Mapping & Validasi Realitas Transisi</p>
-              <p className="p-2 bg-grape-50 rounded-xl">• <strong className="text-grape-700">Pilar 2 (Self):</strong> VIA Strength Mapping & McAdams Timeline</p>
-              <p className="p-2 bg-sunny-50 rounded-xl">• <strong className="text-sunny-700">Pilar 3 (Strategies):</strong> Adaptive Roadmap & Bandura Mastery</p>
-              <p className="p-2 bg-coral-50 rounded-xl">• <strong className="text-coral-700">Pilar 4 (Support):</strong> Growth Circle & Anti-Comparison Feed</p>
+              <p className="p-2 bg-mint-50 rounded-xl">• <strong className="text-mint-700">Pilar 1 (Situation):</strong> Transition Mapping & Validasi Realitas Transisi</p>
+              <p className="p-2 bg-grape-50 rounded-xl">• <strong className="text-grape-700">Pilar 2 (Self):</strong> VIA Strength Mapping & Narrative Identity Timeline</p>
+              <p className="p-2 bg-sunny-50 rounded-xl">• <strong className="text-sunny-700">Pilar 3 (Strategies):</strong> Adaptive Roadmap & Bandura Mastery Experiences</p>
+              <p className="p-2 bg-coral-50 rounded-xl">• <strong className="text-coral-700">Pilar 4 (Support):</strong> Growth Circle & Celebrate Wins Community</p>
             </div>
             <button
               onClick={() => {
                 setShowMobileInfo(false);
-                onOpenCOE();
+                if (onOpenSummary) onOpenSummary();
               }}
-              className="w-full bg-gradient-to-r from-grape-500 to-blossom-500 text-white text-[11px] font-bold py-2.5 rounded-xl hover:opacity-90 transition-opacity"
+              className="w-full bg-gradient-to-r from-grape-500 to-blossom-500 text-white text-[11px] font-bold py-2.5 rounded-xl hover:opacity-90 transition-opacity flex items-center justify-center gap-1.5"
             >
-              Buka Cognitive Orchestrator (COE AI)
+              <Award className="w-3.5 h-3.5" />
+              Lihat Rangkuman Sesi (PGI Summary)
             </button>
           </div>
         </div>
@@ -77,7 +78,7 @@ export default function MainLayout({
           onSelectStage={onSelectStage}
           activePersona={activePersona}
           onSelectPersona={onSelectPersona}
-          onOpenCOE={onOpenCOE}
+          onOpenSummary={onOpenSummary}
           onResetData={onResetData}
         />
       </div>
@@ -88,7 +89,7 @@ export default function MainLayout({
           activeTab={activeTab}
           onTabChange={onTabChange}
           currentPillarName={activeStageId}
-          onOpenCOE={onOpenCOE}
+          onOpenSummary={onOpenSummary}
         >
           {children}
         </IPhoneFrame>

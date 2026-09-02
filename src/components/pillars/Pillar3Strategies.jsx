@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   CheckCircle2,
   ArrowRight,
   Flame,
   Clock,
-  Sliders,
-  Sparkles
+  Sliders
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
@@ -28,9 +27,9 @@ const SUB_STEPS = [
 const getRoadmapFromUser = (milestones) => {
   if (!milestones || !milestones.length) {
     return [
-      { no: 1, title: 'Fondasi Portfolio & CV ATS-Friendly', status: 'Selesai', surface: 'bg-mint-50', border: 'border-mint-100', chip: 'bg-mint-500 text-white', pill: 'bg-mint-500 text-white' },
-      { no: 2, title: 'Targeted Outreach ke 5 Alumni Senior Tech', status: 'Berjalan', surface: 'bg-sunny-50', border: 'border-sunny-200', chip: 'bg-sunny-500 text-slate-900', pill: 'bg-sunny-500 text-slate-900' },
-      { no: 3, title: 'Simulasi Mock Interview Kognitif dengan COE AI', status: 'Tersedia', surface: 'bg-slate-50', border: 'border-slate-200', chip: 'bg-slate-200 text-slate-700', pill: 'bg-slate-200 text-slate-700' }
+      { no: 1, title: 'Fondasi Portfolio & Penataan CV Akademik', status: 'Selesai', surface: 'bg-mint-50', border: 'border-mint-100', chip: 'bg-mint-500 text-white', pill: 'bg-mint-500 text-white' },
+      { no: 2, title: 'Targeted Outreach ke 3 Alumni / Mentor Karir', status: 'Berjalan', surface: 'bg-sunny-50', border: 'border-sunny-200', chip: 'bg-sunny-500 text-slate-900', pill: 'bg-sunny-500 text-slate-900' },
+      { no: 3, title: 'Simulasi Wawancara Kerja & Konsultasi Karir', status: 'Tersedia', surface: 'bg-slate-50', border: 'border-slate-200', chip: 'bg-slate-200 text-slate-700', pill: 'bg-slate-200 text-slate-700' }
     ];
   }
   return milestones.map((m, idx) => {
@@ -44,7 +43,7 @@ const getRoadmapFromUser = (milestones) => {
   });
 };
 
-export default function Pillar3Strategies({ user, onUpdateUser, onNavigateNextPilar, onOpenCOE }) {
+export default function Pillar3Strategies({ user, onUpdateUser, onNavigateNextPilar }) {
   const [subStep, setSubStep] = useState(1);
   const [energyCapacity, setEnergyCapacity] = useState(70);
   const [microPractices, setMicroPractices] = useState(user.microPractices || []);
@@ -52,10 +51,6 @@ export default function Pillar3Strategies({ user, onUpdateUser, onNavigateNextPi
   const [reflectionText, setReflectionText] = useState('');
 
   const roadmap = getRoadmapFromUser(user.milestones);
-
-  useEffect(() => {
-    setMicroPractices(user.microPractices || []);
-  }, [user]);
 
   const triggerConfetti = () => {
     confetti({
@@ -151,7 +146,7 @@ export default function Pillar3Strategies({ user, onUpdateUser, onNavigateNextPi
             <div className="bg-white rounded-[26px] p-5 border border-slate-200/80 shadow-xs">
               <h3 className="text-base font-bold text-slate-950 tracking-tight">3.1 Adaptive Roadmap</h3>
               <p className="text-xs text-slate-600 mt-1 leading-relaxed">
-                Memecah tujuan besar menjadi milestone realistis (Pilcher et al., 2022)
+                Memecah tujuan berskala besar menjadi serangkaian milestone yang disesuaikan dengan kapasitas energi (Pilcher et al., 2022; Esai Bab 2.3.3).
               </p>
 
               <div className="mt-4 p-3.5 bg-sunny-50 rounded-2xl border border-sunny-100 flex flex-col gap-2">
@@ -170,7 +165,7 @@ export default function Pillar3Strategies({ user, onUpdateUser, onNavigateNextPi
                   className="w-full accent-sunny-500 h-1.5 bg-sunny-100 rounded-lg cursor-pointer"
                 />
                 <p className="text-xs text-slate-500">
-                  *Tingkat tantangan disesuaikan secara dinamis agar tidak memicu overwhelmed (SDT Competence).
+                  *Tingkat tantangan disesuaikan secara realistis agar tidak memicu rasa kewalahan (SDT Competence - Deci et al., 2017).
                 </p>
               </div>
 
@@ -215,7 +210,7 @@ export default function Pillar3Strategies({ user, onUpdateUser, onNavigateNextPi
               <div className="flex items-center justify-between gap-2">
                 <div>
                   <h3 className="text-base font-bold text-slate-950 tracking-tight">3.2 Micro-Practice Checklist</h3>
-                  <p className="text-xs text-slate-500 mt-0.5">Akumulasi Mastery Experiences (Bandura, 1997)</p>
+                  <p className="text-xs text-slate-500 mt-0.5">Akumulasi Pengalaman Keberhasilan (Bandura, 1997)</p>
                 </div>
                 <div className="flex items-center gap-1 text-coral-700 font-extrabold text-xs bg-coral-100 px-3 py-1.5 rounded-full shrink-0">
                   <Flame className="w-4 h-4 fill-coral-500 text-coral-500" />
@@ -283,27 +278,24 @@ export default function Pillar3Strategies({ user, onUpdateUser, onNavigateNextPi
           >
             <div className="bg-white rounded-[26px] p-5 border border-slate-200/80 shadow-xs">
               <div className="flex items-center justify-between gap-2">
-                <h3 className="text-base font-bold text-slate-950 tracking-tight">3.3 Self-Regulated Learning</h3>
-                <button
-                  onClick={onOpenCOE}
-                  className="text-xs font-bold text-grape-700 bg-grape-50 px-2.5 py-1 rounded-full flex items-center gap-1 hover:bg-grape-100 transition-colors shrink-0"
-                >
-                  <Sparkles className="w-3.5 h-3.5" /> COE AI
-                </button>
+                <h3 className="text-base font-bold text-slate-950 tracking-tight">3.3 Progress Reflection</h3>
+                <span className="text-xs font-bold text-sunny-700 bg-sunny-100 px-2.5 py-1 rounded-full">
+                  Self-Regulated Learning
+                </span>
               </div>
               <p className="text-xs text-slate-600 mt-1 leading-relaxed">
-                Evaluasi mingguan untuk kalibrasi strategi belajar mandiri (Guo, 2022).
+                Meninjau kembali proses, mengevaluasi strategi belajar, dan mengenali kemajuan (Guo, 2022; Esai Bab 2.3.3).
               </p>
 
               <div className="flex flex-col gap-3 mt-4">
                 <label className="text-xs font-bold text-slate-900">
-                  Apa 1 penyesuaian strategi yang berhasil membantumu minggu ini?
+                  Apa 1 penyesuaian strategi atau kemajuan kecil yang kamu syukuri minggu ini?
                 </label>
                 <textarea
                   rows={3}
                   value={reflectionText}
                   onChange={(e) => setReflectionText(e.target.value)}
-                  placeholder="Misal: Membatasi buka LinkedIn hanya 15 menit per hari membuat pikiran jauh lebih tenang..."
+                  placeholder="Misal: Membatasi membuka media sosial di pagi hari dan fokus menyelesaikan 1 tugas mikro membuat rasa cemas berkurang drastis..."
                   className="p-3.5 bg-sunny-50 border border-sunny-100 rounded-2xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-sunny-200 resize-none leading-relaxed"
                 />
               </div>
@@ -315,7 +307,7 @@ export default function Pillar3Strategies({ user, onUpdateUser, onNavigateNextPi
               <div className="relative flex items-center justify-between">
                 <div>
                   <p className="text-xs font-bold tracking-widest text-white/80 uppercase">Efikasi Diri Terakumulasi</p>
-                  <p className="text-xs text-white/85 mt-1">Siap melangkah ke sistem dukungan sosial.</p>
+                  <p className="text-xs text-white/85 mt-1">Siap terhubung ke sistem dukungan sosial (Support).</p>
                 </div>
                 <span className="text-2xl font-extrabold text-white">{selfEfficacyScore}%</span>
               </div>
@@ -333,7 +325,7 @@ export default function Pillar3Strategies({ user, onUpdateUser, onNavigateNextPi
                 onClick={handleCompletePilar3}
                 className="relative w-full mt-4 bg-white hover:bg-sunny-50 text-coral-700 text-xs font-bold py-3 rounded-xl transition-all flex items-center justify-center gap-1.5 shadow-sm"
               >
-                Lanjut ke Pilar 4 (Support System) <ArrowRight className="w-4 h-4" />
+                Lanjut ke Pilar 4 (Collective Resilience) <ArrowRight className="w-4 h-4" />
               </button>
             </div>
           </motion.div>

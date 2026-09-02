@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Sparkles,
   ArrowRight,
   Plus,
-  Check
+  Check,
+  BookOpen
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { VIA_STRENGTHS_CATALOG } from '../../data/essayData';
@@ -29,17 +30,12 @@ const getStrengthNames = (strengths) => {
   return strengths.map(s => (typeof s === 'string' ? s : s.name));
 };
 
-export default function Pillar2Self({ user, onUpdateUser, onNavigateNextPilar, onOpenCOE }) {
+export default function Pillar2Self({ user, onUpdateUser, onNavigateNextPilar }) {
   const [subStep, setSubStep] = useState(1);
   const [selectedStrengths, setSelectedStrengths] = useState(getStrengthNames(user.viaStrengths));
   const [timeline, setTimeline] = useState(user.timeline || []);
   const [newChapter, setNewChapter] = useState({ title: '', struggle: '', strengthUsed: '' });
   const [showAddChapter, setShowAddChapter] = useState(false);
-
-  useEffect(() => {
-    setSelectedStrengths(getStrengthNames(user.viaStrengths));
-    setTimeline(user.timeline || []);
-  }, [user]);
 
   const toggleStrength = (name) => {
     if (selectedStrengths.includes(name)) {
@@ -127,7 +123,9 @@ export default function Pillar2Self({ user, onUpdateUser, onNavigateNextPilar, o
               <div className="flex items-center justify-between">
                 <div>
                   <h3 className="text-base font-bold text-slate-950 tracking-tight">2.1 Strength Mapping (VIA)</h3>
-                  <p className="text-xs text-slate-600 mt-1 leading-relaxed">Pilih 3 modal kekuatan positif manusia (Niemiec, 2020)</p>
+                  <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+                    Klasifikasi kekuatan karakter Values in Action sebagai modal eksplorasi diri non-patologis (Niemiec, 2020; Esai Bab 2.3.2).
+                  </p>
                 </div>
                 <span className="text-xs font-bold bg-grape-500 text-white px-3 py-1 rounded-full shrink-0">
                   {selectedStrengths.length}/3 Terpilih
@@ -236,7 +234,7 @@ export default function Pillar2Self({ user, onUpdateUser, onNavigateNextPilar, o
                   <h5 className="text-xs font-bold text-grape-700">Tambah Titik Balik Masa Lalu</h5>
                   <input
                     type="text"
-                    placeholder="Judul momen (mis: Skripsi Selesai)..."
+                    placeholder="Judul momen (mis: Adaptasi Kuliah / Tugas Akhir)..."
                     value={newChapter.title}
                     onChange={(e) => setNewChapter(prev => ({ ...prev, title: e.target.value }))}
                     className="p-2.5 bg-white border border-white rounded-xl text-xs text-slate-900 focus:outline-none"
@@ -249,7 +247,7 @@ export default function Pillar2Self({ user, onUpdateUser, onNavigateNextPilar, o
                   />
                   <input
                     type="text"
-                    placeholder="Kekuatan yang digunakan (mis: Persistence)..."
+                    placeholder="Kekuatan yang digunakan (mis: Persistence / Bravery)..."
                     value={newChapter.strengthUsed}
                     onChange={(e) => setNewChapter(prev => ({ ...prev, strengthUsed: e.target.value }))}
                     className="p-2.5 bg-white border border-white rounded-xl text-xs text-slate-900 focus:outline-none"
@@ -295,7 +293,7 @@ export default function Pillar2Self({ user, onUpdateUser, onNavigateNextPilar, o
               <div className="relative flex items-center justify-between">
                 <span className="text-xs font-bold tracking-widest text-white/70 uppercase">Dynamic Self Profile</span>
                 <span className="text-xs bg-white/20 px-2.5 py-0.5 rounded-full text-white font-semibold">
-                  Marcia Identity Status
+                  Marcia Identity Status (1966)
                 </span>
               </div>
 
@@ -307,7 +305,7 @@ export default function Pillar2Self({ user, onUpdateUser, onNavigateNextPilar, o
                 />
                 <div>
                   <h4 className="text-base font-bold text-white leading-tight">{user.name}</h4>
-                  <p className="text-xs text-white/80 mt-0.5">Status: <strong className="text-white">Identity Moratorium</strong> (Aktif Bereksplorasi)</p>
+                  <p className="text-xs text-white/80 mt-0.5">Status: <strong className="text-white">Identity Moratorium</strong> (Aktif Bereksplorasi & Komitmen Bertahap)</p>
                 </div>
               </div>
 
@@ -352,7 +350,7 @@ export default function Pillar2Self({ user, onUpdateUser, onNavigateNextPilar, o
 
               <div className="relative mt-4 p-3 bg-white/15 rounded-2xl border border-white/20">
                 <p className="text-xs font-medium text-white italic leading-relaxed text-center">
-                  "Kita sudah punya peta situasi dan tahu amunisi kekuatanmu. Sekarang, bagaimana cara kita melangkah tanpa rasa overwhelm?"
+                  "Kita sudah punya peta situasi dan tahu modalitas kekuatan positifmu. Sekarang, mari kita rancang strategi bertumbuh yang realistis!"
                 </p>
               </div>
 
@@ -364,12 +362,12 @@ export default function Pillar2Self({ user, onUpdateUser, onNavigateNextPilar, o
               </button>
             </div>
 
-            <button
-              onClick={onOpenCOE}
-              className="w-full bg-white border border-slate-200/80 text-grape-700 text-xs font-bold py-3 rounded-2xl shadow-xs flex items-center justify-center gap-1.5 hover:bg-grape-50 transition-colors"
-            >
-              <Sparkles className="w-4 h-4" /> Diskusikan Profil Ini dengan COE AI
-            </button>
+            <div className="p-4 bg-white rounded-2xl border border-slate-200 text-xs text-slate-700 flex items-start gap-2.5">
+              <BookOpen className="w-4 h-4 text-grape-500 shrink-0 mt-0.5" />
+              <p className="leading-relaxed">
+                <strong>Catatan Esai Bab 2.3.2:</strong> Profil ini dirancang sebagai representasi diri yang dinamis (bukan label kepribadian statis/permanen) yang terus berkembang seiring bertambahnya pengalaman.
+              </p>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

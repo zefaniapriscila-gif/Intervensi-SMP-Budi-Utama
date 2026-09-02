@@ -5,7 +5,6 @@ import {
   Sparkles, 
   Target, 
   Users, 
-  Brain, 
   Home, 
   ChevronRight, 
   ChevronLeft, 
@@ -14,10 +13,12 @@ import {
   RotateCcw, 
   BookOpen, 
   Layers, 
-  CheckCircle2,
-  Info
+  CheckCircle2, 
+  Info,
+  Award,
+  GitPullRequest
 } from 'lucide-react';
-import { DEMO_STAGES, APP_INFO, MOCK_PERSONAS } from '../../data/essayData';
+import { DEMO_STAGES, APP_INFO, MOCK_PERSONAS, FLOWCHART_STEPS } from '../../data/essayData';
 
 // Warna per tahap demo, sejajar dengan warna pilar di layar iPhone.
 const STAGE_THEME = {
@@ -25,8 +26,7 @@ const STAGE_THEME = {
   pilar1: { solid: 'bg-mint-500', ink: 'text-mint-700', soft: 'bg-mint-50', softBorder: 'border-mint-100', chip: 'bg-mint-100 text-mint-700' },
   pilar2: { solid: 'bg-grape-500', ink: 'text-grape-700', soft: 'bg-grape-50', softBorder: 'border-grape-100', chip: 'bg-grape-100 text-grape-700' },
   pilar3: { solid: 'bg-sunny-500', ink: 'text-sunny-700', soft: 'bg-sunny-50', softBorder: 'border-sunny-100', chip: 'bg-sunny-100 text-sunny-700' },
-  pilar4: { solid: 'bg-coral-500', ink: 'text-coral-700', soft: 'bg-coral-50', softBorder: 'border-coral-100', chip: 'bg-coral-100 text-coral-700' },
-  coe: { solid: 'bg-blossom-500', ink: 'text-blossom-700', soft: 'bg-blossom-50', softBorder: 'border-blossom-100', chip: 'bg-blossom-100 text-blossom-700' }
+  pilar4: { solid: 'bg-coral-500', ink: 'text-coral-700', soft: 'bg-coral-50', softBorder: 'border-coral-100', chip: 'bg-coral-100 text-coral-700' }
 };
 
 const FALLBACK_THEME = STAGE_THEME.overview;
@@ -46,11 +46,12 @@ export default function DemoSidebar({
   onSelectStage,
   activePersona,
   onSelectPersona,
-  onOpenCOE,
+  onOpenSummary,
   onResetData
 }) {
   const [isPlayingAutoTour, setIsPlayingAutoTour] = useState(false);
   const [showTheoryModal, setShowTheoryModal] = useState(false);
+  const [showFlowchartModal, setShowFlowchartModal] = useState(false);
 
   const currentStageIndex = DEMO_STAGES.findIndex(s => s.id === activeStageId);
   const currentStage = DEMO_STAGES[currentStageIndex] || DEMO_STAGES[0];
@@ -83,7 +84,6 @@ export default function DemoSidebar({
       case 'pilar2': return Sparkles;
       case 'pilar3': return Target;
       case 'pilar4': return Users;
-      case 'coe': return Brain;
       default: return Layers;
     }
   };
@@ -95,18 +95,18 @@ export default function DemoSidebar({
       <div className="flex flex-col gap-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3.5">
-            <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-grape-500 to-blossom-500 text-white p-1 flex items-center justify-center shadow-sm">
-              <Brain className="w-6 h-6 text-white" />
+            <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-mint-500 via-grape-500 to-blossom-500 text-white p-1 flex items-center justify-center shadow-sm">
+              <Sparkles className="w-6 h-6 text-white" />
             </div>
             <div>
               <div className="flex items-center gap-2">
                 <h1 className="text-xl font-extrabold tracking-tight text-slate-950">{APP_INFO.name}</h1>
-                <span className="text-xs font-semibold bg-grape-100 text-grape-700 px-2.5 py-0.5 rounded-full">
+                <span className="text-xs font-semibold bg-mint-100 text-mint-700 px-2.5 py-0.5 rounded-full">
                   Prototype Demo
                 </span>
               </div>
               <p className="text-xs text-slate-500 font-medium leading-normal mt-0.5">
-                Schlossberg STT (4S Model) & Cognitive Orchestration Engine
+                Schlossberg STT (Model 4S) & Personal Growth Initiative
               </p>
             </div>
           </div>
@@ -149,11 +149,19 @@ export default function DemoSidebar({
         <div className="flex items-center justify-between">
           <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
             <Layers className="w-4 h-4 text-grape-500" />
-            Tahapan Alur Demo Prototype
+            Tahapan 4 Pilar Prototype
           </h3>
-          <span className="text-xs font-bold text-slate-500">
-            Tahap {currentStageIndex + 1} dari {DEMO_STAGES.length}
-          </span>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setShowFlowchartModal(true)}
+              className="text-xs font-semibold text-azure-700 bg-azure-50 hover:bg-azure-100 px-2 py-0.5 rounded-full flex items-center gap-1 transition-colors"
+            >
+              <GitPullRequest className="w-3 h-3" /> 16 Steps
+            </button>
+            <span className="text-xs font-bold text-slate-500">
+              {currentStageIndex + 1} / {DEMO_STAGES.length}
+            </span>
+          </div>
         </div>
 
         <div className="flex flex-col gap-2.5">
@@ -233,7 +241,7 @@ export default function DemoSidebar({
             </div>
 
             <div className="p-3 bg-azure-50 rounded-2xl border border-azure-100">
-              <span className="font-bold text-azure-700 block text-xs mb-0.5">🧠 Landasan & Mekanisme STT:</span>
+              <span className="font-bold text-azure-700 block text-xs mb-0.5">🧠 Landasan & Mekanisme STT 4S:</span>
               <p className="text-slate-600 leading-relaxed">{currentStage.mechanism}</p>
             </div>
 
@@ -290,10 +298,10 @@ export default function DemoSidebar({
 
         <div className="flex items-center justify-between text-xs text-slate-500">
           <button
-            onClick={onOpenCOE}
+            onClick={onOpenSummary}
             className="text-grape-700 hover:text-grape-500 font-bold flex items-center gap-1 transition-colors"
           >
-            <Brain className="w-4 h-4" /> Buka Cognitive Engine (COE)
+            <Award className="w-4 h-4 text-grape-500" /> Rangkuman Sesi (PGI)
           </button>
           <button
             onClick={onResetData}
@@ -311,7 +319,7 @@ export default function DemoSidebar({
             <div className="flex items-center justify-between pb-3 border-b border-slate-100">
               <h3 className="text-base font-bold text-grape-700 flex items-center gap-2">
                 <BookOpen className="w-5 h-5 text-grape-500" />
-                Daftar Teori & Sitasi Akademik Esai
+                Daftar Teori & Sitasi Akademik Esai GROWTH
               </h3>
               <button
                 onClick={() => setShowTheoryModal(false)}
@@ -326,6 +334,45 @@ export default function DemoSidebar({
                 <div key={idx} className={`p-3.5 rounded-2xl border ${FRAMEWORK_TINT[idx % FRAMEWORK_TINT.length]}`}>
                   <p className="font-bold text-slate-950 text-sm">{fw.name}</p>
                   <p className="text-slate-600 mt-1 leading-relaxed">{fw.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 16 Steps Flowchart Modal */}
+      {showFlowchartModal && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-xs z-50 flex items-center justify-center p-4">
+          <div className="bg-white text-slate-900 rounded-[28px] p-6 max-w-lg w-full border border-slate-200 shadow-2xl space-y-4 max-h-[80vh] overflow-y-auto no-scrollbar">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+              <h3 className="text-base font-bold text-azure-700 flex items-center gap-2">
+                <GitPullRequest className="w-5 h-5 text-azure-500" />
+                16 Langkah Alur Flowchart (Gambar 1.2 Esai)
+              </h3>
+              <button
+                onClick={() => setShowFlowchartModal(false)}
+                className="text-slate-400 hover:text-azure-700 text-xs font-semibold px-2 py-1"
+              >
+                Tutup
+              </button>
+            </div>
+
+            <div className="space-y-2 text-xs">
+              {FLOWCHART_STEPS.map((step) => (
+                <div key={step.step} className="p-3 bg-slate-50 hover:bg-azure-50/50 rounded-2xl border border-slate-200 flex items-start gap-3 transition-colors">
+                  <div className="w-6 h-6 rounded-lg bg-azure-500 text-white font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
+                    {step.step}
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="font-bold text-slate-950">{step.name}</span>
+                      <span className="text-[10px] bg-white border border-slate-200 px-2 py-0.5 rounded-full font-semibold text-slate-600">
+                        {step.pillar}
+                      </span>
+                    </div>
+                    <p className="text-slate-600 text-[11px] mt-0.5 leading-snug">{step.desc}</p>
+                  </div>
                 </div>
               ))}
             </div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Compass,
@@ -9,8 +9,7 @@ import {
   HeartCrack,
   ArrowRight,
   ShieldCheck,
-  Info,
-  Sparkles
+  Info
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { TRANSITION_CATEGORIES } from '../../data/essayData';
@@ -38,7 +37,7 @@ const SUB_STEPS = [
   { id: 3, label: '1.3 Evolution' }
 ];
 
-export default function Pillar1Situation({ user, onUpdateUser, onNavigateNextPilar, onOpenCOE }) {
+export default function Pillar1Situation({ user, onUpdateUser, onNavigateNextPilar }) {
   const [subStep, setSubStep] = useState(1);
   const [selectedTransition, setSelectedTransition] = useState(user.transition);
   const [narrativeText, setNarrativeText] = useState(user.narrative);
@@ -47,15 +46,6 @@ export default function Pillar1Situation({ user, onUpdateUser, onNavigateNextPil
   const [canControl, setCanControl] = useState(user.control.canControl);
   const [mustAccept, setMustAccept] = useState(user.control.mustAccept);
   const [showValidationModal, setShowValidationModal] = useState(false);
-
-  useEffect(() => {
-    setSelectedTransition(user.transition);
-    setNarrativeText(user.narrative);
-    setScores(user.scores);
-    setChallenges(user.challenges);
-    setCanControl(user.control.canControl);
-    setMustAccept(user.control.mustAccept);
-  }, [user]);
 
   const getIcon = (iconName) => {
     switch (iconName) {
@@ -143,7 +133,7 @@ export default function Pillar1Situation({ user, onUpdateUser, onNavigateNextPil
             <div className="bg-white rounded-[26px] p-5 border border-slate-200/80 shadow-xs">
               <h3 className="text-base font-bold text-slate-950 tracking-tight">1.1 Transition Mapping</h3>
               <p className="text-xs text-slate-600 mt-1 leading-relaxed">
-                Pilih jenis transisi hidup dominan untuk memecah <em>future anxiety</em> yang kabur menjadi situasi nyata dan terdefinisi.
+                Pilih jenis transisi hidup dominan untuk memecah <em>future anxiety</em> yang kabur menjadi situasi nyata dan terdefinisi (Esai Bab 2.3.1).
               </p>
 
               <div className="flex flex-col gap-2.5 mt-4">
@@ -183,22 +173,19 @@ export default function Pillar1Situation({ user, onUpdateUser, onNavigateNextPil
             <div className="bg-white rounded-[26px] p-5 border border-slate-200/80 shadow-xs">
               <div className="flex items-center justify-between mb-2.5">
                 <h4 className="text-sm font-bold text-slate-950">Narasi Situasi Bebas</h4>
-                <button
-                  onClick={onOpenCOE}
-                  className="text-xs font-bold text-grape-700 bg-grape-50 px-2.5 py-1 rounded-full flex items-center gap-1 hover:bg-grape-100 transition-colors"
-                >
-                  <Sparkles className="w-3.5 h-3.5" /> Bantuan COE AI
-                </button>
+                <span className="text-xs font-semibold text-mint-700 bg-mint-50 px-2.5 py-1 rounded-full">
+                  Definisikan Realitas
+                </span>
               </div>
               <textarea
                 rows={4}
                 value={narrativeText}
                 onChange={(e) => setNarrativeText(e.target.value)}
-                placeholder="Tuliskan 1-2 paragraf mengenai situasi transisi ini..."
+                placeholder="Tuliskan 1-2 paragraf mengenai situasi transisi yang sedang kamu hadapi secara konkret..."
                 className="w-full p-3.5 bg-mint-50 border border-mint-100 rounded-2xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-mint-200 resize-none leading-relaxed"
               />
               <p className="text-xs text-slate-400 mt-2">
-                *Menuliskan konkret mengaktifkan prefrontal cortex untuk meredakan respon amigdala.
+                *Menuliskan situasi secara konkret memecah kecemasan masa depan (future anxiety) yang kabur menjadi situasi nyata yang dapat dikelola.
               </p>
 
               <button
@@ -266,8 +253,8 @@ export default function Pillar1Situation({ user, onUpdateUser, onNavigateNextPil
               <div className="mt-4 p-4 bg-mint-50 rounded-2xl border border-mint-100 text-slate-900 flex items-start gap-3">
                 <ShieldCheck className="w-5 h-5 text-mint-700 shrink-0 mt-0.5" />
                 <div className="text-xs leading-relaxed">
-                  <p className="font-bold text-mint-700">Validasi Ilmiah:</p>
-                  Semua tantangan ini adalah respons adaptif normal terhadap transisi hidup. Riset membuktikan 78%+ emerging adult mengalami fase yang serupa.
+                  <p className="font-bold text-mint-700">Validasi Ilmiah & Normalitas:</p>
+                  Semua tantangan ini adalah fase yang lumrah dalam masa emerging adulthood. Kamu tidak 'sendirian', 'aneh', atau 'gagal'—ini adalah respon adaptif transisi hidup.
                 </div>
               </div>
 
@@ -292,7 +279,7 @@ export default function Pillar1Situation({ user, onUpdateUser, onNavigateNextPil
             <div className="bg-white rounded-[26px] p-5 border border-slate-200/80 shadow-xs">
               <h3 className="text-base font-bold text-slate-950 tracking-tight">1.3 Acceptance Framework</h3>
               <p className="text-xs text-slate-600 mt-1 leading-relaxed">
-                Penerimaan bukan berarti pasrah, melainkan mengalokasikan energi mental ke hal produktif.
+                Penerimaan bukan berarti pasrah, melainkan mengalokasikan energi mental ke hal produktif dengan memisahkan apa yang harus dilepaskan (luar kendali) vs yang dapat dikendalikan.
               </p>
 
               <div className="flex flex-col gap-3 mt-4">
@@ -387,11 +374,12 @@ export default function Pillar1Situation({ user, onUpdateUser, onNavigateNextPil
             </div>
             <h3 className="text-base font-bold text-slate-950">Psikoedukasi Validasi Transisi</h3>
             <p className="text-xs text-slate-600 mt-2 leading-relaxed">
-              Banyak emerging adult merasa "sendirian" dalam masalahnya dan menganggap diri "aneh" atau "gagal" karena merasa tertekan.
+              Banyak emerging adult merasa "sendirian" dalam masalahnya dan menganggap diri "aneh" atau "gagal" karena merasa tertekan dalam transisi menuju kedewasaan.
             </p>
             <div className="my-3.5 p-3.5 bg-azure-50 rounded-2xl border border-azure-100 text-xs text-slate-700 space-y-1.5">
-              <p>• <strong className="text-azure-700">Arnett (2000):</strong> 5 karakteristik ketidakstabilan adalah lumrah.</p>
-              <p>• <strong className="text-azure-700">Kato et al. (2017):</strong> Isolasi memperparah failure to launch, validasi memutus spiral isolasi.</p>
+              <p>• <strong className="text-azure-700">Arnett (2000):</strong> 5 karakteristik ketidakstabilan adalah fase alami perkembangan.</p>
+              <p>• <strong className="text-azure-700">Kato et al. (2017):</strong> Isolasi memperparah failure to launch, validasi memutus spiral menyalahkan diri sendiri.</p>
+              <p>• <strong className="text-azure-700">SKI (2023):</strong> Prevalensi distres emosional usia 15-24 tahun membutuhkan dukungan terintegrasi promotif.</p>
             </div>
             <button
               onClick={() => setShowValidationModal(false)}

@@ -9,7 +9,7 @@ export default function IPhoneFrame({
   activeTab,
   onTabChange,
   currentPillarName,
-  onOpenCOE
+  onOpenSummary
 }) {
   const scrollRef = useRef(null);
   const [time, setTime] = useState('9:41');
@@ -99,7 +99,7 @@ export default function IPhoneFrame({
             <div className="flex-1 flex items-center justify-center">
               <DynamicIsland 
                 currentPillarName={currentPillarName} 
-                onOpenCOE={onOpenCOE} 
+                onOpenSummary={onOpenSummary} 
               />
             </div>
 

@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Users,
   Heart,
   Send,
   ShieldCheck,
-  Sparkles,
-  Trophy
+  Trophy,
+  Award,
+  ArrowRight
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { COMMUNITY_WINS_FEED } from '../../data/essayData';
@@ -38,7 +39,7 @@ const defaultCirclePosts = [
   }
 ];
 
-export default function Pillar4Support({ user, onUpdateUser, onOpenCOE }) {
+export default function Pillar4Support({ user, onCompleteSession }) {
   const [activeSubTab, setActiveSubTab] = useState('circle');
   const [reflectionInput, setReflectionInput] = useState('');
   const [circlePosts, setCirclePosts] = useState(
@@ -47,10 +48,6 @@ export default function Pillar4Support({ user, onUpdateUser, onOpenCOE }) {
   const [winsFeed, setWinsFeed] = useState(COMMUNITY_WINS_FEED);
   const [newWinText, setNewWinText] = useState('');
   const [newWinTag, setNewWinTag] = useState('Career');
-
-  useEffect(() => {
-    setCirclePosts(user.circle?.posts?.length ? user.circle.posts : defaultCirclePosts);
-  }, [user]);
 
   const triggerConfetti = () => {
     confetti({
@@ -153,7 +150,7 @@ export default function Pillar4Support({ user, onUpdateUser, onOpenCOE }) {
                   </div>
                   <div className="min-w-0">
                     <h4 className="text-sm font-bold text-slate-950 leading-tight truncate">{user.circle.name}</h4>
-                    <p className="text-xs text-azure-700 mt-0.5">Matched by: Values VIA + Goal Growth</p>
+                    <p className="text-xs text-azure-700 mt-0.5">Matched by: Values VIA + Goal Growth (Luzanil & Menaldi, 2022)</p>
                   </div>
                 </div>
                 <span className="text-xs font-bold bg-white/70 text-azure-700 px-3 py-1 rounded-full shrink-0">
@@ -163,7 +160,7 @@ export default function Pillar4Support({ user, onUpdateUser, onOpenCOE }) {
 
               <div className="p-3 bg-white/70 rounded-2xl text-xs text-slate-700 flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4 text-mint-700 shrink-0" />
-                <span>Ruang aman terenkripsi (Psychological Safety). Tidak ada penilaian toxic atau flexing.</span>
+                <span>Ruang aman terenkripsi (Psychological Safety). Tidak ada penilaian toxic atau pamer flexing.</span>
               </div>
             </div>
 
@@ -180,7 +177,7 @@ export default function Pillar4Support({ user, onUpdateUser, onOpenCOE }) {
                 "{user.circle.currentPrompt}"
               </p>
               <p className="relative text-xs text-white/80">
-                *Fokus pada proses perjuangan koping, bukan pamer hasil akhir.
+                *Wajib dijawab setiap anggota agar dinamika kelompok tetap aktif, berfokus pada proses perjuangan bersama (shared struggle).
               </p>
 
               <textarea
@@ -237,11 +234,14 @@ export default function Pillar4Support({ user, onUpdateUser, onOpenCOE }) {
               })}
             </div>
 
+            {/* Complete Session Button (Flowchart Step 16) */}
             <button
-              onClick={onOpenCOE}
-              className="w-full bg-white border border-slate-200/80 text-grape-700 text-xs font-bold py-3 rounded-2xl shadow-xs flex items-center justify-center gap-1.5 hover:bg-grape-50 transition-colors"
+              onClick={() => {
+                if (onCompleteSession) onCompleteSession();
+              }}
+              className="w-full bg-gradient-to-r from-grape-500 to-blossom-500 hover:opacity-95 text-white text-xs font-bold py-3.5 rounded-2xl shadow-md flex items-center justify-center gap-2 transition-opacity"
             >
-              <Sparkles className="w-4 h-4" /> Latih Respon Empatik dengan COE AI
+              <Award className="w-4 h-4" /> Selesaikan Alur 4S Hari Ini (Step 16: Sesi Selesai) <ArrowRight className="w-4 h-4" />
             </button>
           </motion.div>
         )}
@@ -257,13 +257,13 @@ export default function Pillar4Support({ user, onUpdateUser, onOpenCOE }) {
             {/* Anti-Comparison Intro */}
             <div className="bg-sunny-100 rounded-[26px] p-5 border border-sunny-200 flex flex-col gap-2">
               <div className="flex items-center justify-between">
-                <h4 className="text-base font-bold text-slate-950 tracking-tight">Celebrate Small Wins</h4>
+                <h4 className="text-base font-bold text-slate-950 tracking-tight">Celebrate Wins (Anti-Comparison)</h4>
                 <div className="w-9 h-9 rounded-2xl bg-sunny-500 text-slate-900 flex items-center justify-center shadow-sm">
                   <Trophy className="w-5 h-5" />
                 </div>
               </div>
               <p className="text-xs text-slate-700 leading-relaxed">
-                Papan apresiasi progres mikro nyata untuk memutus <em>comparison trap</em> media sosial. Tiap langkah kecil bernilai.
+                Papan apresiasi progres mikro nyata untuk melawan <em>comparison trap</em> media sosial dan menumbuhkan rasa kebersamaan (shared struggle; Esai Bab 2.3.4).
               </p>
             </div>
 
@@ -274,7 +274,7 @@ export default function Pillar4Support({ user, onUpdateUser, onOpenCOE }) {
                 type="text"
                 value={newWinText}
                 onChange={(e) => setNewWinText(e.target.value)}
-                placeholder="Mis: Berhasil mengirim 1 CV tanpa overthinking..."
+                placeholder="Mis: Berhasil menyelesaikan 1 modul tugas tanpa terdistraksi..."
                 className="p-3 bg-coral-50 border border-coral-100 rounded-2xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-coral-200"
               />
               <div className="flex items-center justify-between gap-2">
@@ -327,6 +327,16 @@ export default function Pillar4Support({ user, onUpdateUser, onOpenCOE }) {
                 </div>
               ))}
             </div>
+
+            {/* Complete Session Button (Flowchart Step 16) */}
+            <button
+              onClick={() => {
+                if (onCompleteSession) onCompleteSession();
+              }}
+              className="w-full bg-gradient-to-r from-grape-500 to-blossom-500 hover:opacity-95 text-white text-xs font-bold py-3.5 rounded-2xl shadow-md flex items-center justify-center gap-2 transition-opacity"
+            >
+              <Award className="w-4 h-4" /> Selesaikan Alur 4S Hari Ini (Step 16: Sesi Selesai) <ArrowRight className="w-4 h-4" />
+            </button>
           </motion.div>
         )}
       </AnimatePresence>

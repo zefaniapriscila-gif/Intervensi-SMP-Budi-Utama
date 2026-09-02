@@ -9,7 +9,7 @@ import {
 } from 'lucide-react';
 
 // `ink` = warna teks saat tab aktif. Kuning pakai tinta gelap supaya tetap terbaca.
-export const TABS = [
+const TABS = [
   { id: 'home', label: 'Home', icon: Home, badge: null, active: 'bg-slate-900', ink: 'text-white', badgeColor: 'bg-slate-900' },
   { id: 'situation', label: 'Situation', icon: Compass, badge: 'STT', active: 'bg-mint-500', ink: 'text-white', badgeColor: 'bg-mint-500' },
   { id: 'self', label: 'Self', icon: Sparkles, badge: 'VIA', active: 'bg-grape-500', ink: 'text-white', badgeColor: 'bg-grape-500' },

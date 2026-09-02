@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   Sparkles,
-  Brain,
   Compass,
   Target,
   Users,
@@ -12,7 +11,8 @@ import {
   Clock,
   Search,
   Bell,
-  Flame
+  Flame,
+  Award
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
@@ -136,7 +136,7 @@ function PillarCard({ theme, badge, icon: Icon, title, caption, progress, onClic
 export default function HomeDashboard({
   user,
   onNavigateTab,
-  onOpenCOE,
+  onOpenSummary,
   onToggleMicroPractice,
   onOpenDemoStage
 }) {
@@ -207,17 +207,17 @@ export default function HomeDashboard({
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         onClick={() => onNavigateTab('situation')}
-        className="relative overflow-hidden rounded-[28px] p-5 cursor-pointer bg-gradient-to-br from-grape-500 via-[#8b62ef] to-blossom-500 text-white shadow-[0_16px_34px_-18px_rgba(124,92,240,0.9)]"
+        className="relative overflow-hidden rounded-[28px] p-5 cursor-pointer bg-gradient-to-br from-mint-500 via-grape-500 to-blossom-500 text-white shadow-[0_16px_34px_-18px_rgba(124,92,240,0.9)]"
       >
         <div className="absolute -top-12 -right-10 w-40 h-40 rounded-full bg-white/15 blur-2xl pointer-events-none" />
 
         <div className="relative flex items-center justify-between gap-4">
           <div className="min-w-0">
             <span className="inline-flex items-center gap-1.5 text-[10.5px] font-bold uppercase tracking-[0.08em] bg-white/20 px-2.5 py-1 rounded-full">
-              <Flame className="w-3 h-3" /> Growth Score
+              <Flame className="w-3 h-3" /> Growth Score (PGI)
             </span>
             <h3 className="text-[26px] font-extrabold tracking-tight mt-2.5 leading-none">{growthScore}%</h3>
-            <p className="text-[12.5px] text-white/85 mt-2 leading-snug line-clamp-2">
+            <p className="text-[12.5px] text-white/90 mt-2 leading-snug line-clamp-2">
               Fase: {user.transition}
             </p>
           </div>
@@ -251,7 +251,7 @@ export default function HomeDashboard({
             <h3 className="text-[17px] font-bold text-slate-950 tracking-tight leading-snug">
               Challenge Assessment
             </h3>
-            <p className="text-[12px] text-blossom-700 mt-1">Skala 1–10 • 4 domain tekanan</p>
+            <p className="text-[12px] text-blossom-700 mt-1">Skala 1–10 • 4 domain tekanan EA (Arnett 2000)</p>
           </div>
           <div className="w-8 h-8 rounded-full bg-white/70 text-blossom-700 flex items-center justify-center shrink-0">
             <ArrowUpRight className="w-4 h-4" />
@@ -282,7 +282,7 @@ export default function HomeDashboard({
           badge="Pilar 1"
           icon={Compass}
           title="Situation"
-          caption="Validated • Peta jelas"
+          caption="Validated • Peta Jelas"
           progress={100}
           onClick={() => onNavigateTab('situation')}
         />
@@ -299,7 +299,7 @@ export default function HomeDashboard({
           theme="strategies"
           badge="Pilar 3"
           icon={Target}
-          title="Growth"
+          title="Strategies"
           caption={`${doneCount}/${totalCount} micro-practice`}
           progress={practiceProgress}
           onClick={() => onNavigateTab('strategies')}
@@ -324,7 +324,7 @@ export default function HomeDashboard({
         <div className="flex items-center justify-between mb-3.5">
           <div>
             <h3 className="text-[18px] font-bold text-slate-950 tracking-tight">Hari Ini</h3>
-            <p className="text-[12px] text-slate-500 mt-1">Mastery Accumulation • Bandura</p>
+            <p className="text-[12px] text-slate-500 mt-1">Mastery Accumulation • Bandura 1997</p>
           </div>
 
           <div className="bg-slate-100 p-1 rounded-full flex items-center text-[12px] font-medium">
@@ -342,7 +342,7 @@ export default function HomeDashboard({
                 todoTab === 'notes' ? 'bg-grape-500 text-white font-semibold shadow-xs' : 'text-slate-500'
               }`}
             >
-              Catatan
+              Refleksi
             </button>
           </div>
         </div>
@@ -475,41 +475,44 @@ export default function HomeDashboard({
         </div>
       </motion.div>
 
-      {/* 7. COE Socratic Coach */}
+      {/* 7. Personal Growth Initiative (PGI) & Step 16 Sesi Selesai */}
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-slate-950 text-white rounded-[28px] p-5 shadow-lg relative overflow-hidden"
+        className="bg-slate-950 text-white rounded-[28px] p-5 shadow-lg relative overflow-hidden cursor-pointer"
+        onClick={onOpenSummary}
       >
         <div className="absolute -bottom-14 -left-10 w-44 h-44 rounded-full bg-grape-500/40 blur-3xl pointer-events-none" />
         <div className="absolute -top-14 -right-8 w-40 h-40 rounded-full bg-mint-500/25 blur-3xl pointer-events-none" />
 
         <div className="relative flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-2xl bg-gradient-to-br from-grape-500 to-blossom-500 text-white flex items-center justify-center shadow-sm">
-              <Brain className="w-4.5 h-4.5" />
+            <div className="w-9 h-9 rounded-2xl bg-gradient-to-br from-mint-500 via-grape-500 to-blossom-500 text-white flex items-center justify-center shadow-sm">
+              <Award className="w-4.5 h-4.5" />
             </div>
             <div>
-              <h4 className="text-[15.5px] font-bold tracking-tight leading-snug">COE Socratic Coach</h4>
-              <p className="text-[12px] text-slate-400 mt-0.5">Reflective Modal & Scaffolding</p>
+              <h4 className="text-[15.5px] font-bold tracking-tight leading-snug">Personal Growth Initiative</h4>
+              <p className="text-[12px] text-slate-400 mt-0.5">Integrasi 4S & Sesi Berkelanjutan</p>
             </div>
           </div>
           <span className="text-[10.5px] font-bold bg-white/10 text-slate-200 px-2.5 py-1 rounded-full border border-white/15 shrink-0">
-            Anti-Offloading
+            Step 16
           </span>
         </div>
 
         <p className="relative text-[13px] text-slate-300 mt-3.5 leading-relaxed">
-          "Ketika kamu merasa bingung melangkah, tanyakan: Apa langkah paling kecil yang bisa dieksekusi dalam 10 menit
-          ke depan?"
+          "PGI memfasilitasi keterlibatan proaktifmu dalam mengintegrasikan pendidikan, karier, kesehatan mental, dan dukungan sosial menuju kemandirian dewasa yang sehat."
         </p>
 
         <button
-          onClick={onOpenCOE}
-          className="relative mt-4 w-full bg-gradient-to-r from-grape-500 to-blossom-500 hover:opacity-90 text-white text-[14px] font-bold py-3 rounded-2xl transition-opacity flex items-center justify-center gap-1.5 shadow-md"
+          onClick={(e) => {
+            e.stopPropagation();
+            if (onOpenSummary) onOpenSummary();
+          }}
+          className="relative mt-4 w-full bg-gradient-to-r from-mint-500 via-grape-500 to-blossom-500 hover:opacity-90 text-white text-[14px] font-bold py-3 rounded-2xl transition-opacity flex items-center justify-center gap-1.5 shadow-md"
         >
-          <Sparkles className="w-3.5 h-3.5" />
-          Mulai Refleksi Sokratik
+          <Award className="w-4 h-4" />
+          Lihat Rangkuman Sesi Hari Ini
         </button>
       </motion.div>
 
