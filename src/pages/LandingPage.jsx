@@ -207,12 +207,6 @@ function edge(a, b, gap = 52) {
 
 function RolesDiagram() {
   const reduce = useReducedMotion();
-  const draw = (delay) => ({
-    initial: reduce ? false : { pathLength: 0, opacity: 0 },
-    whileInView: { pathLength: 1, opacity: 1 },
-    viewport: { once: true, margin: '0px 0px -15% 0px' },
-    transition: { duration: 1.1, delay, ease: [0.65, 0, 0.35, 1] },
-  });
   const pop = (delay) => ({
     initial: reduce ? false : { opacity: 0, scale: 0.6 },
     whileInView: { opacity: 1, scale: 1 },
@@ -228,9 +222,9 @@ function RolesDiagram() {
           </marker>
         </defs>
         <motion.circle {...pop(0.2)} cx="230" cy="256" r="58" fill="none" stroke="#CBC1AD" strokeWidth="1.5" strokeDasharray="1 6" strokeLinecap="round" />
-        <motion.path {...draw(0.35)} d={edge('student', 'teacher')} stroke="#1E2A5E" strokeWidth="2" fill="none" markerStart="url(#tri-arrow)" markerEnd="url(#tri-arrow)" />
-        <motion.path {...draw(0.75)} d={edge('teacher', 'parent')} stroke="#1E2A5E" strokeWidth="2" fill="none" markerEnd="url(#tri-arrow)" />
-        <motion.path {...draw(1.15)} d={edge('parent', 'student')} stroke="#1E2A5E" strokeWidth="2" strokeDasharray="2 7" strokeLinecap="round" fill="none" markerStart="url(#tri-arrow)" markerEnd="url(#tri-arrow)" />
+        <path d={edge('student', 'teacher')} stroke="#1E2A5E" strokeWidth="2.5" fill="none" markerStart="url(#tri-arrow)" markerEnd="url(#tri-arrow)" />
+        <path d={edge('teacher', 'parent')} stroke="#1E2A5E" strokeWidth="2.5" fill="none" markerEnd="url(#tri-arrow)" />
+        <path d={edge('parent', 'student')} stroke="#1E2A5E" strokeWidth="2.5" strokeDasharray="2 7" strokeLinecap="round" fill="none" markerStart="url(#tri-arrow)" markerEnd="url(#tri-arrow)" />
       </svg>
       <motion.div {...pop(0.25)} className="absolute flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-1.5 text-center" style={pct([230, 256])}>
         <LogoMark className="h-8 w-8 sm:h-10 sm:w-10" />
