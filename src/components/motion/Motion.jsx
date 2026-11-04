@@ -64,27 +64,21 @@ function StairGlyph() {
   );
 }
 
-// Pita berjalan berisi empat tahap alur intervensi.
-export function FlowMarquee({ words, duration = 34 }) {
-  const row = Array.from({ length: 3 }, () => words).flat();
+// Alur intervensi ditampilkan sebagai satu baris yang tenang, tanpa teks berulang.
+export function FlowMarquee({ words }) {
   return (
-    <div className="relative overflow-hidden border-y border-line bg-card/60 py-4 sm:py-5" aria-hidden="true">
-      <motion.div
-        className="flex w-max items-center"
-        animate={{ x: ['0%', '-50%'] }}
-        transition={{ duration, ease: 'linear', repeat: Infinity }}
-      >
-        {[0, 1].map((copy) => (
-          <div key={copy} className="flex shrink-0 items-center">
-            {row.map((word, index) => (
-              <span key={`${copy}-${index}`} className="flex items-center gap-6 pr-6 font-display text-[30px] italic leading-none text-ink sm:gap-8 sm:pr-8 sm:text-[42px] [font-variation-settings:'SOFT'_100,'WONK'_1]">
-                {word}
-                <StairGlyph />
-              </span>
-            ))}
-          </div>
+    <div className="border-y border-line bg-card/60 px-4 py-4 sm:px-8 sm:py-5">
+      <ol aria-label="Alur intervensi" className="mx-auto flex w-full max-w-[1240px] flex-wrap items-center justify-center gap-x-3 gap-y-2 sm:gap-x-5">
+        {words.map((word, index) => (
+          <li key={`${word}-${index}`} className="flex items-center gap-3 sm:gap-5">
+            <span className="inline-flex items-center gap-2 rounded-full bg-white/80 px-3 py-2 text-[13px] font-semibold text-ink shadow-paper ring-1 ring-line sm:px-4 sm:text-[15px]">
+              <span className="font-display text-[11px] font-semibold text-ink-3 tabular">{String(index + 1).padStart(2, '0')}</span>
+              {word}
+            </span>
+            {index < words.length - 1 && <StairGlyph />}
+          </li>
         ))}
-      </motion.div>
+      </ol>
     </div>
   );
 }
