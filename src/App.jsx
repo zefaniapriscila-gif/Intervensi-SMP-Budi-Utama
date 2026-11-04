@@ -277,24 +277,53 @@ function MethodologyPage({ onHome, onPrototype, onMethodology }) {
             {METHODOLOGY_THEORIES.map((theory) => {
               const Icon = theory.icon;
               const tone = {
-                blue: 'bg-blue-50 text-blue-700 border-blue-100',
-                violet: 'bg-violet-50 text-violet-700 border-violet-100',
-                mint: 'bg-emerald-50 text-emerald-700 border-emerald-100',
-                amber: 'bg-amber-50 text-amber-700 border-amber-100',
+                blue: {
+                  card: 'from-[#f4f8ff] via-white to-[#e8f1ff] border-blue-100',
+                  icon: 'bg-gradient-to-br from-blue-500 to-[#31a2df] text-white shadow-blue-200/70',
+                  number: 'text-blue-200',
+                  label: 'bg-blue-100 text-blue-800',
+                  application: 'border-blue-100 bg-white/75',
+                  applicationLabel: 'text-blue-800',
+                },
+                violet: {
+                  card: 'from-[#f8f5ff] via-white to-[#efe9ff] border-violet-100',
+                  icon: 'bg-gradient-to-br from-violet-500 to-[#9b6bec] text-white shadow-violet-200/70',
+                  number: 'text-violet-200',
+                  label: 'bg-violet-100 text-violet-800',
+                  application: 'border-violet-100 bg-white/75',
+                  applicationLabel: 'text-violet-800',
+                },
+                mint: {
+                  card: 'from-[#f1fcf8] via-white to-[#e1f8ef] border-emerald-100',
+                  icon: 'bg-gradient-to-br from-emerald-500 to-[#31bd99] text-white shadow-emerald-200/70',
+                  number: 'text-emerald-200',
+                  label: 'bg-emerald-100 text-emerald-800',
+                  application: 'border-emerald-100 bg-white/75',
+                  applicationLabel: 'text-emerald-800',
+                },
+                amber: {
+                  card: 'from-[#fffaf0] via-white to-[#fff1d9] border-amber-100',
+                  icon: 'bg-gradient-to-br from-amber-500 to-[#f39a45] text-white shadow-amber-200/70',
+                  number: 'text-amber-200',
+                  label: 'bg-amber-100 text-amber-800',
+                  application: 'border-amber-100 bg-white/75',
+                  applicationLabel: 'text-amber-800',
+                },
               }[theory.tone];
               return (
-                <article key={theory.number} className="rounded-[22px] border border-white bg-white/90 p-4 shadow-[0_12px_30px_-22px_rgba(44,55,96,0.35)] sm:p-5">
+                <article key={theory.number} className={`group relative isolate overflow-hidden rounded-[24px] border bg-gradient-to-br p-4 shadow-[0_14px_34px_-25px_rgba(44,55,96,0.38)] transition duration-200 hover:-translate-y-1 hover:shadow-[0_22px_40px_-26px_rgba(44,55,96,0.48)] sm:p-5 ${tone.card}`}>
+                  <span aria-hidden="true" className={`pointer-events-none absolute -right-5 -top-8 select-none text-[100px] font-black leading-none tracking-[-0.09em] opacity-35 ${tone.number}`}>{theory.number}</span>
                   <div className="flex items-start gap-3">
-                    <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-[15px] border ${tone}`}><Icon className="h-5 w-5" /></span>
-                    <div className="min-w-0">
-                      <p className="text-[9px] font-extrabold uppercase tracking-[0.14em] text-slate-400">Landasan {theory.number}</p>
-                      <h3 className="mt-0.5 text-[15px] font-extrabold leading-snug text-slate-950">{theory.name}</h3>
-                      <p className="mt-0.5 text-[10px] font-semibold text-grape-700">{theory.author}</p>
+                    <span className={`relative flex h-12 w-12 shrink-0 items-center justify-center rounded-[17px] shadow-lg ${tone.icon}`}><Icon className="h-[22px] w-[22px]" /></span>
+                    <div className="relative min-w-0 pt-0.5">
+                      <span className={`inline-flex rounded-full px-2.5 py-1 text-[8px] font-extrabold uppercase tracking-[0.13em] ${tone.label}`}>Landasan {theory.number}</span>
+                      <h3 className="mt-1.5 text-[15px] font-extrabold leading-snug text-slate-950">{theory.name}</h3>
+                      <p className="mt-1 text-[10px] font-semibold text-slate-500">{theory.author}</p>
                     </div>
                   </div>
-                  <p className="mt-3 text-[11px] leading-relaxed text-slate-700">{theory.summary}</p>
-                  <div className="mt-3 rounded-[15px] border border-slate-100 bg-slate-50/90 p-3">
-                    <p className="flex items-center gap-1.5 text-[9px] font-extrabold uppercase tracking-[0.12em] text-slate-600"><Sparkles className="h-3.5 w-3.5 text-grape-600" /> Penerapan di LANGKAH</p>
+                  <p className="relative mt-4 text-[11px] leading-relaxed text-slate-700">{theory.summary}</p>
+                  <div className={`relative mt-4 rounded-[16px] border p-3.5 ${tone.application}`}>
+                    <p className={`flex items-center gap-1.5 text-[9px] font-extrabold uppercase tracking-[0.12em] ${tone.applicationLabel}`}><Sparkles className="h-3.5 w-3.5" /> Penerapan di LANGKAH</p>
                     <p className="mt-1.5 text-[10px] leading-relaxed text-slate-600">{theory.application}</p>
                   </div>
                 </article>
