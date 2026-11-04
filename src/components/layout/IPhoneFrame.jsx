@@ -42,13 +42,13 @@ export default function IPhoneFrame({
 
   return (
     <div className="phone-stage relative flex h-full w-full items-center justify-center">
-      <div className="phone-shell relative flex h-[calc(100dvh-20px)] w-[calc(100vw-20px)] flex-col overflow-hidden rounded-[48px] bg-[#181a20] p-[8px] shadow-[0_24px_70px_-20px_rgba(16,18,28,0.42),0_0_0_1px_rgba(22,24,32,0.7)] sm:h-[min(900px,calc(100dvh-48px))] sm:max-h-[900px] sm:w-auto sm:aspect-[402/846] sm:rounded-[56px] sm:p-[10px] sm:shadow-[0_30px_90px_-20px_rgba(16,18,28,0.42),0_0_0_1px_rgba(22,24,32,0.7)]">
+      <div className="phone-shell relative flex h-full w-full flex-col overflow-hidden bg-[#f5f5fa] p-0 sm:h-[min(900px,calc(100dvh-48px))] sm:max-h-[900px] sm:w-auto sm:aspect-[402/846] sm:rounded-[56px] sm:bg-[#181a20] sm:p-[10px] sm:shadow-[0_30px_90px_-20px_rgba(16,18,28,0.42),0_0_0_1px_rgba(22,24,32,0.7)]">
         <div className="pointer-events-none absolute left-0 top-[15%] z-0 hidden h-7 w-[4px] rounded-l-md bg-gradient-to-r from-[#292b34] to-[#515361] shadow-sm sm:block" />
         <div className="pointer-events-none absolute left-0 top-[24%] z-0 hidden h-14 w-[4px] rounded-l-md bg-gradient-to-r from-[#292b34] to-[#515361] shadow-sm sm:block" />
         <div className="pointer-events-none absolute right-0 top-[27%] z-0 hidden h-20 w-[4px] rounded-r-md bg-gradient-to-l from-[#292b34] to-[#515361] shadow-sm sm:block" />
 
-        <div className="phone-screen relative z-10 flex min-h-0 flex-1 flex-col overflow-hidden bg-[#f5f5fa] sm:rounded-[46px]">
-          <div className="phone-status-bar relative z-30 flex h-[54px] shrink-0 items-center justify-between bg-[#f5f5fa]/95 px-6 backdrop-blur-md">
+        <div className="phone-screen relative z-10 flex min-h-0 flex-1 flex-col overflow-hidden bg-[#f5f5fa] pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] sm:rounded-[46px] sm:py-0">
+          <div className="phone-status-bar relative z-30 hidden h-[54px] shrink-0 items-center justify-between bg-[#f5f5fa]/95 px-6 backdrop-blur-md sm:flex">
             <span className="w-[60px] text-[14px] font-bold leading-none text-slate-950">{time}</span>
             <div className="flex flex-1 items-center justify-center">
               <div className="flex h-[30px] w-[126px] items-center justify-between rounded-full bg-black px-3 text-white shadow-sm">
@@ -118,7 +118,7 @@ export default function IPhoneFrame({
             </footer>
           )}
 
-          <div className={`z-30 flex h-[24px] shrink-0 items-center justify-center ${isLoggedIn ? 'bg-[#f7f8fc]' : 'bg-[#f5f5fa]'}`}>
+          <div className={`z-30 hidden h-[24px] shrink-0 items-center justify-center sm:flex ${isLoggedIn ? 'bg-[#f7f8fc]' : 'bg-[#f5f5fa]'}`}>
             <div className="h-[4px] w-[108px] rounded-full bg-slate-900/35" />
           </div>
         </div>
