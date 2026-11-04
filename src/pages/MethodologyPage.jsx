@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, useReducedMotion, useScroll, useSpring } from 'framer-motion';
-import { ArrowRight, ArrowDown } from 'lucide-react';
+import { ArrowRight, ArrowDown, BookOpenCheck, HeartHandshake, Sparkles } from 'lucide-react';
 import SpiralFlow from '../components/art/SpiralFlow';
 import { THEORY_DIAGRAMS } from '../components/art/theoryDiagramMap';
 import { HandUnderline } from '../components/art/Doodles';
@@ -80,36 +80,53 @@ function Intro({ onOpenPrototype }) {
           </Magnetic>
         </motion.div>
       </div>
-      <motion.nav {...rise(0.3)} aria-label="Daftar isi" className="self-end lg:col-span-4 lg:pl-6">
-        <p className="font-hand text-[24px] leading-none text-pen">daftar isi</p>
-        <ol className="mt-3 border-t border-line">
-          {CONTENTS.map((item, index) => (
-            <li key={item.id} className="border-b border-line">
-              <button type="button" onClick={() => scrollToSection(item.id)} className="group flex w-full items-center gap-4 py-3.5 text-left">
-                <span className="font-display text-[15px] text-ink-3 tabular">{String(index + 1).padStart(2, '0')}</span>
-                <span className="flex-1 text-[16px] font-semibold text-ink">{item.label}</span>
-                <ArrowDown className="h-4 w-4 text-ink-3 transition-transform duration-300 group-hover:translate-y-0.5 group-hover:text-ink" />
-              </button>
-            </li>
-          ))}
-        </ol>
+      <motion.nav {...rise(0.3)} aria-label="Daftar isi" className="self-end lg:col-span-4">
+        <div className="rounded-[28px] border border-line bg-card p-5 shadow-paper sm:p-6">
+          <div className="flex items-center justify-between gap-3">
+            <p className="font-hand text-[25px] leading-none text-pen">peta metodologi</p>
+            <span className="rounded-full bg-marigold-soft px-3 py-1 text-[11px] font-bold text-marigold-ink">4 bagian</span>
+          </div>
+          <ol className="mt-5">
+            {CONTENTS.map((item, index) => (
+              <li key={item.id} className="border-t border-line">
+                <button type="button" onClick={() => scrollToSection(item.id)} className="group flex w-full items-center gap-3 py-3.5 text-left">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-paper font-display text-[13px] font-semibold text-navy tabular transition-colors group-hover:bg-navy group-hover:text-paper">{String(index + 1).padStart(2, '0')}</span>
+                  <span className="flex-1 text-[14px] font-semibold text-ink sm:text-[15px]">{item.label}</span>
+                  <ArrowDown className="h-4 w-4 text-ink-3 transition-transform duration-300 group-hover:translate-y-0.5 group-hover:text-navy" />
+                </button>
+              </li>
+            ))}
+          </ol>
+          <div className="mt-2 flex gap-1.5" aria-hidden="true">
+            {CONTENTS.map((item, index) => <span key={item.id} className={`h-1.5 flex-1 rounded-full ${index === 0 ? 'bg-marigold' : 'bg-paper-3'}`} />)}
+          </div>
+        </div>
       </motion.nav>
     </section>
   );
 }
 
 function Foundations() {
-  const numerals = ['i.', 'ii.', 'iii.'];
+  const numerals = ['01', '02', '03'];
+  const icons = [BookOpenCheck, HeartHandshake, Sparkles];
   return (
     <section aria-labelledby="cara-pandang-judul" id="cara-pandang" tabIndex={-1} className="scroll-mt-24 border-t border-line bg-paper-2/60 outline-none">
       <div className="mx-auto w-full max-w-[1240px] px-4 py-16 sm:px-8 lg:py-24">
         <ChapterHead number="01" label="Cara pandang" id="cara-pandang-judul" title="Disiplin bukan sekadar aturan yang ditaati." />
-        <div className="mt-12 grid gap-10 md:grid-cols-3 md:gap-8">
+        <div className="mt-10 grid gap-4 md:grid-cols-3 md:gap-5 lg:mt-12">
           {FOUNDATIONS.map((item, index) => (
-            <Reveal key={item.title} delay={index * 0.1} className="border-t-[3px] border-navy pt-5">
-              <p className="font-display text-[26px] italic text-marigold-ink [font-variation-settings:'SOFT'_100,'WONK'_1]">{numerals[index]}</p>
-              <h3 className="mt-3 font-display text-[26px] font-semibold leading-snug text-ink">{item.title}</h3>
-              <p className="mt-3 text-[16px] leading-[1.7] text-ink-2">{item.body}</p>
+            <Reveal key={item.title} delay={index * 0.1} className="group h-full">
+              <article className="relative h-full overflow-hidden rounded-[26px] border border-line bg-card p-6 shadow-paper transition duration-300 hover:-translate-y-1 hover:shadow-lift sm:p-7">
+                <span className="absolute -right-2 -top-7 font-display text-[112px] font-semibold leading-none text-paper-2/80" aria-hidden="true">{numerals[index]}</span>
+                <div className="relative flex items-center justify-between">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-[17px] bg-marigold-soft text-marigold-ink transition-transform duration-300 group-hover:rotate-[-5deg] group-hover:scale-105">
+                    {React.createElement(icons[index], { className: 'h-5 w-5' })}
+                  </span>
+                  <span className="font-display text-[14px] font-semibold tracking-[0.12em] text-ink-3 tabular">{numerals[index]}</span>
+                </div>
+                <h3 className="relative mt-7 font-display text-[25px] font-semibold leading-snug text-ink">{item.title}</h3>
+                <p className="relative mt-3 text-[15px] leading-[1.75] text-ink-2">{item.body}</p>
+              </article>
             </Reveal>
           ))}
         </div>
@@ -121,34 +138,43 @@ function Foundations() {
 function TheoryChapter({ theory, index, onOpenPrototype }) {
   const Diagram = THEORY_DIAGRAMS[theory.id];
   return (
-    <article className="grid gap-8 border-t border-line py-12 lg:grid-cols-12 lg:gap-10 lg:py-16">
-      <Reveal className="lg:col-span-2">
-        <p className="font-display text-[72px] font-[300] leading-[0.8] tracking-[-0.04em] text-ink tabular lg:text-[104px]"><SplitText text={theory.number} stagger={0} /></p>
-      </Reveal>
-      <Reveal delay={0.08} className="lg:col-span-5">
-        <h3 className="font-display text-[clamp(28px,3vw,40px)] font-semibold leading-[1.08] tracking-[-0.02em] text-ink">{theory.name}</h3>
-        <p className="mt-3 text-[14px] font-semibold text-ink-3">{theory.author} · {theory.year}</p>
-        <p className="mt-6 text-[17.5px] leading-[1.7] text-ink-2">{theory.summary}</p>
-      </Reveal>
-      <Reveal delay={0.16} className="lg:col-span-5">
-        <div className="rounded-[24px] bg-card p-3 shadow-paper ring-1 ring-line">
-          <div className="rounded-[18px] bg-paper px-3 py-4">
-            <Diagram className="mx-auto h-auto w-full max-w-[360px]" />
+    <article className="group relative mb-5 overflow-hidden rounded-[28px] border border-line bg-card p-5 shadow-paper transition duration-300 hover:shadow-lift sm:mb-6 sm:p-7 lg:p-8">
+      <div className="absolute inset-y-0 left-0 w-1.5 bg-gradient-to-b from-marigold via-navy/70 to-leaf opacity-70" aria-hidden="true" />
+      <div className="grid gap-6 lg:grid-cols-12 lg:gap-8">
+        <Reveal className="lg:col-span-5">
+          <div className="flex flex-wrap items-center gap-3">
+            <span className="inline-flex h-10 min-w-10 items-center justify-center rounded-full bg-navy px-3 font-display text-[14px] font-bold text-paper tabular">{theory.number}</span>
+            <span className="rounded-full bg-paper px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-ink-3">Landasan teori</span>
           </div>
-          <div className="notebook mt-3 rounded-[14px] pb-4 pl-[54px] pr-5 pt-[14px] [--margin-x:38px] [--rule-offset:14px] [--rule:28px]">
-            <p className="font-hand text-[22px] font-semibold leading-[28px] text-pen">Penerapan di LANGKAH</p>
-            <p className="text-[15px] leading-[28px] text-ink-2">{theory.application}</p>
+          <h3 className="mt-5 font-display text-[clamp(27px,3vw,39px)] font-semibold leading-[1.08] tracking-[-0.02em] text-ink">{theory.name}</h3>
+          <p className="mt-3 text-[13px] font-semibold text-navy">{theory.author} <span className="text-ink-3">· {theory.year}</span></p>
+          <p className="mt-5 text-[16px] leading-[1.75] text-ink-2">{theory.summary}</p>
+        </Reveal>
+        <Reveal delay={0.1} className="lg:col-span-7">
+          <div className="rounded-[22px] border border-line/80 bg-paper px-3 py-4 sm:px-5 sm:py-5">
+            <p className="mb-2 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.15em] text-ink-3">
+              <span className="h-1.5 w-1.5 rounded-full bg-marigold" /> Gagasan utama
+            </p>
+            <Diagram className="mx-auto h-auto w-full max-w-[390px]" />
+          </div>
+        </Reveal>
+        <Reveal delay={0.16} className="lg:col-span-12">
+          <div className="flex flex-col gap-4 rounded-[20px] bg-marigold-soft/70 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
+            <div className="max-w-3xl">
+              <p className="font-hand text-[22px] font-semibold leading-none text-marigold-ink">Diterapkan dalam LANGKAH</p>
+              <p className="mt-2 text-[14px] leading-[1.7] text-ink-2">{theory.application}</p>
+            </div>
             <a
               href={href(ROUTES.prototype)}
               onClick={plainClick(() => onOpenPrototype(theory.target))}
-              className="group mt-1 inline-flex items-center gap-1.5 text-[14px] font-bold leading-[28px] text-navy"
+              className="group/link inline-flex shrink-0 items-center gap-2 self-start rounded-full bg-card px-4 py-2.5 text-[13px] font-bold text-navy shadow-paper ring-1 ring-line transition hover:-translate-y-0.5 hover:ring-line-2 sm:self-center"
             >
-              <span className="link-underline">Lihat: {theory.targetLabel}</span>
-              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+              {theory.targetLabel}
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/link:translate-x-0.5" />
             </a>
           </div>
-        </div>
-      </Reveal>
+        </Reveal>
+      </div>
       <span className="sr-only">Landasan {index + 1} dari {THEORIES.length}</span>
     </article>
   );
@@ -164,7 +190,7 @@ function Theories({ onOpenPrototype }) {
             <p className="text-[16px] leading-relaxed text-ink-3">Diringkas dari bagian “Teori yang Relevan” pada dokumen rancangan intervensi.</p>
           </Reveal>
         </div>
-        <div className="mt-10">
+        <div className="mt-8 lg:mt-10">
           {THEORIES.map((theory, index) => (
             <TheoryChapter key={theory.id} theory={theory} index={index} onOpenPrototype={onOpenPrototype} />
           ))}
@@ -205,7 +231,11 @@ function Flow() {
           </ol>
         </div>
         <div className="lg:col-span-7">
-          <div className="rounded-[32px] bg-paper p-4 text-ink sm:p-8">
+          <div className="rounded-[30px] border border-white/10 bg-paper p-4 text-ink shadow-lift sm:p-7">
+            <div className="mx-auto mb-2 flex max-w-[560px] items-center justify-between gap-3 px-1 text-[10px] font-bold uppercase tracking-[0.13em] text-ink-3 sm:px-3">
+              <span>Model pembiasaan</span>
+              <span className="rounded-full bg-marigold-soft px-3 py-1.5 text-marigold-ink">berulang & bertumbuh</span>
+            </div>
             <SpiralFlow />
           </div>
         </div>
@@ -219,9 +249,14 @@ function Sources({ onOpenPrototype }) {
     <section aria-labelledby="sumber-judul" id="sumber" tabIndex={-1} className="scroll-mt-24 outline-none">
       <div className="mx-auto grid w-full max-w-[1240px] gap-10 px-4 py-16 sm:px-8 lg:grid-cols-12 lg:py-24">
         <ChapterHead number="04" label="Catatan sumber" id="sumber-judul" title="Dari dokumen rancangan kelompok." className="lg:col-span-6" />
-        <Reveal delay={0.1} className="lg:col-span-6 lg:pt-14">
-          <p className="text-[16.5px] leading-[1.75] text-ink-2">{SOURCE_NOTE}</p>
-          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
+        <Reveal delay={0.1} className="lg:col-span-6 lg:pt-8">
+          <div className="rounded-[26px] border border-line bg-card p-6 shadow-paper sm:p-8">
+            <p className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.14em] text-ink-3">
+              <BookOpenCheck className="h-4 w-4 text-navy" /> Rujukan ringkasan
+            </p>
+            <p className="mt-4 text-[16px] leading-[1.8] text-ink-2">{SOURCE_NOTE}</p>
+          </div>
+          <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-4">
             <a
               href={href(ROUTES.prototype)}
               onClick={plainClick(() => onOpenPrototype())}
