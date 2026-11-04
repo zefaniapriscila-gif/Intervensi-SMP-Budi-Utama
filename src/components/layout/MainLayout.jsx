@@ -24,7 +24,7 @@ export default function MainLayout({
       <div className="pointer-events-none absolute -bottom-56 -right-52 h-[620px] w-[620px] rounded-full bg-[#f7dff0]/55 blur-[130px]" />
       <div className="pointer-events-none absolute right-[22%] top-[35%] h-[360px] w-[360px] rounded-full bg-[#d8e9ff]/45 blur-[120px]" />
 
-      <main className="growth-app-window relative z-10 h-[100dvh] w-full overflow-hidden sm:h-[min(100dvh,1024px)] sm:max-w-[780px] sm:border-x sm:border-white/80 sm:shadow-[0_24px_100px_-42px_rgba(47,54,93,0.28)] lg:flex lg:h-[100dvh] lg:max-w-none lg:border-0 lg:shadow-none">
+      <main className="growth-app-window relative z-10 flex h-[100dvh] w-full overflow-hidden sm:h-[min(100dvh,1024px)] sm:max-w-[780px] sm:border-x sm:border-white/80 sm:shadow-[0_24px_100px_-42px_rgba(47,54,93,0.28)] lg:h-[100dvh] lg:max-w-none lg:border-0 lg:shadow-none">
         <aside className="relative hidden h-full w-[45%] max-w-[590px] shrink-0 flex-col overflow-y-auto border-r border-white/80 bg-white/55 px-7 py-7 backdrop-blur-xl xl:px-9 lg:flex">
           <div className="flex items-center gap-3">
             <div className="flex h-11 w-11 items-center justify-center rounded-[16px] bg-gradient-to-br from-teal-500 via-grape-500 to-blossom-500 text-white shadow-[0_8px_18px_-8px_rgba(99,76,210,0.6)]">
@@ -106,7 +106,7 @@ export default function MainLayout({
           <p className="mt-auto pt-5 text-[9px] leading-relaxed text-slate-400">Pratinjau prototipe · Data dan notifikasi masih berupa simulasi.</p>
         </aside>
 
-        <section className="relative min-w-0 flex-1 overflow-hidden bg-gradient-to-br from-[#f7f9ff] via-[#f2f5fb] to-[#fbeef5]">
+        <section className="relative h-full min-h-0 min-w-0 flex-1 overflow-hidden bg-gradient-to-br from-[#f7f9ff] via-[#f2f5fb] to-[#fbeef5]">
           <div className="pointer-events-none absolute -right-28 top-12 h-80 w-80 rounded-full bg-grape-100/65 blur-[90px]" />
           <div className="pointer-events-none absolute bottom-0 left-10 h-72 w-72 rounded-full bg-blossom-100/65 blur-[95px]" />
           <div className="absolute right-5 top-4 z-20 hidden items-center gap-2 rounded-full border border-white/90 bg-white/80 px-3 py-2 text-[10px] font-bold text-grape-700 shadow-[0_5px_16px_-10px_rgba(47,54,93,0.4)] backdrop-blur-lg lg:flex">

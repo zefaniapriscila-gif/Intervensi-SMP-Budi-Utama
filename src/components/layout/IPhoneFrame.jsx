@@ -47,7 +47,7 @@ export default function IPhoneFrame({
   }, [activeTab, role, isLoggedIn]);
 
   return (
-    <div className="phone-stage relative flex h-full w-full items-center justify-center">
+    <div className="phone-stage relative flex h-full min-h-0 w-full items-center justify-center">
       <div className="phone-shell relative flex h-full w-full flex-col overflow-hidden bg-[#f5f5fa] p-0 sm:h-[min(900px,calc(100dvh-48px))] sm:max-h-[900px] sm:w-auto sm:aspect-[402/846] sm:rounded-[56px] sm:bg-[#181a20] sm:p-[10px] sm:shadow-[0_30px_90px_-20px_rgba(16,18,28,0.42),0_0_0_1px_rgba(22,24,32,0.7)]">
         <div className="pointer-events-none absolute left-0 top-[15%] z-0 hidden h-7 w-[4px] rounded-l-md bg-gradient-to-r from-[#292b34] to-[#515361] shadow-sm sm:block" />
         <div className="pointer-events-none absolute left-0 top-[24%] z-0 hidden h-14 w-[4px] rounded-l-md bg-gradient-to-r from-[#292b34] to-[#515361] shadow-sm sm:block" />
@@ -112,7 +112,7 @@ export default function IPhoneFrame({
 
           <main
             ref={scrollRef}
-            className={`no-scrollbar flex min-h-0 flex-1 flex-col overflow-y-auto overscroll-contain ${isLoggedIn ? 'bg-[#f7f8fc]' : 'bg-[#f5f5fa]'}`}
+            className={`no-scrollbar flex min-h-0 flex-1 flex-col overflow-y-auto overscroll-y-contain touch-pan-y [-webkit-overflow-scrolling:touch] ${isLoggedIn ? 'bg-[#f7f8fc]' : 'bg-[#f5f5fa]'}`}
           >
             {isLoggedIn ? children : (
               <LoginScreen onLogin={onLogin} />

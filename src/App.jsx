@@ -179,27 +179,28 @@ function StudentHome({ routine, onToggleRoutine, reminders, onToggleReminder, on
             <ArrowUpRight className="h-5 w-5" />
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-4">
+        <div className="grid grid-cols-1 gap-2.5">
           {routine.map((item) => (
             <button
               type="button"
               key={item.id}
               onClick={() => onToggleRoutine(item.id)}
               aria-pressed={item.done}
-              className={`flex min-h-[76px] items-center gap-2.5 rounded-[17px] border px-3 py-2.5 text-left transition active:scale-[0.98] ${
+              className={`flex min-h-[58px] w-full items-center gap-3 rounded-[17px] border px-3.5 py-3 text-left transition active:scale-[0.99] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-grape-500 ${
                 item.done
                   ? 'border-white/80 bg-white/75'
                   : 'border-white/60 bg-white/45 hover:bg-white/70'
               }`}
             >
-              <span className={`flex h-[21px] w-[21px] shrink-0 items-center justify-center rounded-md ${
+              <span className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-lg ${
                 item.done ? 'bg-mint-500 text-white' : 'border border-slate-300 bg-white/80'
               }`}>
-                {item.done && <Check className="h-3.5 w-3.5 stroke-[3]" />}
+                {item.done && <Check className="h-4 w-4 stroke-[3]" />}
               </span>
-              <span className={`text-[11px] font-semibold leading-snug sm:text-xs ${item.done ? 'text-slate-700' : 'text-slate-600'}`}>
+              <span className={`min-w-0 flex-1 text-[13px] font-semibold leading-snug ${item.done ? 'text-slate-700' : 'text-slate-600'}`}>
                 {item.label}
               </span>
+              <span className="shrink-0 text-[10px] font-bold text-grape-600">{item.done ? 'Siap' : 'Tandai'}</span>
             </button>
           ))}
         </div>
