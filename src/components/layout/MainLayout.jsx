@@ -17,7 +17,7 @@ export default function MainLayout({
     { id: 'parent', label: 'Orang tua', initials: 'OT' },
     { id: 'teacher', label: 'Wali kelas', initials: 'WK' },
   ];
-  const [selectedFeature, setSelectedFeature] = useState(null);
+  const [expandedFeatures, setExpandedFeatures] = useState(() => new Set());
   const features = [
     {
       id: 'reminders',
@@ -50,7 +50,6 @@ export default function MainLayout({
       impact: 'Apresiasi yang adil menguatkan motivasi dan kebiasaan baik, bukan menjadikan penghargaan sebagai perbandingan antar siswa.',
     },
   ];
-  const activeFeature = features.find((feature) => feature.id === selectedFeature);
 
   return (
     <div className="growth-canvas relative flex min-h-[100dvh] w-full items-center justify-center overflow-hidden bg-[#eff1f8] text-slate-900">
@@ -124,74 +123,81 @@ export default function MainLayout({
             <div className="space-y-2.5">
               {features.map((feature, index) => {
                 const Icon = feature.icon;
-                const isSelected = selectedFeature === feature.id;
+                const isSelected = expandedFeatures.has(feature.id);
                 const toneClasses = {
                   amber: 'border-amber-100 bg-amber-50/80 text-amber-700',
                   blue: 'border-blue-100 bg-blue-50/80 text-blue-700',
                   emerald: 'border-emerald-100 bg-emerald-50/80 text-emerald-700',
                 }[feature.tone];
                 return (
-                  <button
-                    key={feature.id}
-                    type="button"
-                    aria-expanded={isSelected}
-                    onClick={() => setSelectedFeature(isSelected ? null : feature.id)}
-                    className={`group flex w-full items-center gap-3 rounded-[16px] border p-3 text-left transition duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-grape-500 ${
-                      isSelected
-                        ? 'border-sky-300 bg-gradient-to-r from-[#356fc8] to-[#15a9df] text-white shadow-[0_12px_24px_-14px_rgba(37,111,200,0.85)]'
-                        : `${toneClasses} hover:-translate-y-0.5 hover:shadow-md`
-                    }`}
-                  >
-                    <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-[13px] ${
-                      isSelected ? 'bg-white/20 text-white' : 'bg-white text-current shadow-sm'
-                    }`}>
-                      <Icon className="h-[18px] w-[18px]" />
-                    </span>
-                    <span className="min-w-0 flex-1">
-                      <span className={`flex items-center gap-2 text-[10px] font-extrabold uppercase tracking-[0.12em] ${
-                        isSelected ? 'text-white/75' : 'opacity-65'
+                  <div key={feature.id}>
+                    <button
+                      type="button"
+                      aria-expanded={isSelected}
+                      aria-controls={`feature-guide-${feature.id}`}
+                      onClick={() => setExpandedFeatures((current) => {
+                        const next = new Set(current);
+                        if (next.has(feature.id)) next.delete(feature.id);
+                        else next.add(feature.id);
+                        return next;
+                      })}
+                      className={`group flex w-full items-center gap-3 rounded-[16px] border p-3 text-left transition duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-grape-500 ${
+                        isSelected
+                          ? 'border-sky-300 bg-gradient-to-r from-[#356fc8] to-[#15a9df] text-white shadow-[0_12px_24px_-14px_rgba(37,111,200,0.85)]'
+                          : `${toneClasses} hover:-translate-y-0.5 hover:shadow-md`
+                      }`}
+                    >
+                      <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-[13px] ${
+                        isSelected ? 'bg-white/20 text-white' : 'bg-white text-current shadow-sm'
                       }`}>
-                        {String(index + 1).padStart(2, '0')} <span>FITUR</span>
+                        <Icon className="h-[18px] w-[18px]" />
                       </span>
-                      <span className="mt-0.5 block text-[12px] font-extrabold leading-snug">{feature.title}</span>
-                      <span className={`mt-0.5 block text-[10px] leading-relaxed ${
-                        isSelected ? 'text-white/85' : 'text-slate-600'
-                      }`}>{feature.summary}</span>
-                    </span>
-                    <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition ${
-                      isSelected ? 'bg-white/20 text-white' : 'bg-white/75 text-slate-500 group-hover:text-grape-600'
-                    }`}>
-                      <ChevronDown className={`h-4 w-4 transition-transform ${isSelected ? 'rotate-180' : ''}`} />
-                    </span>
-                  </button>
+                      <span className="min-w-0 flex-1">
+                        <span className={`flex items-center gap-2 text-[10px] font-extrabold uppercase tracking-[0.12em] ${
+                          isSelected ? 'text-white/75' : 'opacity-65'
+                        }`}>
+                          {String(index + 1).padStart(2, '0')} <span>FITUR</span>
+                        </span>
+                        <span className="mt-0.5 block text-[12px] font-extrabold leading-snug">{feature.title}</span>
+                        <span className={`mt-0.5 block text-[10px] leading-relaxed ${
+                          isSelected ? 'text-white/85' : 'text-slate-600'
+                        }`}>{feature.summary}</span>
+                      </span>
+                      <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition ${
+                        isSelected ? 'bg-white/20 text-white' : 'bg-white/75 text-slate-500 group-hover:text-grape-600'
+                      }`}>
+                        <ChevronDown className={`h-4 w-4 transition-transform ${isSelected ? 'rotate-180' : ''}`} />
+                      </span>
+                    </button>
+                    {isSelected && (
+                      <div id={`feature-guide-${feature.id}`} className="mt-2 overflow-hidden rounded-[18px] border border-slate-200 bg-white shadow-[0_12px_28px_-20px_rgba(35,42,75,0.4)]">
+                        <div className="flex items-center justify-between gap-3 border-b border-slate-100 px-3.5 py-3">
+                          <div className="flex items-center gap-2 text-grape-700">
+                            <Info className="h-4 w-4" />
+                            <h3 className="text-[10px] font-extrabold uppercase tracking-[0.12em]">Panduan & cara kerja fitur {index + 1}</h3>
+                          </div>
+                          <span className="rounded-full bg-grape-100 px-2 py-1 text-[9px] font-bold text-grape-700">Detail</span>
+                        </div>
+                        <div className="space-y-2.5 p-3">
+                          <div className="rounded-[14px] border border-rose-200 bg-rose-50/80 p-3">
+                            <p className="flex items-center gap-1.5 text-[10px] font-extrabold text-rose-800"><Info className="h-3.5 w-3.5" /> Tantangan yang dijawab</p>
+                            <p className="mt-1.5 text-[10px] leading-relaxed text-slate-700">{feature.challenge}</p>
+                          </div>
+                          <div className="rounded-[14px] border border-blue-200 bg-blue-50/80 p-3">
+                            <p className="flex items-center gap-1.5 text-[10px] font-extrabold text-blue-800"><BookOpenCheck className="h-3.5 w-3.5" /> Cara kerja fitur</p>
+                            <p className="mt-1.5 text-[10px] leading-relaxed text-slate-700">{feature.approach}</p>
+                          </div>
+                          <div className="rounded-[14px] border border-emerald-200 bg-emerald-50/80 p-3">
+                            <p className="flex items-center gap-1.5 text-[10px] font-extrabold text-emerald-800"><CheckCircle2 className="h-3.5 w-3.5" /> Dampak yang diharapkan</p>
+                            <p className="mt-1.5 text-[10px] leading-relaxed text-slate-700">{feature.impact}</p>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 );
               })}
             </div>
-            {activeFeature && (
-              <div className="mt-3 overflow-hidden rounded-[18px] border border-slate-200 bg-white shadow-[0_12px_28px_-20px_rgba(35,42,75,0.4)]">
-                <div className="flex items-center justify-between gap-3 border-b border-slate-100 px-3.5 py-3">
-                  <div className="flex items-center gap-2 text-grape-700">
-                    <Info className="h-4 w-4" />
-                    <h3 className="text-[10px] font-extrabold uppercase tracking-[0.12em]">Panduan & cara kerja fitur</h3>
-                  </div>
-                  <span className="rounded-full bg-grape-100 px-2 py-1 text-[9px] font-bold text-grape-700">Detail</span>
-                </div>
-                <div className="space-y-2.5 p-3">
-                  <div className="rounded-[14px] border border-rose-200 bg-rose-50/80 p-3">
-                    <p className="flex items-center gap-1.5 text-[10px] font-extrabold text-rose-800"><Info className="h-3.5 w-3.5" /> Tantangan yang dijawab</p>
-                    <p className="mt-1.5 text-[10px] leading-relaxed text-slate-700">{activeFeature.challenge}</p>
-                  </div>
-                  <div className="rounded-[14px] border border-blue-200 bg-blue-50/80 p-3">
-                    <p className="flex items-center gap-1.5 text-[10px] font-extrabold text-blue-800"><BookOpenCheck className="h-3.5 w-3.5" /> Cara kerja fitur</p>
-                    <p className="mt-1.5 text-[10px] leading-relaxed text-slate-700">{activeFeature.approach}</p>
-                  </div>
-                  <div className="rounded-[14px] border border-emerald-200 bg-emerald-50/80 p-3">
-                    <p className="flex items-center gap-1.5 text-[10px] font-extrabold text-emerald-800"><CheckCircle2 className="h-3.5 w-3.5" /> Dampak yang diharapkan</p>
-                    <p className="mt-1.5 text-[10px] leading-relaxed text-slate-700">{activeFeature.impact}</p>
-                  </div>
-                </div>
-              </div>
-            )}
           </section>
 
           <p className="mt-auto pt-5 text-[9px] leading-relaxed text-slate-400">Pratinjau prototipe · Data dan notifikasi masih berupa simulasi.</p>
