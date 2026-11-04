@@ -25,7 +25,7 @@ const INITIAL_ROUTINE = [
   { id: 'uniform', label: 'Seragam dan atribut lengkap', done: true },
   { id: 'books', label: 'Buku dan perlengkapan pelajaran', done: false },
   { id: 'homework', label: 'Tugas untuk besok', done: false },
-  { id: 'alarm', label: 'Alarm pagi sudah diatur', done: true },
+  { id: 'alarm', label: 'Perangkat belajar sudah disiapkan', done: true },
 ];
 
 const WEEKLY_STUDENTS = [
