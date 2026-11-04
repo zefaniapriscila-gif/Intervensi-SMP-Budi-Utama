@@ -1,11 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Award, BatteryFull, ChevronLeft, LogOut, Signal, ShieldCheck, Wifi } from 'lucide-react';
+import { Award, BatteryFull, ChevronLeft, Signal, ShieldCheck, Wifi } from 'lucide-react';
 import TabBar from '../ios/TabBar';
 
 const ROLE_LABELS = {
   student: 'Siswa',
   parent: 'Orang tua',
   teacher: 'Wali kelas',
+};
+
+const ROLE_INITIALS = {
+  student: 'AP',
+  parent: 'OT',
+  teacher: 'WK',
 };
 
 const PAGE_LABELS = {
@@ -81,23 +87,24 @@ export default function IPhoneFrame({
                 </div>
               </div>
 
-              <div className="flex shrink-0 items-center gap-2">
+              <div className="flex shrink-0 items-center gap-2.5">
                 <button
                   type="button"
                   onClick={() => onTabChange('recognition')}
                   aria-label="Buka apresiasi mingguan"
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-grape-600 shadow-sm transition hover:border-grape-200 hover:bg-grape-50"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-grape-600 shadow-sm transition hover:border-grape-200 hover:bg-grape-50"
                 >
-                  <Award className="h-4 w-4" />
+                  <Award className="h-[18px] w-[18px]" />
                 </button>
                 <button
                   type="button"
                   onClick={onLogout}
-                  className="flex h-9 items-center gap-1.5 rounded-full border border-slate-200 bg-white px-2.5 text-[10px] font-bold text-slate-600 shadow-sm transition hover:border-grape-200 hover:text-grape-700"
+                  className="relative flex h-10 w-10 items-center justify-center rounded-full border-2 border-grape-200 bg-grape-50 text-[11px] font-extrabold text-grape-700 shadow-sm transition hover:border-grape-400"
                   aria-label="Keluar dan pilih peran lain"
+                  title={`Keluar dari tampilan ${ROLE_LABELS[role]}`}
                 >
-                  <span className="hidden max-w-[74px] truncate sm:inline">{ROLE_LABELS[role]}</span>
-                  <LogOut className="h-3.5 w-3.5" />
+                  {ROLE_INITIALS[role]}
+                  <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full border-2 border-white bg-mint-500" />
                 </button>
               </div>
             </header>

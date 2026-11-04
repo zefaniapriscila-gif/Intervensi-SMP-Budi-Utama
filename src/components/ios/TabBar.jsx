@@ -29,16 +29,16 @@ export default function TabBar({ activeTab, onTabChange }) {
               aria-current={isActive ? 'page' : undefined}
               whileTap={{ scale: 0.94 }}
               transition={{ type: 'spring', stiffness: 420, damping: 34 }}
-              className={`relative flex h-[54px] min-w-0 flex-1 items-center justify-center gap-2 rounded-[22px] px-2 transition-colors duration-200 sm:h-[58px] sm:gap-2.5 ${
+              className={`relative flex h-[64px] min-w-0 flex-1 flex-col items-center justify-center gap-1 rounded-[22px] px-1 transition-colors duration-200 sm:h-[68px] sm:gap-1.5 ${
                 isActive
                   ? 'bg-slate-950 text-white shadow-[0_7px_18px_-8px_rgba(10,14,30,0.7)]'
                   : 'text-slate-500 hover:bg-slate-50 hover:text-grape-700'
               }`}
             >
               <span className="flex shrink-0 items-center justify-center">
-                <Icon className={`h-[19px] w-[19px] sm:h-5 sm:w-5 ${isActive ? 'stroke-[2.2]' : 'stroke-[1.8]'}`} />
+                <Icon className={`h-[21px] w-[21px] sm:h-[22px] sm:w-[22px] ${isActive ? 'stroke-[2.2]' : 'stroke-[1.8]'}`} />
               </span>
-              <span className={`truncate text-[10px] font-bold tracking-tight sm:text-[12px] ${isActive ? 'text-white' : ''}`}>
+              <span className={`max-w-full truncate text-[10px] font-bold tracking-tight sm:text-[11px] ${isActive ? 'text-white' : ''}`}>
                 {tab.label}
               </span>
             </motion.button>

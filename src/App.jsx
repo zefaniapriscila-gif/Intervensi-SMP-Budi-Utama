@@ -8,6 +8,7 @@ import {
   CheckCircle2,
   ChevronRight,
   Clock3,
+  Flame,
   Heart,
   LockKeyhole,
   MessageCircle,
@@ -111,43 +112,113 @@ function StudentHome({ routine, onToggleRoutine, reminders, onToggleReminder, on
   const greeting = new Intl.DateTimeFormat('id-ID', { weekday: 'long', day: 'numeric', month: 'long' }).format(new Date());
 
   return (
-    <div className="space-y-5 px-5 pb-6 pt-3">
-      <section className="relative overflow-hidden rounded-[28px] bg-gradient-to-br from-grape-500 via-[#8a5deb] to-blossom-500 p-5 text-white shadow-[0_18px_38px_-20px_rgba(111,73,202,0.78)] sm:p-6">
+    <div className="mx-auto w-full max-w-[680px] space-y-4 px-4 pb-8 pt-4 sm:space-y-5 sm:px-6 sm:pt-5">
+      <div className="rounded-[17px] border border-slate-200 bg-white px-4 py-3 text-[11px] leading-relaxed text-slate-600 shadow-[0_5px_18px_-15px_rgba(35,42,75,0.35)] sm:text-xs">
+        <span className="font-bold text-grape-700">Versi pratinjau</span>
+        <span className="text-slate-400"> · </span>
+        Kamu sedang memakai profil contoh. Data tersimpan sementara di browser ini.
+      </div>
+
+      <div className="flex items-center gap-3 px-1 py-1">
+        <div className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-grape-200 to-blossom-200 text-sm font-extrabold text-grape-800 ring-2 ring-white shadow-sm">
+          AP
+          <span className="absolute bottom-0 right-0 h-3.5 w-3.5 rounded-full border-2 border-white bg-mint-500" />
+        </div>
+        <div>
+          <p className="text-[13px] text-slate-500">Halo,</p>
+          <h1 className="text-[20px] font-extrabold leading-tight tracking-tight text-slate-950">Alya!</h1>
+        </div>
+        <span className="ml-auto rounded-full bg-grape-50 px-3 py-1.5 text-[10px] font-bold text-grape-700">Kelas VII A</span>
+      </div>
+
+      <section className="relative overflow-hidden rounded-[27px] bg-gradient-to-br from-[#20b995] via-grape-500 to-blossom-500 p-5 text-white shadow-[0_18px_38px_-20px_rgba(111,73,202,0.78)] sm:p-6">
         <div className="absolute -right-7 -top-8 h-32 w-32 rounded-full bg-white/10" />
         <div className="absolute -bottom-12 right-20 h-28 w-28 rounded-full bg-white/10" />
         <div className="relative">
           <div className="flex items-center justify-between">
-            <span className="rounded-full bg-white/15 px-3 py-1 text-[10px] font-semibold tracking-wide text-white/90">{greeting}</span>
+            <span className="flex items-center gap-1.5 rounded-full bg-white/20 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-white">
+              <Flame className="h-3.5 w-3.5" /> Rutinitasmu
+            </span>
             <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/15"><Sparkles className="h-4 w-4" /></div>
           </div>
           <div className="mt-4">
-            <p className="text-sm font-medium text-white/90">Hai, Alya 👋</p>
-            <h1 className="mt-1 max-w-[430px] text-[25px] font-extrabold leading-tight tracking-tight">
+            <h2 className="max-w-[430px] text-[26px] font-extrabold leading-[1.13] tracking-tight sm:text-[30px]">
               Disiplin dimulai dari langkah kecil.
-            </h1>
-            <p className="mt-2 max-w-[390px] text-[12px] leading-relaxed text-white/90">Siapkan hari esok dengan tenang. Kamu sedang membangun kebiasaan baik.</p>
+            </h2>
+            <p className="mt-2 max-w-[390px] text-[13px] leading-relaxed text-white/90">
+              Siapkan hari esok dengan tenang. Kebiasaan baik tumbuh sedikit demi sedikit.
+            </p>
           </div>
-          <div className="mt-4 flex w-full items-center gap-3 rounded-2xl bg-white/10 p-3 sm:p-4">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/15"><CheckCircle2 className="h-5 w-5" /></div>
-            <div className="flex-1">
-              <div className="flex items-center justify-between text-xs font-semibold">
+          <div className="mt-5 flex w-full items-center gap-3 rounded-[20px] bg-white/15 p-3.5 sm:p-4">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[15px] bg-white/20">
+              <CheckCircle2 className="h-6 w-6" />
+            </div>
+            <div className="min-w-0 flex-1">
+              <div className="flex items-center justify-between gap-2 text-[12px] font-bold sm:text-[13px]">
                 <span>Persiapan sekolah</span><span>{completed}/{routine.length}</span>
               </div>
-              <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-white/20">
+              <div className="mt-2 h-2 overflow-hidden rounded-full bg-white/25">
                 <div className="h-full rounded-full bg-white transition-all" style={{ width: `${(completed / routine.length) * 100}%` }} />
               </div>
             </div>
           </div>
+          <div className="mt-4 flex items-center justify-between border-t border-white/25 pt-3 text-[11px] font-semibold text-white/90">
+            <span>{greeting}</span>
+            <span>{routine.length} kebiasaan kecil</span>
+          </div>
         </div>
       </section>
 
-      <section>
-        <div className="mb-3 flex items-center justify-between">
+      <section className="rounded-[26px] border border-blossom-200 bg-gradient-to-br from-blossom-100 to-[#fff0f2] p-4 shadow-[0_8px_24px_-20px_rgba(143,56,86,0.3)] sm:p-5">
+        <div className="mb-4 flex items-start justify-between gap-3">
           <div>
-            <h2 className="text-[16px] font-extrabold text-slate-900">Pengingat harian</h2>
-            <p className="mt-0.5 text-xs text-slate-500">Atur rutinitas bersama orang tua</p>
+            <h2 className="text-[17px] font-extrabold tracking-tight text-slate-950">Rutinitas disiplin</h2>
+            <p className="mt-1 text-[12px] text-blossom-700">Persiapan sekolah · {completed} dari {routine.length} siap</p>
           </div>
-          <Bell className="h-5 w-5 text-teal-700" />
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/80 text-blossom-700">
+            <ArrowUpRight className="h-5 w-5" />
+          </div>
+        </div>
+        <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-4">
+          {routine.map((item) => (
+            <button
+              type="button"
+              key={item.id}
+              onClick={() => onToggleRoutine(item.id)}
+              aria-pressed={item.done}
+              className={`flex min-h-[76px] items-center gap-2.5 rounded-[17px] border px-3 py-2.5 text-left transition active:scale-[0.98] ${
+                item.done
+                  ? 'border-white/80 bg-white/75'
+                  : 'border-white/60 bg-white/45 hover:bg-white/70'
+              }`}
+            >
+              <span className={`flex h-[21px] w-[21px] shrink-0 items-center justify-center rounded-md ${
+                item.done ? 'bg-mint-500 text-white' : 'border border-slate-300 bg-white/80'
+              }`}>
+                {item.done && <Check className="h-3.5 w-3.5 stroke-[3]" />}
+              </span>
+              <span className={`text-[11px] font-semibold leading-snug sm:text-xs ${item.done ? 'text-slate-700' : 'text-slate-600'}`}>
+                {item.label}
+              </span>
+            </button>
+          ))}
+        </div>
+        <p className="mt-3 text-[11px] leading-relaxed text-blossom-700">
+          {completed === routine.length
+            ? 'Lengkap! Kamu sudah siap untuk besok.'
+            : 'Satu persiapan kecil malam ini bikin pagi lebih tenang.'}
+        </p>
+      </section>
+
+      <section>
+        <div className="mb-3 flex items-center justify-between px-1">
+          <div>
+            <h2 className="text-[17px] font-extrabold tracking-tight text-slate-950">Pengingat harian</h2>
+            <p className="mt-0.5 text-[12px] text-slate-500">Atur rutinitas bersama orang tua</p>
+          </div>
+          <div className="flex h-9 w-9 items-center justify-center rounded-full bg-grape-50 text-grape-700">
+            <Bell className="h-[18px] w-[18px]" />
+          </div>
         </div>
         <div className="space-y-3">
           <ReminderCard
@@ -171,35 +242,10 @@ function StudentHome({ routine, onToggleRoutine, reminders, onToggleReminder, on
         </div>
       </section>
 
-      <section className="rounded-[22px] border border-slate-100 bg-white p-4 shadow-[0_8px_24px_-18px_rgba(15,23,42,0.24)]">
-        <div className="mb-3 flex items-center justify-between">
-          <div>
-            <h2 className="font-extrabold text-slate-900">Cek persiapan malam ini</h2>
-            <p className="mt-0.5 text-xs text-slate-500">Centang yang sudah siap</p>
-          </div>
-          <span className="rounded-full bg-teal-50 px-2.5 py-1 text-[10px] font-bold text-teal-700">{completed} siap</span>
-        </div>
-        <div className="space-y-1">
-          {routine.map((item) => (
-            <button
-              type="button"
-              key={item.id}
-              onClick={() => onToggleRoutine(item.id)}
-              className="flex w-full items-center gap-3 rounded-xl px-2 py-2.5 text-left transition hover:bg-slate-50"
-            >
-              <span className={`flex h-[19px] w-[19px] shrink-0 items-center justify-center rounded-md border ${item.done ? 'border-teal-600 bg-teal-600 text-white' : 'border-slate-300 bg-white'}`}>
-                {item.done && <Check className="h-3 w-3 stroke-[3]" />}
-              </span>
-              <span className={`text-[13px] ${item.done ? 'text-slate-400 line-through' : 'font-medium text-slate-700'}`}>{item.label}</span>
-            </button>
-          ))}
-        </div>
-      </section>
-
-      <button type="button" onClick={() => onNavigate('journal')} className="flex w-full items-center gap-3 rounded-[22px] border border-cyan-100 bg-cyan-50 p-4 text-left transition hover:bg-cyan-100/70">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-white text-cyan-700"><BookOpen className="h-5 w-5" /></div>
-        <div className="flex-1"><p className="text-sm font-bold text-cyan-950">Ceritakan harimu</p><p className="mt-0.5 text-xs text-cyan-800/75">Catatanmu membantu wali kelas mendukungmu.</p></div>
-        <ChevronRight className="h-4 w-4 text-cyan-700" />
+      <button type="button" onClick={() => onNavigate('journal')} className="flex w-full items-center gap-3 rounded-[22px] border border-azure-100 bg-white p-4 text-left shadow-[0_7px_20px_-16px_rgba(35,42,75,0.3)] transition hover:border-azure-200 hover:bg-azure-50/50">
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-azure-50 text-azure-700"><BookOpen className="h-5 w-5" /></div>
+        <div className="min-w-0 flex-1"><p className="text-sm font-bold text-slate-900">Ceritakan harimu</p><p className="mt-0.5 text-xs leading-relaxed text-slate-500">Catatanmu membantu wali kelas mendukungmu.</p></div>
+        <ChevronRight className="h-4 w-4 shrink-0 text-azure-700" />
       </button>
     </div>
   );
