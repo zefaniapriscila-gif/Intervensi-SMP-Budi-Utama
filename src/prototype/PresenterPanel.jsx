@@ -1,0 +1,165 @@
+import React from 'react';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { ArrowLeft, ArrowUpRight, Check, RotateCcw } from 'lucide-react';
+import { LogoMark } from '../components/brand/Logo';
+import { RoleBadge } from '../components/ui/primitives';
+import { ROLES, SCREEN_NOTES, TABS, THEORIES } from '../data/program';
+import { useEnterDelay } from '../lib/enterDelay';
+import { ROUTES, href } from '../lib/router';
+import { useScenario } from './hooks';
+import { StairProgress } from './parts/common';
+
+const ROLE_LABEL = Object.fromEntries(ROLES.map((role) => [role.id, role.label]));
+const TAB_LABEL = Object.fromEntries(TABS.map((tab) => [tab.id, tab.label]));
+
+function SectionTitle({ children, aside }) {
+  return (
+    <div className="mb-3 flex items-center justify-between gap-3">
+      <h2 className="text-[11.5px] font-bold uppercase tracking-[0.16em] text-ink-3">{children}</h2>
+      {aside}
+    </div>
+  );
+}
+
+export default function PresenterPanel({ demo }) {
+  const reduce = useReducedMotion();
+  const base = useEnterDelay();
+  const enter = (index) => ({
+    initial: reduce ? false : { opacity: 0, x: -18 },
+    animate: { opacity: 1, x: 0 },
+    transition: { duration: 0.6, delay: base + 0.15 + index * 0.08, ease: [0.22, 1, 0.36, 1] },
+  });
+  const steps = useScenario(demo);
+  const doneCount = steps.filter((step) => step.done).length;
+  const nextId = steps.find((step) => !step.done)?.id;
+  const noteKey = demo.signedIn ? `${demo.role}:${demo.tab}` : 'select';
+  const note = SCREEN_NOTES[noteKey];
+  const theory = THEORIES.find((item) => item.id === note.theory);
+
+  return (
+    <aside className="no-scrollbar flex h-full flex-col overflow-y-auto px-8 pb-6 pt-6 xl:px-11" aria-label="Panduan presenter">
+      <a href={href(ROUTES.home)} className="group inline-flex items-center gap-2.5 self-start rounded-full py-1 pr-3 text-[13.5px] font-semibold text-ink-2 transition hover:text-ink">
+        <ArrowLeft className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-0.5" />
+        <LogoMark className="h-7 w-7" />
+        <span className="font-display text-[15px] font-semibold tracking-[0.06em] text-ink">LANGKAH</span>
+      </a>
+
+      <motion.div {...enter(0)} className="mt-6">
+        <p className="text-[11.5px] font-bold uppercase tracking-[0.16em] text-ink-3">Prototipe</p>
+        <h1 className="mt-2 font-display text-[clamp(26px,2.2vw,32px)] font-[560] leading-[1.06] tracking-[-0.025em] text-ink">Coba LANGKAH dari tiga sudut pandang.</h1>
+      </motion.div>
+
+      <motion.section {...enter(1)} className="mt-6" aria-labelledby="lihat-sebagai">
+        <SectionTitle><span id="lihat-sebagai">Lihat sebagai</span></SectionTitle>
+        <div role="group" aria-labelledby="lihat-sebagai" className="grid grid-cols-3 gap-1.5 rounded-[22px] bg-card p-1.5 ring-1 ring-line">
+          {ROLES.map((role) => {
+            const active = demo.signedIn && demo.role === role.id;
+            return (
+              <button
+                key={role.id}
+                type="button"
+                aria-pressed={active}
+                onClick={() => demo.goTo({ role: role.id, tab: demo.tab })}
+                className={`relative flex flex-col items-center gap-2 rounded-[17px] px-2 pb-2.5 pt-3 text-center transition-colors ${active ? 'text-paper' : 'text-ink hover:bg-paper'}`}
+                data-surface={active ? 'dark' : undefined}
+              >
+                {active && (
+                  <motion.span layoutId="presenter-role" className="absolute inset-0 rounded-[17px] bg-navy shadow-lift" transition={reduce ? { duration: 0 } : { type: 'spring', stiffness: 480, damping: 38 }} />
+                )}
+                <RoleBadge role={role.id} size="sm" className="relative" />
+                <span className="relative text-[13.5px] font-bold leading-none">{role.label}</span>
+              </button>
+            );
+          })}
+        </div>
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.p
+            key={demo.signedIn ? demo.role : 'none'}
+            initial={{ opacity: 0, y: 4 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -4 }}
+            transition={{ duration: 0.18 }}
+            className="mt-2.5 px-1 text-[13px] leading-relaxed text-ink-3"
+          >
+            {demo.signedIn ? ROLES.find((role) => role.id === demo.role)?.does : 'Belum memilih peran—pilih salah satu di atas atau di layar ponsel.'}
+          </motion.p>
+        </AnimatePresence>
+      </motion.section>
+
+      <motion.section {...enter(2)} className="mt-6" aria-labelledby="skenario">
+        <SectionTitle aside={<span className="flex items-center gap-2.5 text-[12.5px] font-bold text-ink tabular"><StairProgress done={doneCount} total={steps.length} size="sm" />{doneCount}/{steps.length}</span>}>
+          <span id="skenario">Skenario demo</span>
+        </SectionTitle>
+        <ol className="overflow-hidden rounded-[20px] bg-card ring-1 ring-line">
+          {steps.map((step, index) => {
+            const isNext = step.id === nextId;
+            return (
+              <li key={step.id} className="border-b border-line last:border-b-0">
+                <button
+                  type="button"
+                  onClick={() => demo.goTo(step.target)}
+                  className={`group relative flex w-full items-center gap-3 px-3.5 py-2.5 text-left transition-colors hover:bg-paper ${isNext ? 'bg-marigold-soft/60' : ''}`}
+                >
+                  {isNext && <motion.span layoutId="scenario-next" className="absolute inset-y-0 left-0 w-[3px] bg-marigold" />}
+                  <span className={`relative flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[12px] font-bold tabular transition-colors duration-300 ${step.done ? 'bg-leaf text-paper' : isNext ? 'bg-navy text-paper' : 'bg-paper-2 text-ink-3'}`}>
+                    <AnimatePresence mode="wait" initial={false}>
+                      {step.done ? (
+                        <motion.span key="done" initial={{ scale: 0, rotate: -45 }} animate={{ scale: 1, rotate: 0 }} transition={{ type: 'spring', stiffness: 500, damping: 18 }}>
+                          <Check className="h-4 w-4" strokeWidth={3} />
+                        </motion.span>
+                      ) : (
+                        <motion.span key="num" initial={{ scale: 0.6, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}>{index + 1}</motion.span>
+                      )}
+                    </AnimatePresence>
+                  </span>
+                  <span className="min-w-0 flex-1">
+                    <span className={`block text-[14px] font-semibold leading-snug ${step.done ? 'text-ink-3 line-through decoration-ink-3/40' : 'text-ink'}`}>{step.label}</span>
+                    <span className="mt-0.5 block text-[12px] text-ink-3">{ROLE_LABEL[step.target.role]} · {TAB_LABEL[step.target.tab]}</span>
+                  </span>
+                  {isNext && <span className="rounded-full bg-marigold px-2 py-0.5 text-[11px] font-bold text-ink">Berikutnya</span>}
+                </button>
+              </li>
+            );
+          })}
+        </ol>
+        <AnimatePresence>
+          {doneCount === steps.length && (
+            <motion.p initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="mt-3 font-hand text-[22px] leading-tight text-pen">
+              Semua langkah selesai—satu putaran utuh!
+            </motion.p>
+          )}
+        </AnimatePresence>
+      </motion.section>
+
+      <motion.section {...enter(3)} className="mt-6" aria-labelledby="di-layar-ini">
+        <SectionTitle><span id="di-layar-ini">Di layar ini</span></SectionTitle>
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.div
+            key={noteKey}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.22 }}
+            className="notebook rounded-[18px] pb-4 pl-[50px] pr-5 pt-[12px] ring-1 ring-line [--margin-x:36px] [--rule-offset:12px] [--rule:26px]"
+          >
+            <p className="font-display text-[19px] font-semibold leading-[26px] text-ink">{note.title}</p>
+            <p className="text-[13.5px] leading-[26px] text-ink-2">{note.body}</p>
+            {theory && (
+              <a href={href(ROUTES.methodology)} className="group inline-flex items-center gap-1 text-[13px] font-bold leading-[26px] text-navy">
+                <span className="link-underline">Landasan: {theory.name}</span>
+                <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </a>
+            )}
+          </motion.div>
+        </AnimatePresence>
+      </motion.section>
+
+      <div className="mt-auto flex items-center justify-between gap-3 pt-7">
+        <button type="button" onClick={demo.resetDemo} className="group inline-flex items-center gap-2 rounded-full bg-card px-4 py-2.5 text-[13px] font-bold text-ink ring-1 ring-line transition hover:ring-line-2">
+          <RotateCcw className="h-4 w-4 transition-transform duration-500 group-hover:-rotate-180" /> Mulai ulang demo
+        </button>
+        <p className="text-right text-[11.5px] leading-snug text-ink-3">Data simulasi · tidak disimpan</p>
+      </div>
+    </aside>
+  );
+}
