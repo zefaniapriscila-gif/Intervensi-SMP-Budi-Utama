@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, Award } from 'lucide-react';
+import { Bell, Sparkles } from 'lucide-react';
 
-export default function DynamicIsland({ currentPillarName, onOpenSummary }) {
+export default function DynamicIsland({ currentPillarName }) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
@@ -37,9 +37,8 @@ export default function DynamicIsland({ currentPillarName, onOpenSummary }) {
                 <div className="w-1 h-1 rounded-full bg-[#0a0a0a]" />
               </div>
 
-              {/* Right micro badge */}
               <div className="flex items-center gap-0.5 text-[9px] font-bold tracking-tight text-slate-300">
-                <span>GROWTH</span>
+                <span>LANGKAH</span>
               </div>
             </motion.div>
           ) : (
@@ -54,32 +53,23 @@ export default function DynamicIsland({ currentPillarName, onOpenSummary }) {
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-1.5">
                   <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">
-                    <Sparkles className="w-3.5 h-3.5 text-white" />
+                    <Bell className="w-3.5 h-3.5 text-white" />
                   </div>
                   <div>
-                    <p className="text-[10.5px] font-bold text-white leading-none">GROWTH</p>
-                    <p className="text-[8.5px] text-slate-400 mt-0.5">Personal Growth Initiative</p>
+                    <p className="text-[10.5px] font-bold text-white leading-none">LANGKAH</p>
+                    <p className="text-[8.5px] text-slate-400 mt-0.5">Kebiasaan disiplin setiap hari</p>
                   </div>
                 </div>
                 <span className="text-[8.5px] font-semibold bg-white/10 px-2 py-0.5 rounded-full text-slate-200">
-                  Model 4S STT
+                  Pengingat & pembinaan
                 </span>
               </div>
 
               <div className="bg-white/10 rounded-xl p-2 text-[9.5px] text-slate-200 flex items-center justify-between">
                 <span className="truncate max-w-[170px] text-slate-300">
-                  Pilar: <strong className="text-white font-semibold">{currentPillarName || "Overview"}</strong>
+                  Tampilan: <strong className="text-white font-semibold capitalize">{currentPillarName || "Beranda"}</strong>
                 </span>
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    if (onOpenSummary) onOpenSummary();
-                  }}
-                  className="text-[9px] font-bold bg-white text-black px-2.5 py-1 rounded-lg hover:bg-slate-200 transition-colors flex items-center gap-1"
-                >
-                  <Award className="w-2.5 h-2.5" />
-                  Sesi
-                </button>
+                <Sparkles className="h-3.5 w-3.5 text-teal-300" />
               </div>
             </motion.div>
           )}

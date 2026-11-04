@@ -45,7 +45,7 @@
     font-family: var(--font-ios);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #f6f8fb;
+    background-color: #eff1f8;
     color: #09090b;
     margin: 0;
     padding: 0;
@@ -120,6 +120,17 @@
    surface = background kartu, ink = teks/ikon di atas surface.
    --------------------------------------------------------------- */
 @theme {
+  --color-teal-50: #f3f0ff;
+  --color-teal-100: #e7e0ff;
+  --color-teal-200: #d3c7ff;
+  --color-teal-300: #b6a2ff;
+  --color-teal-400: #9478f4;
+  --color-teal-500: #7859e8;
+  --color-teal-600: #6445d0;
+  --color-teal-700: #5237b5;
+  --color-teal-800: #432d91;
+  --color-teal-900: #342568;
+
   --color-blossom-50: #fff3f5;
   --color-blossom-100: #ffdde4;
   --color-blossom-200: #ffc4d0;
@@ -155,4 +166,17 @@
   --color-azure-200: #b0d4ff;
   --color-azure-500: #3b86e0;
   --color-azure-700: #1a539c;
+}
+
+@layer base {
+  html {
+    background: #eff1f8;
+  }
+
+  button,
+  select,
+  input,
+  textarea {
+    font: inherit;
+  }
 }
