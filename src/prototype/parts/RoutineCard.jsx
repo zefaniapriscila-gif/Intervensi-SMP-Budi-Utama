@@ -54,7 +54,7 @@ export default function RoutineCard({ routine, onToggle, readOnly = false, title
                     <CheckMark checked={item.done} />
                   </span>
                   <span className={`flex-1 text-[14.5px] font-medium leading-snug ${item.done ? 'text-ink' : 'text-ink-3'}`}>{item.label}</span>
-                  <span className={`text-[12px] font-bold ${item.done ? 'text-leaf-ink' : 'text-ink-3'}`}>{item.done ? 'Siap' : 'Belum'}</span>
+                  <span className={`text-[12px] font-bold transition-opacity duration-300 ${item.done ? 'text-leaf-ink' : 'text-ink-3'} ${complete ? 'opacity-0' : ''}`}>{item.done ? 'Siap' : 'Belum'}</span>
                 </div>
               ) : (
                 <label className="group flex min-h-[54px] cursor-pointer items-center gap-3 px-5 py-2.5 transition-colors hover:bg-paper/70 active:bg-paper">
@@ -66,7 +66,7 @@ export default function RoutineCard({ routine, onToggle, readOnly = false, title
                   </span>
                   <span className={`flex-1 text-[15px] font-medium leading-snug transition-colors ${item.done ? 'text-ink-3' : 'text-ink'}`}>{item.label}</span>
                   <AnimatePresence initial={false}>
-                    {item.done && (
+                    {item.done && !complete && (
                       <motion.span
                         initial={{ opacity: 0, x: 6 }}
                         animate={{ opacity: 1, x: 0 }}
