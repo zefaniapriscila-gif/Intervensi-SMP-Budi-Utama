@@ -10,6 +10,7 @@ import {
   Clock3,
   Flame,
   Heart,
+  HeartHandshake,
   LockKeyhole,
   MessageCircle,
   Moon,
@@ -559,6 +560,27 @@ export default function App() {
             <h2 className="mt-2 text-xl font-extrabold">Siapkan hari esok bersama.</h2>
             <p className="mt-2 text-sm leading-relaxed text-white/90">Pengingat malam membantu mengecek seragam, buku, tugas, dan alarm.</p>
           </div>
+          <section className="relative overflow-hidden rounded-[24px] border border-blue-100 bg-gradient-to-br from-blue-50 via-white to-grape-50 p-4 shadow-[0_12px_30px_-22px_rgba(54,91,170,0.5)]">
+            <div className="pointer-events-none absolute -right-7 -top-8 h-24 w-24 rounded-full bg-grape-100/70" />
+            <div className="relative">
+              <div className="flex items-start gap-3">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[14px] bg-white text-grape-600 shadow-sm">
+                  <HeartHandshake className="h-5 w-5" />
+                </div>
+                <div>
+                  <p className="text-[10px] font-extrabold uppercase tracking-[0.13em] text-grape-700">Kolaborasi keluarga & sekolah</p>
+                  <h2 className="mt-1 text-[15px] font-extrabold leading-snug text-slate-950">Sejalan dengan disiplin positif sekolah</h2>
+                </div>
+              </div>
+              <p className="mt-3 text-[12px] leading-relaxed text-slate-700">
+                Pengingat pagi mendukung upaya sekolah mengurangi keterlambatan, termasuk saat kebiasaan atau jadwal orang tua mengantar memengaruhi waktu tiba siswa. Tujuannya membangun rutinitas berangkat yang lebih tepat waktu bersama—bukan menyalahkan keluarga.
+              </p>
+              <div className="mt-3 flex items-start gap-2.5 rounded-[15px] border border-white/90 bg-white/80 p-3">
+                <Clock3 className="mt-0.5 h-4 w-4 shrink-0 text-grape-600" />
+                <p className="text-[11px] leading-relaxed text-slate-600"><span className="font-bold text-slate-800">Langkah bersama:</span> atur waktu bersiap, sepakati perkiraan waktu berangkat, lalu sesuaikan pengingat dengan rutinitas keluarga.</p>
+              </div>
+            </div>
+          </section>
           <ReminderCard type="night" title="Persiapan malam" description="Siapkan kebutuhan sekolah bersama." time="Setiap hari · 19.30" enabled={reminders.night} onToggle={() => handleToggleReminder('night')} icon={Moon} />
           <ReminderCard type="morning" title="Waktunya berangkat" description="Bantu anak memperkirakan waktu perjalanan." time="Setiap hari · 06.15" enabled={reminders.morning} onToggle={() => handleToggleReminder('morning')} icon={Sun} />
           <div className="rounded-[22px] border border-slate-100 bg-white p-4">
