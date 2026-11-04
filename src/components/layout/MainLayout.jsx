@@ -1,5 +1,5 @@
-import React from 'react';
-import { BookOpenCheck, HeartHandshake, MoonStar, ShieldCheck, Sparkles, UsersRound } from 'lucide-react';
+import React, { useState } from 'react';
+import { BookOpenCheck, CheckCircle2, ChevronDown, HeartHandshake, Info, MoonStar, ShieldCheck, Sparkles, UsersRound } from 'lucide-react';
 import IPhoneFrame from './IPhoneFrame';
 
 export default function MainLayout({
@@ -17,6 +17,40 @@ export default function MainLayout({
     { id: 'parent', label: 'Orang tua', initials: 'OT' },
     { id: 'teacher', label: 'Wali kelas', initials: 'WK' },
   ];
+  const [selectedFeature, setSelectedFeature] = useState(null);
+  const features = [
+    {
+      id: 'reminders',
+      title: 'Pengingat pagi dan malam',
+      summary: 'Bantu siswa menyiapkan perlengkapan dan berangkat tepat waktu.',
+      icon: MoonStar,
+      tone: 'amber',
+      challenge: 'Pagi yang terburu-buru bisa membuat perlengkapan sekolah tertinggal dan siswa kurang siap.',
+      approach: 'Pengingat malam mengajak siswa dan orang tua mengecek seragam, buku, tugas, serta perangkat belajar. Pengingat pagi membantu siswa bersiap dan memperkirakan waktu perjalanan.',
+      impact: 'Rutinitas yang konsisten membantu siswa lebih mandiri, siap belajar, dan datang tepat waktu.',
+    },
+    {
+      id: 'journal',
+      title: 'Catatan dan pembinaan',
+      summary: 'Refleksi pribadi mendapat dukungan wali kelas secara terarah.',
+      icon: BookOpenCheck,
+      tone: 'blue',
+      challenge: 'Siswa kadang membutuhkan ruang aman untuk menceritakan kendala dan melihat kemajuannya.',
+      approach: 'Siswa menulis refleksi serta langkah kecil berikutnya. Wali kelas memberi umpan balik pribadi yang suportif; orang tua menerima ringkasan perkembangan yang relevan.',
+      impact: 'Komunikasi yang terarah membantu siswa merasa didampingi tanpa mempermalukan atau membandingkan mereka.',
+    },
+    {
+      id: 'recognition',
+      title: 'Apresiasi mingguan',
+      summary: 'Rayakan konsistensi dan perkembangan setiap siswa.',
+      icon: HeartHandshake,
+      tone: 'emerald',
+      challenge: 'Perubahan baik perlu diperhatikan, termasuk kemajuan kecil yang mungkin tidak langsung terlihat.',
+      approach: 'Wali kelas mengapresiasi siswa berdasarkan konsistensi, usaha, dan perkembangan positif selama minggu berjalan.',
+      impact: 'Apresiasi yang adil menguatkan motivasi dan kebiasaan baik, bukan menjadikan penghargaan sebagai perbandingan antar siswa.',
+    },
+  ];
+  const activeFeature = features.find((feature) => feature.id === selectedFeature);
 
   return (
     <div className="growth-canvas relative flex min-h-[100dvh] w-full items-center justify-center overflow-hidden bg-[#eff1f8] text-slate-900">
@@ -85,22 +119,79 @@ export default function MainLayout({
           <section className="mt-5 rounded-[22px] border border-white bg-white/90 p-4 shadow-[0_10px_26px_-20px_rgba(35,42,75,0.3)]">
             <div className="mb-3 flex items-center justify-between">
               <h2 className="text-[10px] font-extrabold uppercase tracking-[0.14em] text-slate-600">Panduan fitur</h2>
-              <span className="rounded-full bg-grape-100 px-2.5 py-1 text-[9px] font-bold text-grape-700">3 langkah</span>
+              <span className="rounded-full bg-grape-100 px-2.5 py-1 text-[9px] font-bold text-grape-700">Pilih untuk detail</span>
             </div>
-            <div className="space-y-3">
-              <div className="flex gap-3 rounded-[15px] border border-amber-100 bg-amber-50/80 p-3">
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-white text-amber-600"><MoonStar className="h-4 w-4" /></div>
-                <div><h3 className="text-[11px] font-bold text-amber-950">Pengingat pagi dan malam</h3><p className="mt-0.5 text-[10px] leading-relaxed text-slate-600">Bantu siswa menyiapkan perlengkapan dan berangkat tepat waktu.</p></div>
-              </div>
-              <div className="flex gap-3 rounded-[15px] border border-blue-100 bg-blue-50/80 p-3">
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-white text-blue-600"><BookOpenCheck className="h-4 w-4" /></div>
-                <div><h3 className="text-[11px] font-bold text-blue-950">Catatan dan pembinaan</h3><p className="mt-0.5 text-[10px] leading-relaxed text-slate-600">Refleksi pribadi mendapat dukungan wali kelas secara terarah.</p></div>
-              </div>
-              <div className="flex gap-3 rounded-[15px] border border-emerald-100 bg-emerald-50/80 p-3">
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-white text-emerald-600"><HeartHandshake className="h-4 w-4" /></div>
-                <div><h3 className="text-[11px] font-bold text-emerald-950">Apresiasi mingguan</h3><p className="mt-0.5 text-[10px] leading-relaxed text-slate-600">Rayakan konsistensi dan perkembangan setiap siswa.</p></div>
-              </div>
+            <div className="space-y-2.5">
+              {features.map((feature, index) => {
+                const Icon = feature.icon;
+                const isSelected = selectedFeature === feature.id;
+                const toneClasses = {
+                  amber: 'border-amber-100 bg-amber-50/80 text-amber-700',
+                  blue: 'border-blue-100 bg-blue-50/80 text-blue-700',
+                  emerald: 'border-emerald-100 bg-emerald-50/80 text-emerald-700',
+                }[feature.tone];
+                return (
+                  <button
+                    key={feature.id}
+                    type="button"
+                    aria-expanded={isSelected}
+                    onClick={() => setSelectedFeature(isSelected ? null : feature.id)}
+                    className={`group flex w-full items-center gap-3 rounded-[16px] border p-3 text-left transition duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-grape-500 ${
+                      isSelected
+                        ? 'border-sky-300 bg-gradient-to-r from-[#356fc8] to-[#15a9df] text-white shadow-[0_12px_24px_-14px_rgba(37,111,200,0.85)]'
+                        : `${toneClasses} hover:-translate-y-0.5 hover:shadow-md`
+                    }`}
+                  >
+                    <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-[13px] ${
+                      isSelected ? 'bg-white/20 text-white' : 'bg-white text-current shadow-sm'
+                    }`}>
+                      <Icon className="h-[18px] w-[18px]" />
+                    </span>
+                    <span className="min-w-0 flex-1">
+                      <span className={`flex items-center gap-2 text-[10px] font-extrabold uppercase tracking-[0.12em] ${
+                        isSelected ? 'text-white/75' : 'opacity-65'
+                      }`}>
+                        {String(index + 1).padStart(2, '0')} <span>FITUR</span>
+                      </span>
+                      <span className="mt-0.5 block text-[12px] font-extrabold leading-snug">{feature.title}</span>
+                      <span className={`mt-0.5 block text-[10px] leading-relaxed ${
+                        isSelected ? 'text-white/85' : 'text-slate-600'
+                      }`}>{feature.summary}</span>
+                    </span>
+                    <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition ${
+                      isSelected ? 'bg-white/20 text-white' : 'bg-white/75 text-slate-500 group-hover:text-grape-600'
+                    }`}>
+                      <ChevronDown className={`h-4 w-4 transition-transform ${isSelected ? 'rotate-180' : ''}`} />
+                    </span>
+                  </button>
+                );
+              })}
             </div>
+            {activeFeature && (
+              <div className="mt-3 overflow-hidden rounded-[18px] border border-slate-200 bg-white shadow-[0_12px_28px_-20px_rgba(35,42,75,0.4)]">
+                <div className="flex items-center justify-between gap-3 border-b border-slate-100 px-3.5 py-3">
+                  <div className="flex items-center gap-2 text-grape-700">
+                    <Info className="h-4 w-4" />
+                    <h3 className="text-[10px] font-extrabold uppercase tracking-[0.12em]">Panduan & cara kerja fitur</h3>
+                  </div>
+                  <span className="rounded-full bg-grape-100 px-2 py-1 text-[9px] font-bold text-grape-700">Detail</span>
+                </div>
+                <div className="space-y-2.5 p-3">
+                  <div className="rounded-[14px] border border-rose-200 bg-rose-50/80 p-3">
+                    <p className="flex items-center gap-1.5 text-[10px] font-extrabold text-rose-800"><Info className="h-3.5 w-3.5" /> Tantangan yang dijawab</p>
+                    <p className="mt-1.5 text-[10px] leading-relaxed text-slate-700">{activeFeature.challenge}</p>
+                  </div>
+                  <div className="rounded-[14px] border border-blue-200 bg-blue-50/80 p-3">
+                    <p className="flex items-center gap-1.5 text-[10px] font-extrabold text-blue-800"><BookOpenCheck className="h-3.5 w-3.5" /> Cara kerja fitur</p>
+                    <p className="mt-1.5 text-[10px] leading-relaxed text-slate-700">{activeFeature.approach}</p>
+                  </div>
+                  <div className="rounded-[14px] border border-emerald-200 bg-emerald-50/80 p-3">
+                    <p className="flex items-center gap-1.5 text-[10px] font-extrabold text-emerald-800"><CheckCircle2 className="h-3.5 w-3.5" /> Dampak yang diharapkan</p>
+                    <p className="mt-1.5 text-[10px] leading-relaxed text-slate-700">{activeFeature.impact}</p>
+                  </div>
+                </div>
+              </div>
+            )}
           </section>
 
           <p className="mt-auto pt-5 text-[9px] leading-relaxed text-slate-400">Pratinjau prototipe · Data dan notifikasi masih berupa simulasi.</p>

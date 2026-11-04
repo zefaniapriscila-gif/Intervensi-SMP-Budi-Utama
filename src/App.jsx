@@ -90,7 +90,7 @@ function ReminderCard({ type, title, description, time, enabled, onToggle, icon:
               aria-label={`${enabled ? 'Matikan' : 'Nyalakan'} ${title.toLowerCase()}`}
               className={`relative mt-0.5 h-6 w-11 shrink-0 rounded-full transition-colors ${enabled ? 'bg-teal-600' : 'bg-slate-200'}`}
             >
-              <span className={`absolute top-0.5 h-5 w-5 rounded-full bg-white shadow-sm transition-transform ${enabled ? 'translate-x-[22px]' : 'translate-x-0.5'}`} />
+              <span className={`absolute left-0.5 top-0.5 h-5 w-5 rounded-full bg-white shadow-sm transition-transform ${enabled ? 'translate-x-[20px]' : 'translate-x-0'}`} />
             </button>
           </div>
           <div className="mt-3 flex items-center justify-between border-t border-slate-100 pt-2.5">
