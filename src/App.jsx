@@ -35,7 +35,7 @@ const WEEKLY_STUDENTS = [
 ];
 
 const STUDENTS_NEEDING_SUPPORT = [
-  { name: 'Alya Putri', className: 'VII A', detail: 'Perlu dukungan menyusun rutinitas persiapan sekolah.' },
+  { name: 'Holyna Putri', className: 'VII A', detail: 'Perlu dukungan menyusun rutinitas persiapan sekolah.' },
   { name: 'Bima Ramadhan', className: 'VII B', detail: 'Perlu pengingat untuk menyiapkan atribut sebelum berangkat.' },
 ];
 
@@ -127,7 +127,7 @@ function StudentHome({ routine, onToggleRoutine, reminders, onToggleReminder, on
         </div>
         <div>
           <p className="text-[13px] text-slate-500">Halo,</p>
-          <h1 className="text-[20px] font-extrabold leading-tight tracking-tight text-slate-950">Alya!</h1>
+          <h1 className="text-[20px] font-extrabold leading-tight tracking-tight text-slate-950">Holyna!</h1>
         </div>
         <span className="ml-auto rounded-full bg-grape-50 px-3 py-1.5 text-[10px] font-bold text-grape-700">Kelas VII A</span>
       </div>
@@ -257,11 +257,11 @@ function JournalScreen({ journal, onChange, onSubmit, role }) {
   if (role === 'parent') {
     return (
       <div className="space-y-4 px-5 pb-6 pt-4">
-        <SectionHeading eyebrow="Kolaborasi keluarga" title="Kabar dari sekolah" description="Ringkasan perkembangan Alya yang dibagikan wali kelas." icon={Heart} />
+        <SectionHeading eyebrow="Kolaborasi keluarga" title="Kabar dari sekolah" description="Ringkasan perkembangan Holyna yang dibagikan wali kelas." icon={Heart} />
         <div className="rounded-[22px] border border-teal-100 bg-teal-50 p-4">
           <p className="text-[10px] font-bold uppercase tracking-wider text-teal-700">Laporan kualitatif · Hari ini</p>
           <h2 className="mt-2 font-extrabold text-slate-900">Rutinitas makin teratur</h2>
-          <p className="mt-1 text-[13px] leading-relaxed text-slate-600">Alya mengikuti kegiatan belajar dengan baik. Terus dukung kebiasaan menyiapkan perlengkapan sekolah pada malam hari.</p>
+          <p className="mt-1 text-[13px] leading-relaxed text-slate-600">Holyna mengikuti kegiatan belajar dengan baik. Terus dukung kebiasaan menyiapkan perlengkapan sekolah pada malam hari.</p>
         </div>
         <div className="rounded-[22px] border border-slate-100 bg-white p-4">
           <div className="flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-teal-700" /><h2 className="text-sm font-bold text-slate-900">Privasi anak terjaga</h2></div>
@@ -288,13 +288,13 @@ function JournalScreen({ journal, onChange, onSubmit, role }) {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-teal-100 text-sm font-bold text-teal-800">AP</div>
-              <div><p className="text-sm font-bold text-slate-900">Alya Putri</p><p className="text-xs text-slate-500">VII A · Hari ini</p></div>
+              <div><p className="text-sm font-bold text-slate-900">Holyna Putri</p><p className="text-xs text-slate-500">VII A · Hari ini</p></div>
             </div>
             <span className={`rounded-full px-2.5 py-1 text-[10px] font-bold ${journal.sent ? 'bg-teal-50 text-teal-700' : 'bg-amber-50 text-amber-700'}`}>{journal.sent ? 'Catatan masuk' : 'Menunggu catatan'}</span>
           </div>
           <div className="mt-4 rounded-2xl bg-slate-50 p-3.5">
             <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Kendala yang dirasakan</p>
-            <p className="mt-1.5 text-[13px] leading-relaxed text-slate-700">{journal.sent ? journal.challenge : 'Alya belum mengirim catatan hari ini.'}</p>
+            <p className="mt-1.5 text-[13px] leading-relaxed text-slate-700">{journal.sent ? journal.challenge : 'Holyna belum mengirim catatan hari ini.'}</p>
             {journal.sent && journal.reflection && <p className="mt-2 text-[13px] leading-relaxed text-slate-700">&ldquo;{journal.reflection}&rdquo;</p>}
           </div>
           {journal.feedbackSent && journal.feedback && (
@@ -303,7 +303,7 @@ function JournalScreen({ journal, onChange, onSubmit, role }) {
               <p className="mt-1.5 text-[13px] leading-relaxed text-slate-700">{journal.feedback}</p>
             </div>
           )}
-          <label htmlFor="teacher-feedback" className="mt-4 block text-xs font-bold text-slate-700">Balasan pribadi untuk Alya</label>
+          <label htmlFor="teacher-feedback" className="mt-4 block text-xs font-bold text-slate-700">Balasan pribadi untuk Holyna</label>
           <textarea
             id="teacher-feedback"
             value={journal.feedback}
@@ -400,7 +400,7 @@ function RecognitionScreen({ role, onNavigate }) {
         <div className="rounded-[24px] bg-gradient-to-br from-grape-500 via-[#8a5deb] to-blossom-500 p-5 text-white">
           <Award className="h-7 w-7" />
           <h2 className="mt-3 text-lg font-extrabold">Usaha kecil layak diapresiasi.</h2>
-          <p className="mt-1 text-sm leading-relaxed text-white/90">Alya sedang membangun rutinitas persiapan sekolah. Rayakan prosesnya, bukan hanya hasilnya.</p>
+          <p className="mt-1 text-sm leading-relaxed text-white/90">Holyna sedang membangun rutinitas persiapan sekolah. Rayakan prosesnya, bukan hanya hasilnya.</p>
         </div>
         <div className="rounded-[22px] border border-slate-100 bg-white p-4">
           <h2 className="text-sm font-extrabold text-slate-900">Coba ucapkan</h2>
@@ -554,7 +554,7 @@ export default function App() {
       )}
       {activeTab === 'home' && role === 'parent' && (
         <div className="space-y-5 px-5 pb-6 pt-4">
-          <SectionHeading eyebrow="Ruang keluarga" title="Dukung rutinitas Alya" description="Kerja sama kecil di rumah membantu pagi lebih siap." icon={Heart} />
+          <SectionHeading eyebrow="Ruang keluarga" title="Dukung rutinitas Holyna" description="Kerja sama kecil di rumah membantu pagi lebih siap." icon={Heart} />
           <div className="rounded-[24px] bg-gradient-to-br from-grape-500 via-[#8a5deb] to-blossom-500 p-5 text-white">
             <p className="text-xs font-semibold text-white/90">Pengingat keluarga</p>
             <h2 className="mt-2 text-xl font-extrabold">Siapkan hari esok bersama.</h2>
@@ -600,7 +600,7 @@ export default function App() {
           </div>
           <button type="button" onClick={() => setActiveTab('journal')} className="flex w-full items-center gap-3 rounded-[22px] border border-slate-100 bg-white p-4 text-left shadow-sm">
             <div className="flex h-11 w-11 items-center justify-center rounded-full bg-teal-100 text-sm font-bold text-teal-800">AP</div>
-            <div className="flex-1"><p className="text-sm font-bold text-slate-900">Alya Putri · VII A</p><p className="text-xs text-slate-500">{journal.sent ? 'Catatan diterima · beri umpan balik' : 'Menunggu catatan harian'}</p></div>
+            <div className="flex-1"><p className="text-sm font-bold text-slate-900">Holyna Putri · VII A</p><p className="text-xs text-slate-500">{journal.sent ? 'Catatan diterima · beri umpan balik' : 'Menunggu catatan harian'}</p></div>
             <ChevronRight className="h-4 w-4 text-slate-400" />
           </button>
           <div className="flex gap-2.5 rounded-2xl border border-indigo-100 bg-indigo-50 p-3.5"><ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-indigo-700" /><p className="text-[11px] leading-relaxed text-indigo-900">Gunakan catatan untuk bimbingan personal. Sampaikan ringkasan kualitatif kepada orang tua tanpa isi percakapan pribadi.</p></div>

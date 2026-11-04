@@ -77,7 +77,7 @@ export default function MainLayout({
               <div className="flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-grape-200 to-blossom-200 text-xs font-extrabold text-grape-800">{roles.find((item) => item.id === role)?.initials}</div>
                 <div>
-                  <p className="text-[13px] font-bold text-slate-900">{role === 'student' ? 'Alya Putri' : role === 'parent' ? 'Orang tua Alya' : 'Wali kelas VII A'}</p>
+                  <p className="text-[13px] font-bold text-slate-900">{role === 'student' ? 'Holyna Putri' : role === 'parent' ? 'Orang tua Holyna' : 'Wali kelas VII A'}</p>
                   <p className="text-[10px] text-slate-500">{role === 'student' ? 'Siswa · Kelas VII A' : role === 'parent' ? 'Pendamping keluarga' : 'Pendamping siswa'}</p>
                 </div>
               </div>
