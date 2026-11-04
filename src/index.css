@@ -1,50 +1,48 @@
 @import "tailwindcss";
 
 /* ------------------------------------------------------------------
-   LANGKAH · sistem visual "putih–biru"
-   Warna diambil dari seragam SMP (putih + biru dongker), kertas buku
-   tulis, tinta pulpen guru, dan stiker bintang. Palet sengaja dibuat
-   ketat: semua warna Tailwind bawaan dimatikan supaya tidak ada warna
-   liar di luar sistem ini.
+   LANGKAH · palet pastel versi sebelumnya
+   Latar lavender-biru, tinta slate, aksen ungu, dan warna hangat
+   dipertahankan bersama tata letak LANGKAH yang sekarang.
    ------------------------------------------------------------------ */
 @theme {
   --color-*: initial;
   --color-white: #ffffff;
   --color-black: #000000;
 
-  /* Kertas */
-  --color-paper: #f6f2ea;
-  --color-paper-2: #eee8db;
-  --color-paper-3: #e4dbc9;
-  --color-card: #fffcf6;
+  /* Latar pastel dan permukaan kartu */
+  --color-paper: #f4f6fc;
+  --color-paper-2: #edf1fa;
+  --color-paper-3: #e6edff;
+  --color-card: #ffffff;
 
-  /* Tinta biru dongker */
-  --color-ink: #141a3a;
-  --color-ink-2: #3b4163;
-  --color-ink-3: #62657f;
-  --color-line: #ded6c6;
-  --color-line-2: #cbc1ad;
+  /* Tinta slate */
+  --color-ink: #292b34;
+  --color-ink-2: #515361;
+  --color-ink-3: #777987;
+  --color-line: #e3e7f0;
+  --color-line-2: #d3d9e8;
 
-  /* Seragam & malam */
-  --color-navy: #1e2a5e;
-  --color-navy-2: #2b3a78;
-  --color-night: #111940;
-  --color-mist: #b9bedb;
+  /* Aksen biru-ungu dari tampilan sebelumnya */
+  --color-navy: #6954c7;
+  --color-navy-2: #5237b5;
+  --color-night: #342568;
+  --color-mist: #cfc3ff;
 
-  /* Matahari pagi & stiker bintang */
-  --color-marigold: #f2b134;
-  --color-marigold-2: #f7c969;
-  --color-marigold-soft: #fbebc4;
-  --color-marigold-ink: #8f5a00;
+  /* Aksen kuning hangat */
+  --color-marigold: #e5a100;
+  --color-marigold-2: #ffedb5;
+  --color-marigold-soft: #fff9e6;
+  --color-marigold-ink: #94660a;
 
-  /* Tinta pulpen guru & stempel */
-  --color-pen: #b03a1c;
-  --color-pen-soft: #f7dcd2;
+  /* Aksen coral */
+  --color-pen: #f2637d;
+  --color-pen-soft: #fff3f5;
 
   /* Tanda selesai */
-  --color-leaf: #2e8a5f;
-  --color-leaf-ink: #257450;
-  --color-leaf-soft: #d9eee1;
+  --color-leaf: #17b183;
+  --color-leaf-ink: #0a7355;
+  --color-leaf-soft: #ecfaf4;
 
   /* Buku tulis bergaris */
   --color-rule: #c9d7ee;
@@ -58,9 +56,9 @@
   --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 
-  --shadow-paper: 0 1px 0 rgb(20 26 58 / 0.04), 0 10px 28px -16px rgb(20 26 58 / 0.28);
-  --shadow-lift: 0 2px 6px -2px rgb(20 26 58 / 0.12), 0 26px 50px -24px rgb(20 26 58 / 0.4);
-  --shadow-press: inset 0 1px 0 rgb(255 255 255 / 0.12), 0 1px 0 rgb(20 26 58 / 0.25), 0 8px 18px -10px rgb(20 26 58 / 0.55);
+  --shadow-paper: 0 1px 0 rgb(41 43 52 / 0.04), 0 10px 28px -16px rgb(41 43 52 / 0.2);
+  --shadow-lift: 0 2px 6px -2px rgb(41 43 52 / 0.12), 0 26px 50px -24px rgb(41 43 52 / 0.28);
+  --shadow-press: inset 0 1px 0 rgb(255 255 255 / 0.12), 0 1px 0 rgb(41 43 52 / 0.2), 0 8px 18px -10px rgb(41 43 52 / 0.42);
 }
 
 @layer base {
@@ -182,8 +180,8 @@
 @utility graph-paper {
   background-color: var(--color-paper);
   background-image:
-    linear-gradient(rgb(30 42 94 / 0.055) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(30 42 94 / 0.055) 1px, transparent 1px);
+    linear-gradient(rgb(105 84 199 / 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(105 84 199 / 0.055) 1px, transparent 1px);
   background-size: 28px 28px;
   background-position: -1px -1px;
 }
