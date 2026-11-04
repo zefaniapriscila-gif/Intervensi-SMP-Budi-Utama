@@ -492,7 +492,9 @@ function RecognitionScreen({ role, onNavigate }) {
 export default function App() {
   const [activeTab, setActiveTab] = useState('home');
   const [role, setRole] = useState('student');
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(() => (
+    typeof window !== 'undefined' && window.matchMedia('(min-width: 1024px)').matches
+  ));
   const [routine, setRoutine] = useState(INITIAL_ROUTINE);
   const [reminders, setReminders] = useState({ night: true, morning: true });
   const [journal, setJournal] = useState(INITIAL_JOURNAL);
@@ -519,6 +521,11 @@ export default function App() {
     setIsLoggedIn(true);
   };
 
+  const handleRoleChange = (selectedRole) => {
+    setRole(selectedRole);
+    setActiveTab('home');
+  };
+
   const handleLogout = () => {
     setIsLoggedIn(false);
     setActiveTab('home');
@@ -529,7 +536,7 @@ export default function App() {
       activeTab={activeTab}
       onTabChange={setActiveTab}
       role={role}
-      onRoleChange={setRole}
+      onRoleChange={handleRoleChange}
       isLoggedIn={isLoggedIn}
       onLogin={handleLogin}
       onLogout={handleLogout}
