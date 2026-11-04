@@ -173,7 +173,7 @@ function LandingPage({ onHome, onPrototype, onMethodology }) {
           </p>
         </section>
 
-        <section className="mx-auto mt-12 max-w-6xl sm:mt-16">
+        <section className="mx-auto mt-5 max-w-6xl sm:mt-5">
           <div className="mb-4 flex items-end justify-between gap-3">
             <div>
               <p className="text-[9px] font-extrabold uppercase tracking-[0.17em] text-grape-700">Jelajahi ruang LANGKAH</p>
