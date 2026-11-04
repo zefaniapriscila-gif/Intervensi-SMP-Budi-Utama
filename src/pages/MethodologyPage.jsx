@@ -80,27 +80,19 @@ function Intro({ onOpenPrototype }) {
           </Magnetic>
         </motion.div>
       </div>
-      <motion.nav {...rise(0.3)} aria-label="Daftar isi" className="self-end lg:col-span-4">
-        <div className="rounded-[28px] border border-line bg-card p-5 shadow-paper sm:p-6">
-          <div className="flex items-center justify-between gap-3">
-            <p className="font-hand text-[25px] leading-none text-pen">peta metodologi</p>
-            <span className="rounded-full bg-marigold-soft px-3 py-1 text-[11px] font-bold text-marigold-ink">4 bagian</span>
-          </div>
-          <ol className="mt-5">
-            {CONTENTS.map((item, index) => (
-              <li key={item.id} className="border-t border-line">
-                <button type="button" onClick={() => scrollToSection(item.id)} className="group flex w-full items-center gap-3 py-3.5 text-left">
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-paper font-display text-[13px] font-semibold text-navy tabular transition-colors group-hover:bg-navy group-hover:text-paper">{String(index + 1).padStart(2, '0')}</span>
-                  <span className="flex-1 text-[14px] font-semibold text-ink sm:text-[15px]">{item.label}</span>
-                  <ArrowDown className="h-4 w-4 text-ink-3 transition-transform duration-300 group-hover:translate-y-0.5 group-hover:text-navy" />
-                </button>
-              </li>
-            ))}
-          </ol>
-          <div className="mt-2 flex gap-1.5" aria-hidden="true">
-            {CONTENTS.map((item, index) => <span key={item.id} className={`h-1.5 flex-1 rounded-full ${index === 0 ? 'bg-marigold' : 'bg-paper-3'}`} />)}
-          </div>
-        </div>
+      <motion.nav {...rise(0.3)} aria-label="Daftar isi" className="self-end lg:col-span-4 lg:pl-6">
+        <p className="font-hand text-[24px] leading-none text-pen">daftar isi</p>
+        <ol className="mt-3 border-t border-line">
+          {CONTENTS.map((item, index) => (
+            <li key={item.id} className="border-b border-line">
+              <button type="button" onClick={() => scrollToSection(item.id)} className="group flex w-full items-center gap-4 py-3.5 text-left">
+                <span className="font-display text-[15px] text-ink-3 tabular">{String(index + 1).padStart(2, '0')}</span>
+                <span className="flex-1 text-[16px] font-semibold text-ink">{item.label}</span>
+                <ArrowDown className="h-4 w-4 text-ink-3 transition-transform duration-300 group-hover:translate-y-0.5 group-hover:text-ink" />
+              </button>
+            </li>
+          ))}
+        </ol>
       </motion.nav>
     </section>
   );
