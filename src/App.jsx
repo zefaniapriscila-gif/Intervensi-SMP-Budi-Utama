@@ -217,13 +217,14 @@ function LandingPage({ onHome, onPrototype, onMethodology }) {
               </div>
             </div>
           </div>
-          <button type="button" onClick={() => onPrototype('home')} className="group flex items-center justify-between gap-4 rounded-[22px] border border-white bg-white/85 p-5 text-left shadow-[0_12px_30px_-22px_rgba(44,55,96,0.35)] transition hover:-translate-y-0.5 hover:shadow-lg sm:p-6">
-            <span>
-              <span className="block text-[9px] font-extrabold uppercase tracking-[0.15em] text-grape-700">Siap mencoba?</span>
-              <span className="mt-1 block text-[16px] font-extrabold text-slate-950">Masuk ke prototype</span>
-              <span className="mt-1 block text-[10px] leading-relaxed text-slate-500">Pilih tampilan siswa, orang tua, atau wali kelas.</span>
+          <button type="button" onClick={() => onPrototype('home')} className="group relative flex min-h-[190px] items-center justify-between gap-4 overflow-hidden rounded-[22px] bg-gradient-to-br from-[#233a72] via-[#3d59a2] to-[#6954c7] p-5 text-left text-white shadow-[0_18px_36px_-22px_rgba(48,58,118,0.72)] transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_22px_42px_-22px_rgba(48,58,118,0.82)] sm:min-h-0 sm:p-6">
+            <span className="pointer-events-none absolute -right-10 -top-14 h-44 w-44 rounded-full bg-white/10 transition-transform duration-300 group-hover:scale-110" />
+            <span className="relative">
+              <span className="block text-[9px] font-extrabold uppercase tracking-[0.15em] text-white/65">Siap mencoba?</span>
+              <span className="mt-1 block text-[16px] font-extrabold text-white">Masuk ke prototype</span>
+              <span className="mt-1 block text-[10px] leading-relaxed text-white/80">Pilih tampilan siswa, orang tua, atau wali kelas.</span>
             </span>
-            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-grape-100 text-grape-700 transition group-hover:bg-grape-600 group-hover:text-white"><ArrowRight className="h-4 w-4" /></span>
+            <span className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/15 text-white transition group-hover:bg-white/25"><ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" /></span>
           </button>
         </section>
         <footer className="mx-auto flex max-w-6xl flex-col justify-between gap-1.5 px-1 pb-2 pt-8 text-[9px] text-slate-400 sm:flex-row">
