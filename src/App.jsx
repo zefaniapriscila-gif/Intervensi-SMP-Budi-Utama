@@ -1,24 +1,31 @@
 import React, { useState } from 'react';
 import {
+  ArrowRight,
   ArrowUpRight,
   Award,
   Bell,
   BookOpen,
+  CalendarDays,
   Check,
   CheckCircle2,
   ChevronRight,
   Clock3,
+  Compass,
   Flame,
   Heart,
   HeartHandshake,
+  Lightbulb,
   LockKeyhole,
   MessageCircle,
   Moon,
+  Repeat2,
   Send,
   ShieldCheck,
   Sparkles,
   Sun,
+  Target,
   Users,
+  UsersRound,
 } from 'lucide-react';
 import MainLayout from './components/layout/MainLayout';
 
@@ -47,6 +54,286 @@ const INITIAL_JOURNAL = {
   feedbackSent: false,
   sent: false,
 };
+
+const PROGRAM_FEATURES = [
+  {
+    id: 'reminders',
+    title: 'Pengingat pagi dan malam',
+    description: 'Siapkan kebutuhan sekolah malam sebelumnya dan bangun rutinitas berangkat tepat waktu bersama keluarga.',
+    icon: CalendarDays,
+    tone: 'amber',
+    tab: 'home',
+  },
+  {
+    id: 'journal',
+    title: 'Catatan pembinaan personal',
+    description: 'Ruang refleksi pribadi siswa dengan umpan balik wali kelas dan ringkasan kualitatif untuk orang tua.',
+    icon: BookOpen,
+    tone: 'blue',
+    tab: 'journal',
+  },
+  {
+    id: 'recognition',
+    title: 'Apresiasi mingguan',
+    description: 'Apresiasi untuk siswa yang konsisten disiplin maupun yang menunjukkan perkembangan terbaik.',
+    icon: Award,
+    tone: 'mint',
+    tab: 'recognition',
+  },
+];
+
+const METHODOLOGY_THEORIES = [
+  {
+    number: '01',
+    name: 'Self-regulation',
+    author: 'Albert Bandura · 1991',
+    icon: Target,
+    tone: 'blue',
+    summary: 'Disiplin berkembang saat siswa belajar memantau perilaku, menilai pencapaian target, lalu menentukan respons atau langkah perbaikan.',
+    application: 'Pengingat membantu mengingat target; jurnal menjadi sarana self-monitoring dan evaluasi; umpan balik membantu siswa merencanakan langkah berikutnya.',
+  },
+  {
+    number: '02',
+    name: 'Social learning & vicarious reinforcement',
+    author: 'Albert Bandura · 1978; Mertens et al. · 2021',
+    icon: UsersRound,
+    tone: 'violet',
+    summary: 'Siswa dapat belajar dengan mengamati perilaku teman sebaya serta konsekuensi positif yang diterima.',
+    application: 'Student of the Week menampilkan contoh perilaku disiplin yang diapresiasi agar dapat menjadi inspirasi, tanpa menjadikan siswa bahan perbandingan.',
+  },
+  {
+    number: '03',
+    name: 'Positive reinforcement',
+    author: 'B. F. Skinner; Whitney & Ackerman · 2020',
+    icon: HeartHandshake,
+    tone: 'mint',
+    summary: 'Apresiasi yang diberikan setelah perilaku positif dapat meningkatkan kemungkinan perilaku tersebut diulangi.',
+    application: 'Apresiasi dibuat spesifik pada perilaku dan diberikan dekat dengan waktu perilaku muncul. Untuk hal yang perlu diperbaiki, siswa diberi arahan yang jelas dan suportif.',
+  },
+  {
+    number: '04',
+    name: 'Spiral curriculum',
+    author: 'Jerome Bruner · Maskur, 2025',
+    icon: Repeat2,
+    tone: 'amber',
+    summary: 'Pembelajaran dapat dibangun bertahap dengan meninjau pengalaman, sementara guru membimbing sesuai kebutuhan siswa.',
+    application: 'Catatan personal membantu siswa kembali melihat pengalaman, mengenali hal yang perlu dipertahankan atau diperbaiki, lalu mencoba langkah konkret.',
+  },
+];
+
+function PublicNav({ activePage, onHome, onPrototype, onMethodology }) {
+  return (
+    <header className="relative z-10 mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-5 py-4 sm:px-8 lg:px-10">
+      <button type="button" onClick={onHome} className="flex items-center gap-2.5 text-left">
+        <span className="flex h-10 w-10 items-center justify-center rounded-[14px] bg-gradient-to-br from-teal-500 via-grape-500 to-blossom-500 text-white shadow-[0_8px_18px_-8px_rgba(99,76,210,0.6)]">
+          <ShieldCheck className="h-5 w-5" />
+        </span>
+        <span>
+          <span className="block text-[15px] font-extrabold tracking-tight text-slate-950">LANGKAH</span>
+          <span className="block text-[9px] font-semibold text-slate-500">SMP Budi Utama</span>
+        </span>
+      </button>
+      <nav aria-label="Navigasi situs" className="flex items-center gap-1 rounded-full border border-white/90 bg-white/75 p-1 shadow-[0_5px_18px_-12px_rgba(47,54,93,0.35)] backdrop-blur-lg">
+        <button type="button" onClick={onHome} aria-current={activePage === 'landing' ? 'page' : undefined} className={`rounded-full px-3 py-2 text-[10px] font-bold transition sm:px-4 sm:text-xs ${activePage === 'landing' ? 'bg-slate-950 text-white' : 'text-slate-600 hover:bg-slate-100'}`}>Beranda</button>
+        <button type="button" onClick={onPrototype} aria-current={activePage === 'prototype' ? 'page' : undefined} className={`rounded-full px-3 py-2 text-[10px] font-bold transition sm:px-4 sm:text-xs ${activePage === 'prototype' ? 'bg-slate-950 text-white' : 'text-slate-600 hover:bg-slate-100'}`}>Prototype</button>
+        <button type="button" onClick={onMethodology} aria-current={activePage === 'methodology' ? 'page' : undefined} className={`rounded-full px-3 py-2 text-[10px] font-bold transition sm:px-4 sm:text-xs ${activePage === 'methodology' ? 'bg-slate-950 text-white' : 'text-slate-600 hover:bg-slate-100'}`}>Metodologi</button>
+      </nav>
+    </header>
+  );
+}
+
+function LandingPage({ onHome, onPrototype, onMethodology }) {
+  return (
+    <div className="relative min-h-[100dvh] overflow-hidden bg-[#f4f6fc] text-slate-900">
+      <div className="pointer-events-none absolute -left-40 top-36 h-[480px] w-[480px] rounded-full bg-[#dce7ff]/70 blur-[110px]" />
+      <div className="pointer-events-none absolute -right-36 top-24 h-[440px] w-[440px] rounded-full bg-[#f8dcec]/65 blur-[110px]" />
+      <PublicNav activePage="landing" onHome={onHome} onPrototype={onPrototype} onMethodology={onMethodology} />
+      <main className="relative z-10 mx-auto w-full max-w-7xl px-5 pb-12 sm:px-8 lg:px-10">
+        <section className="mx-auto flex max-w-4xl flex-col items-center pt-12 text-center sm:pt-16 lg:pt-20">
+          <span className="inline-flex items-center gap-2 rounded-full border border-white bg-white/85 px-4 py-2 text-[9px] font-extrabold uppercase tracking-[0.13em] text-slate-700 shadow-sm sm:text-[10px]">
+            <span className="h-2 w-2 rounded-full bg-mint-500" />
+            Program intervensi disiplin · 2026
+          </span>
+          <h1 className="mt-6 max-w-4xl text-[38px] font-black leading-[1.04] tracking-[-0.045em] text-slate-950 sm:text-6xl lg:text-[72px]">
+            Kebiasaan baik tumbuh dari <span className="bg-gradient-to-r from-[#257bc2] via-grape-500 to-blossom-500 bg-clip-text text-transparent">langkah kecil.</span>
+          </h1>
+          <p className="mt-5 max-w-2xl text-[14px] leading-relaxed text-slate-600 sm:text-[17px]">
+            Ruang kolaborasi siswa, keluarga, dan sekolah untuk membangun disiplin secara positif—mulai dari persiapan, refleksi, sampai apresiasi.
+          </p>
+          <div className="mt-7 flex w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row">
+            <button type="button" onClick={() => onPrototype('home')} className="group inline-flex items-center justify-center gap-2 rounded-[15px] bg-gradient-to-r from-[#297ac1] to-[#159bd2] px-6 py-3.5 text-[13px] font-extrabold text-white shadow-[0_14px_28px_-14px_rgba(35,120,190,0.8)] transition hover:-translate-y-0.5">
+              Jelajahi prototype <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </button>
+            <button type="button" onClick={onMethodology} className="inline-flex items-center justify-center gap-2 rounded-[15px] border border-white bg-white/90 px-6 py-3.5 text-[13px] font-bold text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:text-grape-700">
+              <BookOpen className="h-4 w-4" /> Lihat metodologi
+            </button>
+          </div>
+          <p className="mt-4 flex items-center gap-2 text-[10px] font-medium text-slate-500">
+            <Users className="h-3.5 w-3.5" /> Pendekatan bersama siswa · orang tua · wali kelas
+          </p>
+        </section>
+
+        <section className="mx-auto mt-12 max-w-6xl sm:mt-16">
+          <div className="mb-4 flex items-end justify-between gap-3">
+            <div>
+              <p className="text-[9px] font-extrabold uppercase tracking-[0.17em] text-grape-700">Jelajahi ruang LANGKAH</p>
+              <h2 className="mt-1 text-[19px] font-extrabold tracking-tight text-slate-950 sm:text-2xl">Tiga langkah penguatan disiplin</h2>
+            </div>
+            <button type="button" onClick={() => onPrototype('home')} className="hidden items-center gap-1 text-[11px] font-bold text-grape-700 hover:text-grape-900 sm:flex">
+              Buka semua <ChevronRight className="h-4 w-4" />
+            </button>
+          </div>
+          <div className="grid gap-3 md:grid-cols-3">
+            {PROGRAM_FEATURES.map((feature, index) => {
+              const Icon = feature.icon;
+              const tone = {
+                amber: 'from-[#fff8e6] to-[#fff1d2] text-amber-700 border-amber-100',
+                blue: 'from-[#edf5ff] to-[#e6edff] text-blue-700 border-blue-100',
+                mint: 'from-[#e9fbf4] to-[#dff7ee] text-emerald-700 border-emerald-100',
+              }[feature.tone];
+              return (
+                <button key={feature.id} type="button" onClick={() => onPrototype(feature.tab)} className="group relative overflow-hidden rounded-[22px] border border-white bg-white/90 p-4 text-left shadow-[0_12px_30px_-22px_rgba(44,55,96,0.35)] transition duration-200 hover:-translate-y-1 hover:shadow-[0_20px_38px_-24px_rgba(44,55,96,0.48)] sm:p-5">
+                  <div className={`flex h-11 w-11 items-center justify-center rounded-[15px] border bg-gradient-to-br ${tone}`}><Icon className="h-5 w-5" /></div>
+                  <p className="mt-4 text-[9px] font-extrabold uppercase tracking-[0.15em] text-slate-400">0{index + 1} · Prototype</p>
+                  <h3 className="mt-1 text-[15px] font-extrabold leading-snug text-slate-900">{feature.title}</h3>
+                  <p className="mt-2 text-[11px] leading-relaxed text-slate-600">{feature.description}</p>
+                  <span className="mt-4 inline-flex items-center gap-1 text-[10px] font-extrabold text-grape-700">Buka fitur <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" /></span>
+                </button>
+              );
+            })}
+          </div>
+        </section>
+
+        <section className="mx-auto mt-5 grid max-w-6xl gap-3 md:grid-cols-[1.4fr_0.6fr]">
+          <div className="relative overflow-hidden rounded-[22px] bg-gradient-to-r from-[#233a72] via-[#3d59a2] to-[#6954c7] p-5 text-white shadow-[0_18px_36px_-22px_rgba(48,58,118,0.72)] sm:p-6">
+            <div className="pointer-events-none absolute -right-10 -top-20 h-52 w-52 rounded-full bg-white/10" />
+            <div className="relative flex items-start gap-3">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[14px] bg-white/15"><Lightbulb className="h-5 w-5" /></span>
+              <div>
+                <p className="text-[9px] font-extrabold uppercase tracking-[0.16em] text-white/65">Landasan program</p>
+                <h2 className="mt-1 text-[17px] font-extrabold">Disiplin dibangun bersama, bukan sekadar ditaati.</h2>
+                <p className="mt-2 max-w-2xl text-[11px] leading-relaxed text-white/80">Program menggabungkan pengaturan diri, dukungan keluarga dan guru, refleksi bertahap, serta penguatan perilaku positif.</p>
+                <button type="button" onClick={onMethodology} className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3.5 py-2 text-[10px] font-bold text-white transition hover:bg-white/25">Kenali metodologinya <ArrowRight className="h-3.5 w-3.5" /></button>
+              </div>
+            </div>
+          </div>
+          <button type="button" onClick={() => onPrototype('home')} className="group flex items-center justify-between gap-4 rounded-[22px] border border-white bg-white/85 p-5 text-left shadow-[0_12px_30px_-22px_rgba(44,55,96,0.35)] transition hover:-translate-y-0.5 hover:shadow-lg sm:p-6">
+            <span>
+              <span className="block text-[9px] font-extrabold uppercase tracking-[0.15em] text-grape-700">Siap mencoba?</span>
+              <span className="mt-1 block text-[16px] font-extrabold text-slate-950">Masuk ke prototype</span>
+              <span className="mt-1 block text-[10px] leading-relaxed text-slate-500">Pilih tampilan siswa, orang tua, atau wali kelas.</span>
+            </span>
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-grape-100 text-grape-700 transition group-hover:bg-grape-600 group-hover:text-white"><ArrowRight className="h-4 w-4" /></span>
+          </button>
+        </section>
+        <footer className="mx-auto flex max-w-6xl flex-col justify-between gap-1.5 px-1 pb-2 pt-8 text-[9px] text-slate-400 sm:flex-row">
+          <span>LANGKAH · Prototipe penguatan karakter disiplin SMP Budi Utama Yogyakarta</span>
+          <span>Demo edukasi · Data contoh, bukan data siswa sebenarnya</span>
+        </footer>
+      </main>
+    </div>
+  );
+}
+
+function MethodologyPage({ onHome, onPrototype, onMethodology }) {
+  return (
+    <div className="relative min-h-[100dvh] overflow-hidden bg-[#f4f6fc] text-slate-900">
+      <div className="pointer-events-none absolute -right-36 top-28 h-[420px] w-[420px] rounded-full bg-[#e6dcff]/55 blur-[105px]" />
+      <PublicNav activePage="methodology" onHome={onHome} onPrototype={onPrototype} onMethodology={onMethodology} />
+      <main className="relative z-10 mx-auto w-full max-w-6xl px-5 pb-12 pt-6 sm:px-8 sm:pt-10 lg:px-10">
+        <section className="rounded-[28px] bg-gradient-to-br from-[#294f9d] via-[#4265c6] to-[#835be0] p-5 text-white shadow-[0_22px_48px_-28px_rgba(56,74,158,0.85)] sm:p-8 lg:p-10">
+          <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1.5 text-[9px] font-extrabold uppercase tracking-[0.15em] text-white/85"><Compass className="h-3.5 w-3.5" /> Metodologi program</span>
+          <h1 className="mt-4 max-w-3xl text-[30px] font-black leading-[1.08] tracking-[-0.035em] sm:text-5xl">Dari pengingat sederhana menuju disiplin yang tumbuh dari dalam.</h1>
+          <p className="mt-4 max-w-3xl text-[12px] leading-relaxed text-white/85 sm:text-[15px]">Ringkasan ini mengikuti rancangan intervensi yang menggabungkan kebiasaan harian, refleksi personal, dukungan orang tua dan wali kelas, serta apresiasi positif.</p>
+          <button type="button" onClick={() => onPrototype('home')} className="mt-5 inline-flex items-center gap-2 rounded-[13px] bg-white px-4 py-3 text-[11px] font-extrabold text-grape-700 shadow-sm transition hover:-translate-y-0.5">Lihat implementasi di prototype <ArrowRight className="h-4 w-4" /></button>
+        </section>
+
+        <section className="mt-7 grid gap-3 md:grid-cols-3">
+          <div className="rounded-[20px] border border-white bg-white/90 p-4 shadow-sm sm:p-5">
+            <div className="flex h-10 w-10 items-center justify-center rounded-[14px] bg-blue-50 text-blue-700"><Target className="h-5 w-5" /></div>
+            <h2 className="mt-3 text-[14px] font-extrabold">Disiplin sebagai kebiasaan</h2>
+            <p className="mt-1.5 text-[11px] leading-relaxed text-slate-600">Bukan hanya mematuhi aturan, tetapi juga belajar mengatur perilaku, memenuhi tanggung jawab, hadir tepat waktu, dan menyiapkan perlengkapan.</p>
+          </div>
+          <div className="rounded-[20px] border border-white bg-white/90 p-4 shadow-sm sm:p-5">
+            <div className="flex h-10 w-10 items-center justify-center rounded-[14px] bg-violet-50 text-violet-700"><UsersRound className="h-5 w-5" /></div>
+            <h2 className="mt-3 text-[14px] font-extrabold">Ekosistem tiga pihak</h2>
+            <p className="mt-1.5 text-[11px] leading-relaxed text-slate-600">Siswa, keluarga, dan sekolah berbagi peran supaya pengingat, bimbingan, serta tindak lanjut berjalan selaras di rumah maupun di sekolah.</p>
+          </div>
+          <div className="rounded-[20px] border border-white bg-white/90 p-4 shadow-sm sm:p-5">
+            <div className="flex h-10 w-10 items-center justify-center rounded-[14px] bg-emerald-50 text-emerald-700"><HeartHandshake className="h-5 w-5" /></div>
+            <h2 className="mt-3 text-[14px] font-extrabold">Positif dan tidak mempermalukan</h2>
+            <p className="mt-1.5 text-[11px] leading-relaxed text-slate-600">Fokus pada arahan yang jelas, apresiasi perilaku spesifik, umpan balik pribadi, dan kemajuan setiap siswa—bukan hukuman atau perbandingan.</p>
+          </div>
+        </section>
+
+        <section className="mt-9">
+          <div className="mb-4">
+            <p className="text-[9px] font-extrabold uppercase tracking-[0.17em] text-grape-700">Teori yang digunakan</p>
+            <h2 className="mt-1 text-[21px] font-extrabold tracking-tight text-slate-950 sm:text-2xl">Empat landasan, satu alur pembiasaan</h2>
+            <p className="mt-1 max-w-2xl text-[11px] leading-relaxed text-slate-500">Diringkas dari bagian “Teori yang Relevan” pada dokumen rancangan intervensi.</p>
+          </div>
+          <div className="grid gap-3 md:grid-cols-2">
+            {METHODOLOGY_THEORIES.map((theory) => {
+              const Icon = theory.icon;
+              const tone = {
+                blue: 'bg-blue-50 text-blue-700 border-blue-100',
+                violet: 'bg-violet-50 text-violet-700 border-violet-100',
+                mint: 'bg-emerald-50 text-emerald-700 border-emerald-100',
+                amber: 'bg-amber-50 text-amber-700 border-amber-100',
+              }[theory.tone];
+              return (
+                <article key={theory.number} className="rounded-[22px] border border-white bg-white/90 p-4 shadow-[0_12px_30px_-22px_rgba(44,55,96,0.35)] sm:p-5">
+                  <div className="flex items-start gap-3">
+                    <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-[15px] border ${tone}`}><Icon className="h-5 w-5" /></span>
+                    <div className="min-w-0">
+                      <p className="text-[9px] font-extrabold uppercase tracking-[0.14em] text-slate-400">Landasan {theory.number}</p>
+                      <h3 className="mt-0.5 text-[15px] font-extrabold leading-snug text-slate-950">{theory.name}</h3>
+                      <p className="mt-0.5 text-[10px] font-semibold text-grape-700">{theory.author}</p>
+                    </div>
+                  </div>
+                  <p className="mt-3 text-[11px] leading-relaxed text-slate-700">{theory.summary}</p>
+                  <div className="mt-3 rounded-[15px] border border-slate-100 bg-slate-50/90 p-3">
+                    <p className="flex items-center gap-1.5 text-[9px] font-extrabold uppercase tracking-[0.12em] text-slate-600"><Sparkles className="h-3.5 w-3.5 text-grape-600" /> Penerapan di LANGKAH</p>
+                    <p className="mt-1.5 text-[10px] leading-relaxed text-slate-600">{theory.application}</p>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </section>
+
+        <section className="mt-8 rounded-[22px] border border-white bg-white/90 p-4 shadow-sm sm:p-6">
+          <div className="flex items-start gap-3">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[14px] bg-grape-50 text-grape-700"><Compass className="h-5 w-5" /></div>
+            <div>
+              <p className="text-[9px] font-extrabold uppercase tracking-[0.15em] text-grape-700">Alur intervensi</p>
+              <h2 className="mt-1 text-[17px] font-extrabold text-slate-950">Ingatkan · Pantau · Refleksikan · Apresiasi</h2>
+            </div>
+          </div>
+          <div className="mt-4 grid gap-2 sm:grid-cols-4">
+            {[
+              ['01', 'Ingatkan', 'Pengingat malam dan pagi membangun persiapan dan rutinitas berangkat.'],
+              ['02', 'Pantau', 'Catatan harian membantu siswa mengenali perilaku, kendala, dan tanggung jawab.'],
+              ['03', 'Refleksikan', 'Siswa dan wali kelas menyepakati umpan balik serta langkah perbaikan konkret.'],
+              ['04', 'Apresiasi', 'Perilaku disiplin dan perkembangan positif diperkuat secara spesifik.'],
+            ].map(([number, title, description]) => (
+              <div key={number} className="rounded-[15px] bg-[#f4f6fc] p-3">
+                <p className="text-[9px] font-extrabold tracking-[0.13em] text-grape-600">{number} / LANGKAH</p>
+                <h3 className="mt-1 text-[12px] font-extrabold text-slate-900">{title}</h3>
+                <p className="mt-1 text-[10px] leading-relaxed text-slate-600">{description}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-4 text-[9px] leading-relaxed text-slate-400">Catatan sumber: ringkasan teori disusun dari dokumen “Tugas Rancangan Awal Kelompok 7” yang diberikan pengguna. Rujukan yang disebut di dokumen meliputi Bandura (1991), Bandura (1978, dalam Mertens et al., 2021), Whitney & Ackerman (2020), dan Maskur (2025).</p>
+        </section>
+        <footer className="flex flex-col justify-between gap-1.5 px-1 pb-2 pt-7 text-[9px] text-slate-400 sm:flex-row">
+          <span>Metodologi program penguatan karakter disiplin · SMP Budi Utama Yogyakarta</span>
+          <button type="button" onClick={onHome} className="text-left font-bold text-grape-700 hover:text-grape-900">Kembali ke beranda</button>
+        </footer>
+      </main>
+    </div>
+  );
+}
 
 function SectionHeading({ eyebrow, title, description, icon: Icon }) {
   return (
@@ -492,14 +779,21 @@ function RecognitionScreen({ role, onNavigate }) {
 }
 
 export default function App() {
+  const [page, setPage] = useState('landing');
   const [activeTab, setActiveTab] = useState('home');
+  const [requestedTab, setRequestedTab] = useState('home');
   const [role, setRole] = useState('student');
-  const [isLoggedIn, setIsLoggedIn] = useState(() => (
-    typeof window !== 'undefined' && window.matchMedia('(min-width: 1024px)').matches
-  ));
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [routine, setRoutine] = useState(INITIAL_ROUTINE);
   const [reminders, setReminders] = useState({ night: true, morning: true });
   const [journal, setJournal] = useState(INITIAL_JOURNAL);
+
+  const handleOpenPrototype = (tab = 'home') => {
+    setRequestedTab(tab);
+    setActiveTab(tab);
+    setPage('prototype');
+    setIsLoggedIn(typeof window !== 'undefined' && window.matchMedia('(min-width: 1024px)').matches);
+  };
 
   const handleToggleRoutine = (id) => {
     setRoutine((items) => items.map((item) => item.id === id ? { ...item, done: !item.done } : item));
@@ -519,19 +813,41 @@ export default function App() {
 
   const handleLogin = (selectedRole) => {
     setRole(selectedRole);
-    setActiveTab('home');
+    setActiveTab(requestedTab);
     setIsLoggedIn(true);
   };
 
   const handleRoleChange = (selectedRole) => {
     setRole(selectedRole);
     setActiveTab('home');
+    setRequestedTab('home');
   };
 
   const handleLogout = () => {
     setIsLoggedIn(false);
     setActiveTab('home');
+    setRequestedTab('home');
   };
+
+  if (page === 'landing') {
+    return (
+      <LandingPage
+        onHome={() => setPage('landing')}
+        onPrototype={handleOpenPrototype}
+        onMethodology={() => setPage('methodology')}
+      />
+    );
+  }
+
+  if (page === 'methodology') {
+    return (
+      <MethodologyPage
+        onHome={() => setPage('landing')}
+        onPrototype={handleOpenPrototype}
+        onMethodology={() => setPage('methodology')}
+      />
+    );
+  }
 
   return (
     <MainLayout
@@ -542,6 +858,10 @@ export default function App() {
       isLoggedIn={isLoggedIn}
       onLogin={handleLogin}
       onLogout={handleLogout}
+      onBackToHome={() => {
+        setIsLoggedIn(false);
+        setPage('landing');
+      }}
     >
       {activeTab === 'home' && role === 'student' && (
         <StudentHome

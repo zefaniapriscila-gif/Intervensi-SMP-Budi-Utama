@@ -10,6 +10,7 @@ export default function MainLayout({
   isLoggedIn,
   onLogin,
   onLogout,
+  onBackToHome,
   children,
 }) {
   const roles = [
@@ -70,6 +71,9 @@ export default function MainLayout({
               </div>
               <p className="mt-0.5 text-[11px] font-medium text-slate-500">Penguatan karakter disiplin di SMP Budi Utama</p>
             </div>
+            <button type="button" onClick={onBackToHome} className="ml-auto shrink-0 rounded-full bg-white/80 px-3 py-2 text-[10px] font-bold text-slate-600 shadow-sm transition hover:bg-grape-50 hover:text-grape-700">
+              Beranda
+            </button>
           </div>
 
           <section className="mt-7 rounded-[22px] border border-white bg-white/85 p-4 shadow-[0_10px_26px_-20px_rgba(35,42,75,0.35)]">
@@ -217,6 +221,7 @@ export default function MainLayout({
             isLoggedIn={isLoggedIn}
             onLogin={onLogin}
             onLogout={onLogout}
+            onBackToHome={onBackToHome}
           >
             {children}
           </IPhoneFrame>

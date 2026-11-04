@@ -28,6 +28,7 @@ export default function IPhoneFrame({
   isLoggedIn,
   onLogin,
   onLogout,
+  onBackToHome,
 }) {
   const scrollRef = useRef(null);
   const [time, setTime] = useState('9:41');
@@ -75,7 +76,7 @@ export default function IPhoneFrame({
 
           {isLoggedIn && (
             <header className="z-20 flex min-h-[58px] shrink-0 items-center justify-between border-b border-slate-200/75 bg-white/90 px-4 backdrop-blur-xl sm:px-5">
-              <div className="flex min-w-0 items-center gap-2.5">
+              <button type="button" onClick={onBackToHome} aria-label="Kembali ke beranda LANGKAH" className="flex min-w-0 items-center gap-2.5 rounded-xl text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-grape-500">
                 <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[13px] bg-gradient-to-br from-teal-500 via-grape-500 to-blossom-500 text-white shadow-[0_5px_12px_-5px_rgba(99,76,210,0.55)]">
                   <ShieldCheck className="h-[18px] w-[18px]" />
                 </div>
@@ -85,7 +86,7 @@ export default function IPhoneFrame({
                     {PAGE_LABELS[activeTab] || 'Beranda'}
                   </p>
                 </div>
-              </div>
+              </button>
 
               <div className="flex shrink-0 items-center gap-2.5">
                 <button
@@ -115,7 +116,7 @@ export default function IPhoneFrame({
             className={`no-scrollbar flex min-h-0 flex-1 flex-col overflow-y-auto overscroll-y-contain touch-pan-y [-webkit-overflow-scrolling:touch] ${isLoggedIn ? 'bg-[#f7f8fc]' : 'bg-[#f5f5fa]'}`}
           >
             {isLoggedIn ? children : (
-              <LoginScreen onLogin={onLogin} />
+              <LoginScreen onLogin={onLogin} onBackToHome={onBackToHome} />
             )}
           </main>
 
@@ -134,7 +135,7 @@ export default function IPhoneFrame({
   );
 }
 
-function LoginScreen({ onLogin }) {
+function LoginScreen({ onLogin, onBackToHome }) {
   const [selectedRole, setSelectedRole] = useState('');
   const roles = [
     { id: 'student', title: 'Siswa', icon: '🎒', description: 'Atur rutinitas dan tulis catatan harian.' },
@@ -204,6 +205,9 @@ function LoginScreen({ onLogin }) {
           <ShieldCheck className="h-3.5 w-3.5 shrink-0 text-mint-700" />
           <span>Prototipe demo · Tidak perlu akun atau kata sandi.</span>
         </div>
+        <button type="button" onClick={onBackToHome} className="mt-2 self-center px-3 py-1.5 text-[10px] font-bold text-grape-700 hover:text-grape-900">
+          Kembali ke beranda LANGKAH
+        </button>
       </div>
 
       <p className="mt-2 text-center text-[9px] leading-relaxed text-slate-400">
