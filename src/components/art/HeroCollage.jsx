@@ -8,6 +8,8 @@ import { isEvening } from '../../lib/time';
 
 // Cuplikan aplikasi DISIPLIN: notifikasi, checklist, pesan wali kelas, dan penghargaan.
 // Ukuran desain tetap 540×600 lalu diskalakan agar presisi di semua layar.
+// Ilustrasi diperbesar 4% di layar yang cukup lebar (di ponsel tetap pas lebar kolom).
+const ART_BOOST = 1.04;
 const W = 540;
 const H = 600;
 
@@ -85,7 +87,7 @@ export default function HeroCollage({ className = '' }) {
   useEffect(() => {
     const el = wrapRef.current;
     if (!el) return undefined;
-    const ro = new ResizeObserver(([entry]) => setScale(Math.min(1.1, entry.contentRect.width / W)));
+    const ro = new ResizeObserver(([entry]) => setScale(Math.min(1.1, entry.contentRect.width / W) * (entry.contentRect.width >= 480 ? ART_BOOST : 1)));
     ro.observe(el);
     return () => ro.disconnect();
   }, []);
