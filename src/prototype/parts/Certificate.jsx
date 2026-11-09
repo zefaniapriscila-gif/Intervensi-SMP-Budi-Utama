@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { Medal } from '../../components/ui/badges';
+import { IndicatorMarks } from '../../components/ui/Indicators';
 
 // Piagam Student of the Week dengan kilau tipis saat pertama terlihat.
 export default function Certificate({ student, tone = 'marigold', compact = false, rotate = 0 }) {
@@ -19,6 +20,7 @@ export default function Certificate({ student, tone = 'marigold', compact = fals
         <p className="mt-1 font-display text-[16px] text-ink-2">{student.category}</p>
         <p className={`mt-2 font-display font-semibold leading-tight text-ink ${compact ? 'text-[20px]' : 'text-[23px]'}`}>{student.name}</p>
         <p className="text-[12.5px] font-semibold text-ink-3">Kelas {student.className}</p>
+        {student.met && <IndicatorMarks met={student.met} className="mt-3" />}
         {!compact && <p className="mt-3 border-t border-dashed border-line-2 pt-3 text-[13.5px] leading-relaxed text-ink-2">{student.detail}</p>}
         <Medal tone={tone} className="absolute right-3 top-3 h-9 w-9" />
       </div>

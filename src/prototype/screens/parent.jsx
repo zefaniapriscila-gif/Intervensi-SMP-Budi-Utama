@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowRight, Check, Clock3, HeartHandshake, RefreshCw, ShieldCheck } from 'lucide-react';
 import { Medal } from '../../components/ui/badges';
+import { IndicatorList } from '../../components/ui/Indicators';
 import { HOME_SUPPORT, PRAISE_EXAMPLES, STUDENT } from '../../data/program';
 import { formatDay } from '../../lib/time';
 import { useNow } from '../../lib/useNow';
@@ -128,6 +129,12 @@ export function ParentRecognition({ demo }) {
             {STUDENT.firstName} sedang membangun rutinitas persiapan sekolah. Rayakan prosesnya, bukan hanya hasilnya.
           </p>
         </div>
+
+        <section>
+          <SectionLabel>Yang dinilai sekolah</SectionLabel>
+          <IndicatorList />
+          <p className="mt-2.5 px-1 text-[12.5px] leading-relaxed text-ink-3">Tiga indikator ini menjadi dasar terpilihnya Student of the Week. Orang tua bisa mendukungnya dari rumah.</p>
+        </section>
 
         <section>
           <SectionLabel

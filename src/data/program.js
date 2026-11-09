@@ -91,6 +91,13 @@ export const REMINDERS = {
   },
 };
 
+// Tiga indikator disiplin yang menjadi dasar terpilihnya Student of the Week.
+export const INDICATORS = [
+  { id: 'waktu', icon: 'clock', title: 'Datang tepat waktu', body: 'Hadir di sekolah sebelum jam pelajaran dimulai.' },
+  { id: 'tertib', icon: 'rules', title: 'Patuh pada tata tertib', body: 'Mengikuti tata tertib atau aturan yang berlaku di sekolah.' },
+  { id: 'tugas', icon: 'task', title: 'Mengerjakan dan mengumpulkan tugas', body: 'Menyelesaikan serta mengumpulkan tugas sesuai dengan waktu yang ditentukan.' },
+];
+
 export const WEEKLY_STUDENTS = [
   {
     name: 'Nadia Putri',
@@ -98,6 +105,7 @@ export const WEEKLY_STUDENTS = [
     className: 'VII A',
     category: 'Konsisten Disiplin',
     detail: 'Hadir tepat waktu dan atribut lengkap selama satu minggu.',
+    met: [true, true, true],
   },
   {
     name: 'Rafi Pratama',
@@ -105,6 +113,7 @@ export const WEEKLY_STUDENTS = [
     className: 'VII B',
     category: 'Perkembangan Terbaik',
     detail: 'Makin konsisten menyiapkan perlengkapan sekolah setiap malam.',
+    met: [true, false, true],
   },
 ];
 
@@ -289,7 +298,7 @@ export const SCREEN_NOTES = {
   },
   'student:recognition': {
     title: 'Mading apresiasi',
-    body: 'Student of the Week ditampilkan sebagai contoh perilaku yang diapresiasi—untuk menginspirasi, bukan membandingkan.',
+    body: 'Student of the Week dipilih dari tiga indikator disiplin dan ditampilkan sebagai contoh perilaku yang diapresiasi—untuk menginspirasi, bukan membandingkan.',
     theory: 'social-learning',
   },
   'parent:home': {
@@ -319,7 +328,7 @@ export const SCREEN_NOTES = {
   },
   'teacher:recognition': {
     title: 'Student of the Week',
-    body: 'Dua kategori: Konsisten Disiplin dan Perkembangan Terbaik. Daftar pendampingan tetap rahasia.',
+    body: 'Siswa dipilih dari tiga indikator disiplin, dalam dua kategori: Konsisten Disiplin dan Perkembangan Terbaik. Daftar pendampingan tetap rahasia.',
     theory: 'reinforcement',
   },
 };

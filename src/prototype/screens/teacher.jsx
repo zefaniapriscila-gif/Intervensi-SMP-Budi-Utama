@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Award, ChevronRight, LockKeyhole, Plus, Send, ShieldCheck } from 'lucide-react';
 import { Footprints } from 'lucide-react';
+import { IndicatorList } from '../../components/ui/Indicators';
 import { Initial } from '../../components/ui/primitives';
 import { FEEDBACK_STARTERS, STUDENT, STUDENTS_NEEDING_SUPPORT, WEEKLY_STUDENTS } from '../../data/program';
 import { formatClock } from '../../lib/time';
@@ -202,6 +203,12 @@ export function TeacherRecognition() {
           <Stat value={12} label="Konsisten · siswa diapresiasi" />
           <div className="flex-1 pl-5"><Stat value={8} label="Berkembang · kemajuan dirayakan" tone="leaf" /></div>
         </Card>
+
+        <section>
+          <SectionLabel>Indikator pemilihan</SectionLabel>
+          <IndicatorList />
+          <p className="mt-2.5 px-1 text-[12.5px] leading-relaxed text-ink-3">Gunakan tiga indikator ini saat memilih Student of the Week. Penanda warna di piagam menunjukkan indikator yang terpenuhi.</p>
+        </section>
 
         <section>
           <SectionLabel>Minggu ini</SectionLabel>

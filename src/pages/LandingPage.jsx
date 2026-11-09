@@ -5,8 +5,9 @@ import HeroCollage from '../components/art/HeroCollage';
 import { THEORY_DIAGRAMS } from '../components/art/theoryDiagramMap';
 import { LogoMark } from '../components/brand/Logo';
 import { FlowMarquee, Magnetic, SplitText } from '../components/motion/Motion';
+import { IndicatorIcon } from '../components/ui/Indicators';
 import { Overline, Reveal, RoleBadge } from '../components/ui/primitives';
-import { DAY_STEPS, FLOW, PRINCIPLES, ROLES, THEORIES } from '../data/program';
+import { DAY_STEPS, FLOW, INDICATORS, PRINCIPLES, ROLES, THEORIES } from '../data/program';
 import { useEnterDelay } from '../lib/enterDelay';
 import { plainClick } from '../lib/links';
 import { EASE } from '../lib/motion';
@@ -292,6 +293,48 @@ function Roles({ onOpenPrototype }) {
   );
 }
 
+const INDICATOR_STYLE = [
+  { chip: 'bg-marigold text-night', bar: 'bg-marigold', glow: 'from-marigold-soft' },
+  { chip: 'bg-pen text-white', bar: 'bg-pen', glow: 'from-pen-soft' },
+  { chip: 'bg-leaf text-white', bar: 'bg-leaf', glow: 'from-leaf-soft' },
+];
+
+function Indicators() {
+  return (
+    <section aria-labelledby="indikator" className="mx-auto w-full max-w-[1240px] px-4 pb-8 pt-4 sm:px-8 lg:pb-16">
+      <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
+        <Reveal className="lg:col-span-7">
+          <Overline>Student of the Week</Overline>
+          <h2 id="indikator" className="mt-3 font-display text-[clamp(34px,4.6vw,58px)] font-bold leading-[1.02] tracking-[-0.03em] text-ink">
+            <SplitText text="Tiga indikator terpilihnya." />
+          </h2>
+        </Reveal>
+        <Reveal delay={0.1} className="lg:col-span-5">
+          <p className="max-w-md text-[16.5px] leading-relaxed text-ink-2">
+            Apresiasi mingguan tidak diberikan sembarangan. Siswa dipilih berdasarkan tiga perilaku disiplin yang jelas dan bisa diamati.
+          </p>
+        </Reveal>
+      </div>
+      <ol className="mt-10 grid gap-4 md:grid-cols-3">
+        {INDICATORS.map((item, index) => (
+          <Reveal as="li" key={item.id} delay={index * 0.1}>
+            <div className={`relative h-full overflow-hidden rounded-[28px] bg-gradient-to-br ${INDICATOR_STYLE[index].glow} via-white to-white p-6 shadow-paper ring-1 ring-line sm:p-7`}>
+              <span aria-hidden="true" className={`absolute inset-x-0 top-0 h-1.5 ${INDICATOR_STYLE[index].bar}`} />
+              <span className="pointer-events-none absolute -right-2 -top-4 font-display text-[110px] font-extrabold leading-none text-ink/[0.05]" aria-hidden="true">{index + 1}</span>
+              <span className={`relative flex h-14 w-14 items-center justify-center rounded-[18px] shadow-paper ${INDICATOR_STYLE[index].chip}`}>
+                <IndicatorIcon id={item.id} className="h-6 w-6" />
+              </span>
+              <p className="relative mt-5 text-[11.5px] font-bold uppercase tracking-[0.16em] text-ink-3">Indikator {index + 1}</p>
+              <h3 className="relative mt-1.5 font-display text-[22px] font-bold leading-snug text-ink">{item.title}</h3>
+              <p className="relative mt-2 text-[15px] leading-relaxed text-ink-2">{item.body}</p>
+            </div>
+          </Reveal>
+        ))}
+      </ol>
+    </section>
+  );
+}
+
 function StairsArt({ className = '' }) {
   return (
     <svg viewBox="0 0 400 300" className={className} aria-hidden="true">
@@ -406,6 +449,7 @@ export default function LandingPage({ onOpenPrototype }) {
       <FlowMarquee words={FLOW.map((step) => step.title)} />
       <DayStairs onOpenPrototype={onOpenPrototype} />
       <Roles onOpenPrototype={onOpenPrototype} />
+      <Indicators />
       <Principles />
       <Theories />
       <FinalCall onOpenPrototype={onOpenPrototype} />

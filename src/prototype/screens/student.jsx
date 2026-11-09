@@ -3,6 +3,7 @@ import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, Check, LockKeyhole, NotebookPen } from 'lucide-react';
 import { Footprints } from 'lucide-react';
 import { StatusBadge } from '../../components/ui/badges';
+import { IndicatorList } from '../../components/ui/Indicators';
 import { CHALLENGES, STUDENT, WEEKLY_STUDENTS } from '../../data/program';
 import { formatClock, formatDay, greetingFor } from '../../lib/time';
 import { useNow } from '../../lib/useNow';
@@ -218,6 +219,12 @@ export function StudentRecognition({ demo }) {
             ))}
           </div>
           <p className="mt-4 text-[12.5px] leading-relaxed text-ink-2">Contoh perilaku yang diapresiasi—untuk menginspirasi, bukan membandingkan.</p>
+        </section>
+
+        <section>
+          <SectionLabel>Indikator Student of the Week</SectionLabel>
+          <IndicatorList />
+          <p className="mt-2.5 px-1 text-[12.5px] leading-relaxed text-ink-3">Siswa dipilih berdasarkan tiga perilaku disiplin ini—bukan nilai ujian atau peringkat.</p>
         </section>
 
         <section>
