@@ -85,7 +85,7 @@ export default function HeroCollage({ className = '' }) {
   useEffect(() => {
     const el = wrapRef.current;
     if (!el) return undefined;
-    const ro = new ResizeObserver(([entry]) => setScale(Math.min(1, entry.contentRect.width / W)));
+    const ro = new ResizeObserver(([entry]) => setScale(Math.min(1.1, entry.contentRect.width / W)));
     ro.observe(el);
     return () => ro.disconnect();
   }, []);

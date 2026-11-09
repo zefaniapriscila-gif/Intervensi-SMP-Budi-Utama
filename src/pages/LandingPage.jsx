@@ -16,7 +16,7 @@ import { ROUTES, href } from '../lib/router';
 function MaskLine({ children, delay, className = '' }) {
   const reduce = useReducedMotion();
   return (
-    <span className={`block overflow-hidden pb-[0.08em] ${className}`}>
+    <span className={`block overflow-hidden whitespace-nowrap pb-[0.08em] ${className}`}>
       <motion.span
         className="block will-change-transform"
         initial={reduce ? false : { y: '112%', rotate: 2.5 }}
@@ -46,7 +46,7 @@ function Hero({ onOpenPrototype }) {
           <span className="h-2 w-2 rounded-full bg-marigold ring-4 ring-marigold/25" aria-hidden="true" />
           Program intervensi disiplin · 2026
         </motion.p>
-        <h1 className="mt-6 font-display text-[clamp(40px,5.8vw,88px)] font-bold leading-[1.04] tracking-[-0.035em] text-ink">
+        <h1 className="mt-6 font-display text-[clamp(40px,5.8vw,80px)] font-bold leading-[1.04] tracking-[-0.035em] text-ink">
           <MaskLine delay={base + 0.1}>Kebiasaan baik</MaskLine>
           <MaskLine delay={base + 0.2}>tumbuh dari</MaskLine>
           <span className="relative inline-block">
@@ -90,7 +90,7 @@ function Hero({ onOpenPrototype }) {
         </motion.div>
       </div>
       <div className="lg:col-span-6 lg:pl-4 xl:pl-10">
-        <HeroCollage className="mx-auto max-w-[540px]" />
+        <HeroCollage className="mx-auto max-w-[600px]" />
       </div>
     </section>
   );
@@ -125,8 +125,8 @@ function DayStairs({ onOpenPrototype }) {
   const stairsRef = useRef(null);
   return (
     <section aria-labelledby="ritme" data-surface="dark" className="relative overflow-hidden mesh-dark text-white">
-      <span aria-hidden="true" className="pointer-events-none absolute -right-32 -top-32 h-[420px] w-[420px] rounded-full bg-marigold/25 blur-3xl" />
-      <span aria-hidden="true" className="pointer-events-none absolute -bottom-40 -left-24 h-[380px] w-[380px] rounded-full bg-pen/30 blur-3xl" />
+      <span aria-hidden="true" className="pointer-events-none absolute -right-32 -top-32 h-[620px] w-[620px] glow-gold" />
+      <span aria-hidden="true" className="pointer-events-none absolute -bottom-40 -left-24 h-[560px] w-[560px] glow-violet" />
       <div className="relative mx-auto w-full max-w-[1240px] px-4 py-16 sm:px-8 lg:py-24">
         <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
           <Reveal className="lg:col-span-7">
@@ -442,8 +442,8 @@ export default function LandingPage({ onOpenPrototype }) {
   return (
     <main id="konten" tabIndex={-1} className="relative outline-none">
       <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-[900px] overflow-hidden">
-        <span className="absolute -right-24 -top-24 h-[460px] w-[460px] rounded-full bg-marigold/25 blur-3xl" />
-        <span className="absolute -left-32 top-[260px] h-[380px] w-[380px] rounded-full bg-rose/20 blur-3xl" />
+        <span className="absolute -right-40 -top-40 h-[680px] w-[680px] glow-gold" />
+        <span className="absolute -left-48 top-[200px] h-[620px] w-[620px] glow-rose" />
       </div>
       <Hero onOpenPrototype={onOpenPrototype} />
       <FlowMarquee words={FLOW.map((step) => step.title)} />
