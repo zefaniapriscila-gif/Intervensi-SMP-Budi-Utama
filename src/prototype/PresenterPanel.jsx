@@ -50,7 +50,7 @@ export default function PresenterPanel({ demo }) {
 
       <motion.div {...enter(0)} className="mt-6">
         <p className="text-[11.5px] font-bold uppercase tracking-[0.16em] text-ink-3">Prototipe</p>
-        <h1 className="mt-2 font-display text-[clamp(26px,2.2vw,32px)] font-bold leading-[1.06] tracking-[-0.025em] text-ink">Coba DISIPLIN dari tiga sudut pandang.</h1>
+        <h1 className="mt-2 font-display text-[clamp(26px,calc(var(--vw)*2.2),32px)] font-bold leading-[1.06] tracking-[-0.025em] text-ink">Coba DISIPLIN dari tiga sudut pandang.</h1>
       </motion.div>
 
       <motion.section {...enter(1)} className="mt-6" aria-labelledby="lihat-sebagai">

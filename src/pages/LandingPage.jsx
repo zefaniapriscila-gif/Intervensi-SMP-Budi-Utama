@@ -46,7 +46,7 @@ function Hero({ onOpenPrototype }) {
           <span className="h-2 w-2 rounded-full bg-marigold ring-4 ring-marigold/25" aria-hidden="true" />
           Program intervensi disiplin · 2026
         </motion.p>
-        <h1 className="mt-6 font-display text-[clamp(40px,5.8vw,80px)] font-bold leading-[1.04] tracking-[-0.035em] text-ink">
+        <h1 className="mt-6 font-display text-[clamp(40px,calc(var(--vw)*5.8),80px)] font-bold leading-[1.04] tracking-[-0.035em] text-ink">
           <MaskLine delay={base + 0.1}>Kebiasaan baik</MaskLine>
           <MaskLine delay={base + 0.2}>tumbuh dari</MaskLine>
           <span className="relative inline-block">
@@ -131,7 +131,7 @@ function DayStairs({ onOpenPrototype }) {
         <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
           <Reveal className="lg:col-span-7">
             <Overline tone="marigold">Ritme harian</Overline>
-            <h2 id="ritme" className="mt-3 font-display text-[clamp(34px,4.6vw,58px)] font-bold leading-[1.02] tracking-[-0.03em] text-white">
+            <h2 id="ritme" className="mt-3 font-display text-[clamp(34px,calc(var(--vw)*4.6),58px)] font-bold leading-[1.02] tracking-[-0.03em] text-white">
               <SplitText text="Satu hari, lima langkah kecil." />
             </h2>
           </Reveal>
@@ -252,7 +252,7 @@ function Roles({ onOpenPrototype }) {
         <div className="lg:col-span-6">
           <Reveal>
             <Overline>Kolaborasi</Overline>
-            <h2 id="peran" className="mt-3 font-display text-[clamp(34px,4.6vw,58px)] font-bold leading-[1.02] tracking-[-0.03em] text-ink">
+            <h2 id="peran" className="mt-3 font-display text-[clamp(34px,calc(var(--vw)*4.6),58px)] font-bold leading-[1.02] tracking-[-0.03em] text-ink">
               <SplitText text="Tiga pihak, satu arah." />
             </h2>
             <p className="mt-5 max-w-lg text-[16.5px] leading-relaxed text-ink-2">
@@ -305,7 +305,7 @@ function Indicators() {
       <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
         <Reveal className="lg:col-span-7">
           <Overline>Student of the Week</Overline>
-          <h2 id="indikator" className="mt-3 font-display text-[clamp(34px,4.6vw,58px)] font-bold leading-[1.02] tracking-[-0.03em] text-ink">
+          <h2 id="indikator" className="mt-3 font-display text-[clamp(34px,calc(var(--vw)*4.6),58px)] font-bold leading-[1.02] tracking-[-0.03em] text-ink">
             <SplitText text="Tiga indikator terpilihnya." />
           </h2>
         </Reveal>
@@ -350,7 +350,7 @@ function Principles() {
       <div className="relative mx-auto w-full max-w-[1240px] px-4 py-16 sm:px-8 lg:py-24">
         <Reveal>
           <Overline tone="marigold">Disiplin positif</Overline>
-          <h2 id="prinsip" className="mt-3 max-w-3xl font-display text-[clamp(34px,4.6vw,58px)] font-bold leading-[1.02] tracking-[-0.03em]">
+          <h2 id="prinsip" className="mt-3 max-w-3xl font-display text-[clamp(34px,calc(var(--vw)*4.6),58px)] font-bold leading-[1.02] tracking-[-0.03em]">
             <SplitText text="Positif, bukan menghukum." />
           </h2>
         </Reveal>
@@ -376,7 +376,7 @@ function Theories() {
       <div className="flex flex-wrap items-end justify-between gap-6">
         <Reveal>
           <Overline>Landasan teori</Overline>
-          <h2 id="teori" className="mt-3 font-display text-[clamp(34px,4.6vw,58px)] font-bold leading-[1.02] tracking-[-0.03em] text-ink">
+          <h2 id="teori" className="mt-3 font-display text-[clamp(34px,calc(var(--vw)*4.6),58px)] font-bold leading-[1.02] tracking-[-0.03em] text-ink">
             <SplitText text="Berpijak pada empat teori." />
           </h2>
         </Reveal>
@@ -414,7 +414,7 @@ function FinalCall({ onOpenPrototype }) {
       <Reveal data-surface="dark" className="relative overflow-hidden rounded-[32px] mesh-dark px-6 py-12 text-white sm:px-12 sm:py-16 lg:px-16">
         <StairsArt className="pointer-events-none absolute -bottom-10 -right-10 w-[340px] text-white/10 sm:w-[460px]" />
         <div className="relative max-w-2xl">
-          <h2 id="mulai" className="font-display text-[clamp(36px,5.4vw,68px)] font-bold leading-[1] tracking-[-0.03em]">
+          <h2 id="mulai" className="font-display text-[clamp(36px,calc(var(--vw)*5.4),68px)] font-bold leading-[1] tracking-[-0.03em]">
             Mulai dari <span className="text-marigold">satu langkah.</span>
           </h2>
           <p className="mt-4 max-w-md text-[17px] leading-relaxed text-mist">Masuk ke prototipe dari sudut pandang yang ingin kamu lihat lebih dulu.</p>

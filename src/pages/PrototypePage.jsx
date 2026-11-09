@@ -51,7 +51,7 @@ export default function PrototypePage({ demo }) {
   if (desktop) {
     return (
       <div className="flex h-[var(--vh-full)] overflow-hidden">
-        <div className="paper-grain h-full w-[clamp(380px,36vw,480px)] shrink-0 border-r border-line">
+        <div className="paper-grain h-full w-[clamp(380px,calc(var(--vw)*36),480px)] shrink-0 border-r border-line">
           <PresenterPanel demo={demo} />
         </div>
         <div className="graph-paper relative flex min-w-0 flex-1 items-center justify-center [--phone-w:min(397px,calc((var(--vh-full)_-_64px)_*_0.4639))]">

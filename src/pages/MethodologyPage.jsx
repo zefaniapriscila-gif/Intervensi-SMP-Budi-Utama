@@ -32,7 +32,7 @@ function ChapterHead({ number, label, title, id, className = '' }) {
         <span className="flex h-7 w-7 items-center justify-center rounded-full border border-ink/15 font-display text-[13px] normal-case tracking-normal text-ink tabular">{number}</span>
         {label}
       </p>
-      <h2 id={id} className="mt-4 max-w-3xl font-display text-[clamp(32px,4.2vw,54px)] font-bold leading-[1.04] tracking-[-0.03em] text-ink"><SplitText text={title} /></h2>
+      <h2 id={id} className="mt-4 max-w-3xl font-display text-[clamp(32px,calc(var(--vw)*4.2),54px)] font-bold leading-[1.04] tracking-[-0.03em] text-ink"><SplitText text={title} /></h2>
     </Reveal>
   );
 }
@@ -55,7 +55,7 @@ function Intro({ onOpenPrototype }) {
     <section className="mx-auto grid w-full max-w-[1240px] gap-12 px-4 pb-16 pt-10 sm:px-8 sm:pt-14 lg:grid-cols-12 lg:pb-24">
       <div className="lg:col-span-8">
         <motion.div {...rise(0.05)}><Overline>Metodologi program</Overline></motion.div>
-        <motion.h1 {...rise(0.12)} className="mt-5 font-display text-[clamp(40px,6vw,80px)] font-bold leading-[1.06] tracking-[-0.035em] text-ink">
+        <motion.h1 {...rise(0.12)} className="mt-5 font-display text-[clamp(40px,calc(var(--vw)*6),80px)] font-bold leading-[1.06] tracking-[-0.035em] text-ink">
           Dari pengingat sederhana menuju disiplin yang{' '}
           <span className="relative inline-block text-navy">
             tumbuh dari dalam.
@@ -137,7 +137,7 @@ function TheoryChapter({ theory, index, onOpenPrototype }) {
             <span className="inline-flex h-10 min-w-10 items-center justify-center rounded-full bg-navy px-3 font-display text-[14px] font-bold text-paper tabular">{theory.number}</span>
             <span className="rounded-full bg-paper px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-ink-3">Landasan teori</span>
           </div>
-          <h3 className="mt-5 font-display text-[clamp(27px,3vw,39px)] font-semibold leading-[1.08] tracking-[-0.02em] text-ink">{theory.name}</h3>
+          <h3 className="mt-5 font-display text-[clamp(27px,calc(var(--vw)*3),39px)] font-semibold leading-[1.08] tracking-[-0.02em] text-ink">{theory.name}</h3>
           <p className="mt-3 text-[13px] font-semibold text-navy">{theory.author} <span className="text-ink-3">· {theory.year}</span></p>
           <p className="mt-5 text-[16px] leading-[1.75] text-ink-2">{theory.summary}</p>
         </Reveal>
@@ -201,7 +201,7 @@ function Flow() {
               <span className="flex h-7 w-7 items-center justify-center rounded-full border border-white/25 font-display text-[13px] normal-case tracking-normal text-paper tabular">03</span>
               Alur intervensi
             </p>
-            <h2 id="alur-judul" className="mt-4 font-display text-[clamp(32px,4.2vw,54px)] font-bold leading-[1.04] tracking-[-0.03em]">
+            <h2 id="alur-judul" className="mt-4 font-display text-[clamp(32px,calc(var(--vw)*4.2),54px)] font-bold leading-[1.04] tracking-[-0.03em]">
               <SplitText text="Ingatkan, pantau, refleksikan, apresiasi—" />
               <SplitText text="lalu ulangi." delay={0.3} className="text-marigold" />
             </h2>

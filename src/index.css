@@ -76,8 +76,12 @@
 
 @layer base {
   html {
-    /* Seluruh antarmuka diperkecil sekitar 5% agar lebih lega di layar. */
+    /* Skala dasar antarmuka (~5% lebih kecil). Di layar desktop skala ini
+       disesuaikan lewat JS (main.jsx) mengikuti lebar jendela, supaya komposisi
+       halaman terlihat sama di jendela atau zoom browser berapa pun. */
     zoom: 0.95;
+    --vw: 1vw;
+    --vh-full: 100dvh;
     background: var(--color-paper);
     color-scheme: light;
     -webkit-text-size-adjust: 100%;
