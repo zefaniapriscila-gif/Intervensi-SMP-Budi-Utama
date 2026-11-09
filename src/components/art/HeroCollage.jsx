@@ -159,7 +159,7 @@ export default function HeroCollage({ className = '' }) {
         </Piece>
 
         {/* Checklist: tercentang satu per satu, lalu muncul penanda siap. */}
-        <Piece x={120} y={158} rotate={0} depth={4} delay={base + 0.4} mouse={mouse} z={2} float={4}>
+        <Piece x={135} y={157} rotate={0} depth={4} delay={base + 0.4} mouse={mouse} z={2} float={4}>
           <div className="relative w-[350px] rounded-[26px] bg-card px-6 pb-7 pt-5 shadow-lift">
             <div className="flex items-center justify-between">
               <p className="font-display text-[20px] font-bold leading-tight text-ink">Persiapan untuk besok</p>
