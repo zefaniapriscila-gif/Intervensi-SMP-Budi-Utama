@@ -40,7 +40,7 @@ function Hero({ onOpenPrototype }) {
   });
 
   return (
-    <section className="mx-auto grid w-full max-w-[1240px] items-center gap-10 px-4 pb-16 pt-8 sm:px-8 sm:pt-12 lg:grid-cols-12 lg:items-start lg:gap-6 lg:pb-24 lg:pt-10">
+    <section className="mx-auto grid w-full max-w-[1240px] items-center gap-10 px-4 pb-16 pt-8 sm:px-8 sm:pt-12 lg:grid-cols-12 lg:items-start lg:gap-6 lg:pb-24 lg:pt-[80px]">
       <div className="hero-shift lg:col-span-6 xl:col-span-6">
         <motion.p {...rise(0.05)} className="inline-flex items-center gap-2.5 text-[11px] font-bold uppercase tracking-[0.16em] text-ink-3">
           <span className="h-2 w-2 rounded-full bg-marigold ring-4 ring-marigold/25" aria-hidden="true" />
