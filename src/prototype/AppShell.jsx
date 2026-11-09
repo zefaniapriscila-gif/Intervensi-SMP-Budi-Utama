@@ -138,7 +138,7 @@ export default function AppShell({ demo, mode = 'framed' }) {
         animate="center"
         exit="exit"
         transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-        className={framed ? 'min-h-full' : 'min-h-[calc(100dvh-58px)]'}
+        className={framed ? 'min-h-full' : 'min-h-[calc(var(--vh-full)-58px)]'}
       >
         {demo.signedIn ? <Screen demo={demo} /> : <RoleSelect onSelect={demo.signIn} />}
       </motion.div>
@@ -168,7 +168,7 @@ export default function AppShell({ demo, mode = 'framed' }) {
 
   return (
     <ToastProvider placement="fixed">
-      <div className={`relative mx-auto min-h-[100dvh] max-w-[560px] bg-paper ${demo.signedIn ? '' : 'pt-[env(safe-area-inset-top)]'}`}>
+      <div className={`relative mx-auto min-h-[var(--vh-full)] max-w-[560px] bg-paper ${demo.signedIn ? '' : 'pt-[env(safe-area-inset-top)]'}`}>
         {demo.signedIn && <AppHeader demo={demo} scrolled={scrolled} safeTop />}
         <main id="konten" tabIndex={-1} className={`outline-none ${demo.signedIn ? 'pb-[calc(96px+env(safe-area-inset-bottom))]' : ''}`}>
           {content}

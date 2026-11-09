@@ -37,7 +37,7 @@ function BatteryIcon() {
 export default function PhoneFrame({ children }) {
   const now = useNow();
   return (
-    <div className="relative shrink-0" style={{ height: 'min(860px, calc(100dvh - 64px))', aspectRatio: '9 / 19.4' }}>
+    <div className="relative shrink-0" style={{ height: 'min(860px, calc(var(--vh-full) - 64px))', aspectRatio: '9 / 19.4' }}>
       <span className="absolute -right-[3px] top-[19%] h-[9%] w-[4px] rounded-r-[3px] bg-[#2a2c34]" aria-hidden="true" />
       <span className="absolute -right-[3px] top-[31%] h-[5%] w-[4px] rounded-r-[3px] bg-[#2a2c34]" aria-hidden="true" />
       <div className="absolute inset-0 rounded-[54px] bg-[#16171c] shadow-[0_2px_0_1px_#2c2e36_inset,0_-1px_0_1px_#0c0d10_inset,0_60px_90px_-40px_rgb(20_26_58/0.6),0_24px_40px_-24px_rgb(20_26_58/0.5)]" aria-hidden="true" />

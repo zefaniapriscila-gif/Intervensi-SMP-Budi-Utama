@@ -54,7 +54,7 @@ export function SiteHeader({ path, onOpenPrototype }) {
             <span className="hidden sm:inline">Coba prototipe</span>
             <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
           </a>
-          <SoundToggle className="ml-1 hidden sm:inline-flex" />
+          <span className="ml-1 hidden sm:inline-flex"><SoundToggle /></span>
         </nav>
       </div>
     </header>

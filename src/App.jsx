@@ -141,7 +141,7 @@ export default function App() {
           initial="enter"
           animate="open"
           exit="exit"
-          className={isPrototype ? '' : 'paper-grain min-h-[100dvh] overflow-x-clip'}
+          className={isPrototype ? '' : 'paper-grain min-h-[var(--vh-full)] overflow-x-clip'}
         >
           {!reduceMotion && <PageCurtain />}
           {isPrototype ? (

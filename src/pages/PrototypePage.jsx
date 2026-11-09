@@ -50,11 +50,11 @@ export default function PrototypePage({ demo }) {
 
   if (desktop) {
     return (
-      <div className="flex h-[100dvh] overflow-hidden">
+      <div className="flex h-[var(--vh-full)] overflow-hidden">
         <div className="paper-grain h-full w-[clamp(380px,36vw,480px)] shrink-0 border-r border-line">
           <PresenterPanel demo={demo} />
         </div>
-        <div className="graph-paper relative flex min-w-0 flex-1 items-center justify-center [--phone-w:min(397px,calc((100dvh_-_64px)_*_0.4639))]">
+        <div className="graph-paper relative flex min-w-0 flex-1 items-center justify-center [--phone-w:min(397px,calc((var(--vh-full)_-_64px)_*_0.4639))]">
           <StageCaption demo={demo} />
           <PhoneEntrance>
             <PhoneFrame>
@@ -68,7 +68,7 @@ export default function PrototypePage({ demo }) {
 
   if (framed) {
     return (
-      <div className="graph-paper flex min-h-[100dvh] flex-col items-center justify-center gap-4 px-4 py-6">
+      <div className="graph-paper flex min-h-[var(--vh-full)] flex-col items-center justify-center gap-4 px-4 py-6">
         <a href={href(ROUTES.home)} className="inline-flex items-center gap-2 rounded-full bg-card px-4 py-2 text-[13.5px] font-semibold text-ink shadow-paper ring-1 ring-line">
           <ArrowLeft className="h-4 w-4" /> Beranda DISIPLIN
         </a>

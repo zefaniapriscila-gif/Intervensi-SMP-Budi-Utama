@@ -40,7 +40,7 @@ function Hero({ onOpenPrototype }) {
   });
 
   return (
-    <section className="mx-auto grid w-full max-w-[1240px] items-center gap-10 px-4 pb-16 pt-8 sm:px-8 sm:pt-12 lg:grid-cols-12 lg:gap-6 lg:pb-24 lg:pt-10">
+    <section className="mx-auto grid w-full max-w-[1240px] items-center gap-10 px-4 pb-16 pt-8 sm:px-8 sm:pt-12 lg:grid-cols-12 lg:items-start lg:gap-6 lg:pb-24 lg:pt-10">
       <div className="lg:col-span-6 xl:col-span-6">
         <motion.p {...rise(0.05)} className="inline-flex items-center gap-2.5 text-[12.5px] font-bold uppercase tracking-[0.16em] text-ink-3">
           <span className="h-2 w-2 rounded-full bg-marigold ring-4 ring-marigold/25" aria-hidden="true" />
@@ -89,7 +89,7 @@ function Hero({ onOpenPrototype }) {
           <span>Untuk siswa, orang tua, dan wali kelas</span>
         </motion.div>
       </div>
-      <div className="lg:col-span-6 lg:pl-4 xl:pl-10">
+      <div className="lg:col-span-6 lg:-mt-2 lg:pl-4 xl:pl-10">
         <HeroCollage className="mx-auto max-w-[600px]" />
       </div>
     </section>
