@@ -41,12 +41,12 @@ function Hero({ onOpenPrototype }) {
 
   return (
     <section className="mx-auto grid w-full max-w-[1240px] items-center gap-10 px-4 pb-16 pt-8 sm:px-8 sm:pt-12 lg:grid-cols-12 lg:items-start lg:gap-6 lg:pb-24 lg:pt-10">
-      <div className="lg:col-span-6 xl:col-span-6">
-        <motion.p {...rise(0.05)} className="inline-flex items-center gap-2.5 text-[11.5px] font-bold uppercase tracking-[0.16em] text-ink-3">
+      <div className="hero-shift lg:col-span-6 xl:col-span-6">
+        <motion.p {...rise(0.05)} className="inline-flex items-center gap-2.5 text-[11px] font-bold uppercase tracking-[0.16em] text-ink-3">
           <span className="h-2 w-2 rounded-full bg-marigold ring-4 ring-marigold/25" aria-hidden="true" />
           Program intervensi disiplin · 2026
         </motion.p>
-        <h1 className="mt-6 font-display text-[clamp(37px,calc(var(--vw)*5.35),74px)] font-bold leading-[1.04] tracking-[-0.035em] text-ink">
+        <h1 className="mt-6 font-display text-[clamp(35.5px,calc(var(--vw)*5.14),71px)] font-bold leading-[1.04] tracking-[-0.035em] text-ink">
           <MaskLine delay={base + 0.1}>Kebiasaan baik</MaskLine>
           <MaskLine delay={base + 0.2}>tumbuh dari</MaskLine>
           <span className="relative inline-block">
@@ -54,10 +54,10 @@ function Hero({ onOpenPrototype }) {
             <motion.span aria-hidden="true" className="absolute -bottom-[0.1em] left-[1%] h-[0.055em] w-[98%] origin-left rounded-full bg-marigold" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.7, delay: base + 1.05, ease: [0.22, 1, 0.36, 1] }} />
           </span>
         </h1>
-        <motion.p {...rise(0.4)} className="mt-8 max-w-[540px] text-[15.5px] leading-[1.65] text-ink-2 sm:text-[17px]">
+        <motion.p {...rise(0.4)} className="mt-8 max-w-[540px] text-[14.9px] leading-[1.65] text-ink-2 sm:text-[16.3px]">
           DISIPLIN menghubungkan siswa, orang tua, dan wali kelas lewat pengingat harian, catatan pembinaan personal, dan apresiasi mingguan—untuk membangun disiplin secara positif.
         </motion.p>
-        <motion.p {...rise(0.45)} className="mt-5 max-w-[540px] rounded-2xl border border-line bg-card px-4 py-3 text-[12.5px] leading-snug text-ink-2 shadow-paper">
+        <motion.p {...rise(0.45)} className="mt-5 max-w-[540px] rounded-2xl border border-line bg-card px-4 py-3 text-[12px] leading-snug text-ink-2 shadow-paper">
           <span className="font-extrabold tracking-[0.08em] text-navy">DISIPLIN</span>
           <span className="text-ink-3"> = </span>
           Digital Integration System for Personal Improvement Learning and Initiative
@@ -68,7 +68,7 @@ function Hero({ onOpenPrototype }) {
               href={href(ROUTES.prototype)}
               onClick={plainClick(() => onOpenPrototype())}
               data-surface="dark"
-              className="group inline-flex items-center gap-3 rounded-full bg-navy py-4 pl-7 pr-5 text-[14.7px] font-semibold text-paper shadow-press transition-colors hover:bg-navy-2"
+              className="group inline-flex items-center gap-3 rounded-full bg-navy py-4 pl-7 pr-5 text-[14.1px] font-semibold text-paper shadow-press transition-colors hover:bg-navy-2"
             >
               Coba prototipe
               <span className="relative flex h-8 w-8 items-center justify-center overflow-hidden rounded-full bg-marigold text-ink">
@@ -77,12 +77,12 @@ function Hero({ onOpenPrototype }) {
               </span>
             </a>
           </Magnetic>
-          <a href={href(ROUTES.methodology)} className="group inline-flex items-center gap-1.5 text-[14.7px] font-semibold text-ink">
+          <a href={href(ROUTES.methodology)} className="group inline-flex items-center gap-1.5 text-[14.1px] font-semibold text-ink">
             <span className="link-underline">Baca metodologi</span>
             <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </a>
         </motion.div>
-        <motion.div {...rise(0.6)} className="mt-10 flex items-center gap-3 text-[13px] text-ink-3">
+        <motion.div {...rise(0.6)} className="mt-10 flex items-center gap-3 text-[12.5px] text-ink-3">
           <span className="flex -space-x-1.5">
             {ROLES.map((role) => <RoleBadge key={role.id} role={role.id} size="sm" className="ring-[3px] ring-paper" />)}
           </span>
