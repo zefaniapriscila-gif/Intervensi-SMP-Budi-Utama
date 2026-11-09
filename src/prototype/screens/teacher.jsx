@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Award, ChevronRight, LockKeyhole, Plus, Send, ShieldCheck } from 'lucide-react';
-import { Footstep } from '../../components/art/Doodles';
+import { Footprints } from 'lucide-react';
 import { Initial } from '../../components/ui/primitives';
 import { FEEDBACK_STARTERS, STUDENT, STUDENTS_NEEDING_SUPPORT, WEEKLY_STUDENTS } from '../../data/program';
 import { formatClock } from '../../lib/time';
@@ -130,13 +130,13 @@ export function TeacherJournal({ demo }) {
               <p className="text-[14.5px] leading-[28px] text-ink-2">{journal.reflection ? `“${journal.reflection}”` : 'Tidak menulis cerita tambahan.'}</p>
               {journal.nextStep && (
                 <p className="mt-[28px] flex items-center gap-2 text-[14px] font-semibold leading-[28px] text-ink">
-                  <Footstep className="h-4 w-3.5 rotate-[70deg] text-marigold-ink" /> Besok: {journal.nextStep}
+                  <Footprints className="h-4 w-4 text-marigold-ink" /> Besok: {journal.nextStep}
                 </p>
               )}
             </div>
           ) : (
             <div className="px-5 py-6 text-center">
-              <p className="font-hand text-[23px] leading-tight text-ink-2">{STUDENT.firstName} belum mengirim catatan hari ini.</p>
+              <p className="font-medium text-[16px] leading-snug text-ink-2">{STUDENT.firstName} belum mengirim catatan hari ini.</p>
               <p className="mt-2 text-[12.5px] text-ink-3">Coba ganti ke peran siswa dan kirim satu catatan.</p>
             </div>
           )}

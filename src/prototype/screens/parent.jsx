@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowRight, Check, Clock3, HeartHandshake, RefreshCw, ShieldCheck } from 'lucide-react';
-import { Paraf, Seal } from '../../components/art/Doodles';
+import { Medal } from '../../components/ui/badges';
 import { HOME_SUPPORT, PRAISE_EXAMPLES, STUDENT } from '../../data/program';
 import { formatDay } from '../../lib/time';
 import { useNow } from '../../lib/useNow';
@@ -79,8 +79,7 @@ export function ParentJournal() {
               {STUDENT.firstName} mengikuti kegiatan belajar dengan baik. Terus dukung kebiasaan menyiapkan perlengkapan sekolah pada malam hari.
             </p>
             <div className="flex items-center justify-end gap-1 pt-[2px] leading-[28px]">
-              <span className="font-hand text-[19px] text-pen">— Wali kelas VII A</span>
-              <Paraf className="h-6 w-14" />
+              <span className="font-medium text-[13px] text-pen">— Wali kelas VII A</span>
             </div>
           </div>
         </motion.article>
@@ -123,7 +122,7 @@ export function ParentRecognition({ demo }) {
 
       <div className="space-y-6 px-4">
         <div className="relative overflow-hidden rounded-[26px] bg-navy p-5 text-paper shadow-lift" data-surface="dark">
-          <Seal className="absolute -right-2 -top-3 w-[76px] rotate-12" />
+          <Medal className="absolute right-4 top-4 h-14 w-14" />
           <h2 className="max-w-[230px] font-display text-[24px] font-semibold leading-tight">Usaha kecil layak diapresiasi.</h2>
           <p className="mt-3 max-w-[290px] text-[14px] leading-relaxed text-mist">
             {STUDENT.firstName} sedang membangun rutinitas persiapan sekolah. Rayakan prosesnya, bukan hanya hasilnya.
@@ -150,7 +149,7 @@ export function ParentRecognition({ demo }) {
                 transition={{ duration: 0.28 }}
                 className="relative rounded-[22px] rounded-bl-[6px] bg-marigold-soft p-5 ring-1 ring-marigold/30"
               >
-                <blockquote className="font-display text-[18px] italic leading-snug text-ink [font-variation-settings:'SOFT'_100,'WONK'_1]">
+                <blockquote className="font-display text-[18px] leading-snug text-ink">
                   “{PRAISE_EXAMPLES[index]}”
                 </blockquote>
                 <figcaption className="mt-3 text-[12px] font-bold text-marigold-ink tabular">Contoh {index + 1} dari {PRAISE_EXAMPLES.length} · sebut perilakunya, bukan hanya hasilnya</figcaption>

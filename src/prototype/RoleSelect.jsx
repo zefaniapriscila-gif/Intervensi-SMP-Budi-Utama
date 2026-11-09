@@ -19,7 +19,7 @@ export default function RoleSelect({ onSelect }) {
           <LogoMark className="h-16 w-16 drop-shadow-[0_10px_18px_rgb(20_26_58/0.25)]" />
         </motion.span>
         <p className="mt-5 text-[12px] font-bold uppercase tracking-[0.18em] text-ink-3">Selamat datang di</p>
-        <h1 className="mt-1 font-display text-[34px] font-semibold tracking-[0.04em] text-ink">LANGKAH</h1>
+        <h1 className="mt-1 font-display text-[34px] font-semibold tracking-[0.04em] text-ink">DISIPLIN</h1>
         <p className="mt-2 max-w-[290px] text-[14px] leading-relaxed text-ink-2">Penguatan karakter disiplin, bersama siswa, orang tua, dan wali kelas.</p>
       </motion.div>
 
@@ -56,7 +56,7 @@ export default function RoleSelect({ onSelect }) {
           <ShieldCheck className="h-4 w-4 text-leaf-ink" /> Prototipe demo · tanpa akun atau kata sandi.
         </p>
         <a href={href(ROUTES.home)} className="mt-3 inline-flex items-center gap-1.5 text-[13.5px] font-bold text-navy">
-          <ArrowLeft className="h-4 w-4" /> <span className="link-underline">Kembali ke beranda LANGKAH</span>
+          <ArrowLeft className="h-4 w-4" /> <span className="link-underline">Kembali ke beranda DISIPLIN</span>
         </a>
       </div>
     </div>

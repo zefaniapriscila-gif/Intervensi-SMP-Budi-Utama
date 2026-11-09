@@ -59,7 +59,7 @@ export function Magnetic({ children, strength = 0.28, className = '' }) {
 function StairGlyph() {
   return (
     <svg viewBox="0 0 30 24" className="h-[0.5em] w-[0.62em] shrink-0" aria-hidden="true">
-      <path d="M0 24V17H10V10H20V3H30V24Z" fill="#F2B134" />
+      <path d="M0 24V17H10V10H20V3H30V24Z" fill="#FFC21A" />
     </svg>
   );
 }
@@ -103,7 +103,7 @@ export function StarBurst({ count = 9, radius = 74, className = '' }) {
             animate={{ x: Math.cos(angle) * distance, y: Math.sin(angle) * distance, scale: [0, 1.2, 0.9], rotate: 120 + index * 25, opacity: [1, 1, 0] }}
             transition={{ duration: 0.9, ease: [0.2, 0.7, 0.3, 1], times: [0, 0.6, 1] }}
           >
-            <path d="m10 1 2.6 5.6 6 .7-4.5 4.1 1.2 6L10 14.4l-5.3 3 1.2-6L1.4 7.3l6-.7Z" fill={index % 3 === 0 ? '#B03A1C' : '#F2B134'} />
+            <path d="m10 1 2.6 5.6 6 .7-4.5 4.1 1.2 6L10 14.4l-5.3 3 1.2-6L1.4 7.3l6-.7Z" fill={index % 3 === 0 ? '#6A3DF0' : '#FFC21A'} />
           </motion.svg>
         );
       })}

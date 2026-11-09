@@ -1,6 +1,6 @@
 import React from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { Stamp } from '../../components/art/Doodles';
+import { StatusBadge } from '../../components/ui/badges';
 import { StarBurst } from '../../components/motion/Motion';
 import { Card, StairProgress } from './common';
 
@@ -91,7 +91,7 @@ export default function RoutineCard({ routine, onToggle, readOnly = false, title
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -6 }}
               transition={{ duration: 0.2 }}
-              className="font-hand text-[20px] leading-tight text-ink-2"
+              className="font-medium text-[14px] leading-snug text-ink-2"
             >
               {note ?? (complete ? 'Lengkap! Kamu sudah siap untuk besok.' : 'Satu persiapan kecil malam ini bikin pagi lebih tenang.')}
             </motion.p>
@@ -103,13 +103,13 @@ export default function RoutineCard({ routine, onToggle, readOnly = false, title
         {complete && (
           <motion.div
             key="stamp"
-            className="pointer-events-none absolute bottom-[110px] right-1.5 w-[122px] mix-blend-multiply"
-            initial={reduce ? { opacity: 0 } : { opacity: 0, scale: 2.3, rotate: -22 }}
-            animate={{ opacity: 1, scale: 1, rotate: -10 }}
+            className="pointer-events-none absolute bottom-[110px] right-3"
+            initial={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.8, y: 8 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.18 } }}
             transition={reduce ? { duration: 0.2 } : { type: 'spring', stiffness: 640, damping: 22, mass: 0.9 }}
           >
-            <Stamp label="SIAP!" sub="untuk besok" />
+            <StatusBadge label="Siap!" sub="untuk besok" />
             <StarBurst className="left-1/2 top-1/2" />
           </motion.div>
         )}

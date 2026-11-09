@@ -22,8 +22,8 @@ function StageCaption({ demo }) {
     <div className="pointer-events-none absolute left-[calc(50%-var(--phone-w)/2-210px)] top-[18%] hidden w-[200px] text-ink-2 xl:block" aria-hidden="true">
       <AnimatePresence mode="wait" initial={false}>
         <motion.div key={key} initial={{ opacity: 0, y: 6, rotate: -6 }} animate={{ opacity: 1, y: 0, rotate: -4 }} exit={{ opacity: 0, y: -6 }} transition={{ duration: 0.3 }}>
-          <p className="text-right font-hand text-[24px] leading-tight">{CAPTIONS[key]}</p>
-          <HandArrow className="ml-auto mr-1 mt-1 w-[70px] rotate-[14deg]" delay={0.15} />
+          <p className="text-right font-hand text-[26px] leading-tight text-navy">{CAPTIONS[key]}</p>
+          <HandArrow className="ml-auto mr-1 mt-1 w-[78px] rotate-[14deg] text-marigold-ink" delay={0.15} />
         </motion.div>
       </AnimatePresence>
     </div>
@@ -70,7 +70,7 @@ export default function PrototypePage({ demo }) {
     return (
       <div className="graph-paper flex min-h-[100dvh] flex-col items-center justify-center gap-4 px-4 py-6">
         <a href={href(ROUTES.home)} className="inline-flex items-center gap-2 rounded-full bg-card px-4 py-2 text-[13.5px] font-semibold text-ink shadow-paper ring-1 ring-line">
-          <ArrowLeft className="h-4 w-4" /> Beranda LANGKAH
+          <ArrowLeft className="h-4 w-4" /> Beranda DISIPLIN
         </a>
         <PhoneEntrance>
           <PhoneFrame>

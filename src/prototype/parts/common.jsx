@@ -6,7 +6,7 @@ export function ScreenTitle({ eyebrow, title, children }) {
   return (
     <header className="px-5 pb-5 pt-5">
       {eyebrow && <p className="text-[12px] font-bold uppercase tracking-[0.14em] text-ink-3">{eyebrow}</p>}
-      <h1 className="mt-1.5 font-display text-[30px] font-[560] leading-[1.08] tracking-[-0.02em] text-ink">{title}</h1>
+      <h1 className="mt-1.5 font-display text-[30px] font-bold leading-[1.08] tracking-[-0.02em] text-ink">{title}</h1>
       {children && <p className="mt-2 text-[14.5px] leading-relaxed text-ink-2">{children}</p>}
     </header>
   );

@@ -3,7 +3,6 @@ import { motion, useReducedMotion, useScroll, useSpring } from 'framer-motion';
 import { ArrowRight, ArrowDown, BookOpenCheck, HeartHandshake, Sparkles } from 'lucide-react';
 import SpiralFlow from '../components/art/SpiralFlow';
 import { THEORY_DIAGRAMS } from '../components/art/theoryDiagramMap';
-import { HandUnderline } from '../components/art/Doodles';
 import { Magnetic, SplitText } from '../components/motion/Motion';
 import { Overline, Reveal } from '../components/ui/primitives';
 import { FLOW, FOUNDATIONS, SOURCE_NOTE, THEORIES } from '../data/program';
@@ -33,7 +32,7 @@ function ChapterHead({ number, label, title, id, className = '' }) {
         <span className="flex h-7 w-7 items-center justify-center rounded-full border border-ink/15 font-display text-[13px] normal-case tracking-normal text-ink tabular">{number}</span>
         {label}
       </p>
-      <h2 id={id} className="mt-4 max-w-3xl font-display text-[clamp(32px,4.2vw,54px)] font-[560] leading-[1.04] tracking-[-0.03em] text-ink"><SplitText text={title} /></h2>
+      <h2 id={id} className="mt-4 max-w-3xl font-display text-[clamp(32px,4.2vw,54px)] font-bold leading-[1.04] tracking-[-0.03em] text-ink"><SplitText text={title} /></h2>
     </Reveal>
   );
 }
@@ -56,11 +55,11 @@ function Intro({ onOpenPrototype }) {
     <section className="mx-auto grid w-full max-w-[1240px] gap-12 px-4 pb-16 pt-10 sm:px-8 sm:pt-14 lg:grid-cols-12 lg:pb-24">
       <div className="lg:col-span-8">
         <motion.div {...rise(0.05)}><Overline>Metodologi program</Overline></motion.div>
-        <motion.h1 {...rise(0.12)} className="mt-5 font-display text-[clamp(40px,6vw,80px)] font-[540] leading-[1.0] tracking-[-0.035em] text-ink [font-variation-settings:'SOFT'_70,'WONK'_0]">
+        <motion.h1 {...rise(0.12)} className="mt-5 font-display text-[clamp(40px,6vw,80px)] font-bold leading-[1.06] tracking-[-0.035em] text-ink">
           Dari pengingat sederhana menuju disiplin yang{' '}
-          <span className="relative inline-block italic [font-variation-settings:'SOFT'_100,'WONK'_1]">
+          <span className="relative inline-block text-navy">
             tumbuh dari dalam.
-            <HandUnderline className="absolute -bottom-[0.06em] left-0 h-[0.2em] w-full" delay={base + 0.9} />
+            <motion.span aria-hidden="true" className="absolute -bottom-[0.1em] left-[1%] h-[0.055em] w-[98%] origin-left rounded-full bg-marigold" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.7, delay: base + 0.9, ease: [0.22, 1, 0.36, 1] }} />
           </span>
         </motion.h1>
         <motion.p {...rise(0.25)} className="mt-8 max-w-2xl text-[17px] leading-[1.7] text-ink-2 sm:text-[18.5px]">
@@ -81,7 +80,7 @@ function Intro({ onOpenPrototype }) {
         </motion.div>
       </div>
       <motion.nav {...rise(0.3)} aria-label="Daftar isi" className="self-end lg:col-span-4 lg:pl-6">
-        <p className="font-hand text-[24px] leading-none text-pen">daftar isi</p>
+        <p className="font-medium text-[16px] leading-snug text-pen">daftar isi</p>
         <ol className="mt-3 border-t border-line">
           {CONTENTS.map((item, index) => (
             <li key={item.id} className="border-b border-line">
@@ -143,7 +142,7 @@ function TheoryChapter({ theory, index, onOpenPrototype }) {
           <p className="mt-5 text-[16px] leading-[1.75] text-ink-2">{theory.summary}</p>
         </Reveal>
         <Reveal delay={0.1} className="lg:col-span-7">
-          <div className="rounded-[22px] border border-line/80 bg-paper px-3 py-4 sm:px-5 sm:py-5">
+          <div className="rounded-[22px] border border-line/80 bg-gradient-to-br from-pen-soft via-white to-marigold-soft px-3 py-4 sm:px-5 sm:py-5">
             <p className="mb-2 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.15em] text-ink-3">
               <span className="h-1.5 w-1.5 rounded-full bg-marigold" /> Gagasan utama
             </p>
@@ -153,7 +152,7 @@ function TheoryChapter({ theory, index, onOpenPrototype }) {
         <Reveal delay={0.16} className="lg:col-span-12">
           <div className="flex flex-col gap-4 rounded-[20px] bg-marigold-soft/70 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
             <div className="max-w-3xl">
-              <p className="font-hand text-[22px] font-semibold leading-none text-marigold-ink">Diterapkan dalam LANGKAH</p>
+              <p className="font-medium text-[15px] font-semibold leading-none text-marigold-ink">Diterapkan dalam DISIPLIN</p>
               <p className="mt-2 text-[14px] leading-[1.7] text-ink-2">{theory.application}</p>
             </div>
             <a
@@ -194,7 +193,7 @@ function Theories({ onOpenPrototype }) {
 
 function Flow() {
   return (
-    <section aria-labelledby="alur-judul" id="alur" tabIndex={-1} data-surface="dark" className="scroll-mt-24 bg-navy text-paper outline-none">
+    <section aria-labelledby="alur-judul" id="alur" tabIndex={-1} data-surface="dark" className="scroll-mt-24 mesh-dark text-paper outline-none">
       <div className="mx-auto grid w-full max-w-[1240px] gap-12 px-4 py-16 sm:px-8 lg:grid-cols-12 lg:items-center lg:gap-10 lg:py-24">
         <div className="lg:col-span-5">
           <Reveal>
@@ -202,9 +201,9 @@ function Flow() {
               <span className="flex h-7 w-7 items-center justify-center rounded-full border border-white/25 font-display text-[13px] normal-case tracking-normal text-paper tabular">03</span>
               Alur intervensi
             </p>
-            <h2 id="alur-judul" className="mt-4 font-display text-[clamp(32px,4.2vw,54px)] font-[560] leading-[1.04] tracking-[-0.03em]">
+            <h2 id="alur-judul" className="mt-4 font-display text-[clamp(32px,4.2vw,54px)] font-bold leading-[1.04] tracking-[-0.03em]">
               <SplitText text="Ingatkan, pantau, refleksikan, apresiasi—" />
-              <SplitText text="lalu ulangi." delay={0.3} className="italic text-marigold [font-variation-settings:'SOFT'_100,'WONK'_1]" />
+              <SplitText text="lalu ulangi." delay={0.3} className="text-marigold" />
             </h2>
             <p className="mt-5 max-w-md text-[16.5px] leading-relaxed text-mist">
               Setiap putaran kembali ke tahap yang sama, dengan lingkaran yang makin lebar: siswa makin mandiri, bimbingan makin ringan.

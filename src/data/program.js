@@ -1,4 +1,4 @@
-// Semua isi program LANGKAH dikumpulkan di sini supaya halaman dan
+// Semua isi program DISIPLIN dikumpulkan di sini supaya halaman dan
 // prototipe memakai sumber yang sama. Siswa, laporan, dan penghargaan
 // adalah contoh untuk demo, bukan data siswa sebenarnya.
 

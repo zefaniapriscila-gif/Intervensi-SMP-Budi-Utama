@@ -45,7 +45,7 @@ export function ToastProvider({ children, placement = 'absolute' }) {
               <LogoMark className="h-9 w-9 shrink-0" />
               <span className="min-w-0 flex-1">
                 <span className="flex items-center gap-1.5 text-[11.5px] font-semibold text-ink-3">
-                  <span className="font-bold tracking-[0.06em] text-ink">LANGKAH</span> · sekarang
+                  <span className="font-bold tracking-[0.06em] text-ink">DISIPLIN</span> · sekarang
                 </span>
                 <span className="mt-0.5 block text-[14px] font-bold leading-snug text-ink">{toast.title}</span>
                 {toast.body && <span className="mt-0.5 block text-[13px] leading-snug text-ink-2">{toast.body}</span>}

@@ -49,13 +49,13 @@ export default function SpiralFlow({ className = '' }) {
         {STAGES.map((stage) => {
           const a = (stage.deg * Math.PI) / 180;
           return (
-            <line key={stage.label} x1={C} y1={C} x2={C + 236 * Math.cos(a)} y2={C + 236 * Math.sin(a)} stroke="#CBC1AD" strokeWidth="1.4" strokeDasharray="2 6" strokeLinecap="round" />
+            <line key={stage.label} x1={C} y1={C} x2={C + 236 * Math.cos(a)} y2={C + 236 * Math.sin(a)} stroke="#BFCBEE" strokeWidth="1.4" strokeDasharray="2 6" strokeLinecap="round" />
           );
         })}
         <motion.path
           d={SPIRAL}
           fill="none"
-          stroke="#1E2A5E"
+          stroke="#14257F"
           strokeWidth="2.4"
           strokeLinecap="round"
           initial={reduce ? false : { pathLength: 0 }}
@@ -71,8 +71,8 @@ export default function SpiralFlow({ className = '' }) {
               cx={dot.x}
               cy={dot.y}
               r={3 + dot.i * 0.55}
-              fill={last ? '#F2B134' : '#FFFCF6'}
-              stroke="#1E2A5E"
+              fill={last ? '#FFC21A' : '#FFFFFF'}
+              stroke="#14257F"
               strokeWidth="2"
               initial={reduce ? false : { scale: 0, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}

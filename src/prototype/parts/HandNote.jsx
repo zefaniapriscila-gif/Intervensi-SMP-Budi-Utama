@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
-import { Paraf } from '../../components/art/Doodles';
 import { formatClock } from '../../lib/time';
 
 // Catatan tulisan tangan wali kelas: kata demi kata "ditulis" dengan pulpen.
@@ -40,21 +39,21 @@ export function WrittenText({ text, className = '', startDelay = 0.2 }) {
   );
 }
 
-export default function HandNote({ text, at, label = 'Pesan pribadi dari wali kelas', signer = 'Wali kelas VII A', animateIn = true }) {
+export default function HandNote({ text, at, label = 'Pesan pribadi dari wali kelas', signer = 'Wali kelas VII A', animateIn = true, preview = false }) {
   return (
-    <div className="relative mx-1 -rotate-[1.2deg] bg-marigold-soft px-5 pb-4 pt-6 shadow-paper" style={{ borderRadius: '4px 4px 20px 4px' }}>
-      <span className="tape absolute -top-3 left-1/2 h-6 w-24 -translate-x-1/2 rotate-[3deg]" aria-hidden="true" />
+    <div className={`relative mx-1 overflow-hidden rounded-[20px] bg-marigold-soft py-4 pl-6 pr-5 shadow-paper ${preview ? 'outline outline-2 -outline-offset-2 outline-dashed outline-marigold-ink/40' : ''}`}>
+      {preview && <span className="absolute right-3 top-3 rounded-full bg-night px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.1em] text-marigold-2">Contoh</span>}
+      <span className="absolute inset-y-0 left-0 w-1.5 bg-marigold" aria-hidden="true" />
       <p className="text-[11.5px] font-bold uppercase tracking-[0.12em] text-marigold-ink">{label}</p>
       {animateIn ? (
-        <WrittenText text={text} className="mt-2 font-hand text-[24px] leading-[1.15] text-pen" />
+        <WrittenText text={text} className="mt-2 font-medium text-[16px] leading-snug text-pen" />
       ) : (
-        <p className="mt-2 font-hand text-[24px] leading-[1.15] text-pen">{text}</p>
+        <p className="mt-2 font-medium text-[16px] leading-snug text-pen">{text}</p>
       )}
       <div className="mt-3 flex items-end justify-between gap-3">
         {at ? <span className="text-[11.5px] font-semibold text-marigold-ink tabular">Dikirim {formatClock(at)}</span> : <span />}
         <span className="flex items-center gap-1">
-          <span className="font-hand text-[18px] text-pen">— {signer}</span>
-          <Paraf className="h-6 w-14" />
+          <span className="font-medium text-[12px] text-pen">— {signer}</span>
         </span>
       </div>
     </div>

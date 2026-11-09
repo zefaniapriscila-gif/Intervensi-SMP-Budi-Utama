@@ -71,7 +71,7 @@ export function Initial({ letter, tone = 'marigold', className = 'h-10 w-10 text
     paper: 'bg-paper-2 text-ink-2',
   };
   return (
-    <span className={`inline-flex shrink-0 items-center justify-center rounded-full font-display font-semibold italic ${tones[tone]} ${className}`} aria-hidden="true">
+    <span className={`inline-flex shrink-0 items-center justify-center rounded-full font-display font-bold ${tones[tone]} ${className}`} aria-hidden="true">
       {letter}
     </span>
   );

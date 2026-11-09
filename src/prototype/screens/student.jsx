@@ -1,7 +1,8 @@
 import React from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, Check, LockKeyhole, NotebookPen } from 'lucide-react';
-import { Footstep, Stamp } from '../../components/art/Doodles';
+import { Footprints } from 'lucide-react';
+import { StatusBadge } from '../../components/ui/badges';
 import { CHALLENGES, STUDENT, WEEKLY_STUDENTS } from '../../data/program';
 import { formatClock, formatDay, greetingFor } from '../../lib/time';
 import { useNow } from '../../lib/useNow';
@@ -13,6 +14,8 @@ import ReminderPair from '../parts/ReminderPair';
 import RoutineCard from '../parts/RoutineCard';
 import { Card, DemoNote, PrivacyNote, ScreenTitle, SectionLabel, StairProgress } from '../parts/common';
 
+const SAMPLE_REPLY = 'Terima kasih sudah jujur bercerita. Besok coba siapkan tas sebelum tidur, ya!';
+
 export function StudentHome({ demo }) {
   const now = useNow();
   const toggleReminder = useReminderToggle(demo, 'student');
@@ -23,7 +26,7 @@ export function StudentHome({ demo }) {
       <header className="flex items-start justify-between gap-3 px-5 pb-5 pt-5">
         <div>
           <p className="text-[13px] font-semibold text-ink-3">{greetingFor(now)},</p>
-          <h1 className="mt-0.5 font-display text-[34px] font-[560] leading-none tracking-[-0.02em] text-ink">{STUDENT.firstName}.</h1>
+          <h1 className="mt-0.5 font-display text-[34px] font-bold leading-none tracking-[-0.02em] text-ink">{STUDENT.firstName}.</h1>
           <p className="mt-2 text-[13px] font-medium text-ink-3">{formatDay(now)}</p>
         </div>
         <span className="mt-1 rounded-full bg-paper-2 px-3 py-1.5 text-[12px] font-bold text-ink-2 ring-1 ring-line">Kelas {STUDENT.className}</span>
@@ -86,7 +89,14 @@ export function StudentJournal({ demo }) {
       </ScreenTitle>
 
       <div className="space-y-5 px-4">
-        {journal.feedbackSent && journal.feedback && <HandNote text={journal.feedback} at={journal.feedbackAt} />}
+        {journal.feedbackSent && journal.feedback ? (
+          <HandNote text={journal.feedback} at={journal.feedbackAt} />
+        ) : (
+          <div>
+            <HandNote preview animateIn={false} label="Balasan wali kelas" text={SAMPLE_REPLY} />
+            <p className="mx-2 mt-2 text-[12.5px] leading-relaxed text-ink-3">Ini contoh tampilan balasan. Yang asli muncul di sini setelah wali kelas membalas catatanmu.</p>
+          </div>
+        )}
 
         <fieldset className="px-1">
           <legend className="text-[15px] font-bold text-ink">Ada kendala hari ini?</legend>
@@ -128,13 +138,13 @@ export function StudentJournal({ demo }) {
             {journal.sent && (
               <motion.div
                 key={`sent-${journal.sentAt?.getTime?.() ?? 0}`}
-                className="pointer-events-none absolute bottom-9 right-4 w-[138px] mix-blend-multiply"
-                initial={reduce ? { opacity: 0 } : { opacity: 0, scale: 2.2, rotate: -20 }}
-                animate={{ opacity: 0.92, scale: 1, rotate: -8 }}
+                className="pointer-events-none absolute bottom-9 right-4"
+                initial={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.8, y: 8 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0 }}
                 transition={reduce ? { duration: 0.2 } : { type: 'spring', stiffness: 600, damping: 22 }}
               >
-                <Stamp label="TERKIRIM" sub={journal.sentAt ? `pukul ${formatClock(journal.sentAt)}` : 'ke wali kelas'} color="#1E2A5E" />
+                <StatusBadge label="Terkirim" sub={journal.sentAt ? `pukul ${formatClock(journal.sentAt)}` : 'ke wali kelas'} tone="navy" />
               </motion.div>
             )}
           </AnimatePresence>
@@ -143,7 +153,7 @@ export function StudentJournal({ demo }) {
         <div className="px-1">
           <label htmlFor="journal-next-step" className="block text-[15px] font-bold text-ink">Langkah kecil untuk besok</label>
           <div className="mt-2 flex items-center gap-3 rounded-[16px] bg-card px-4 ring-1 ring-line transition focus-within:ring-2 focus-within:ring-navy">
-            <Footstep className="h-5 w-4 shrink-0 rotate-[70deg] text-marigold-ink" />
+            <Footprints className="h-5 w-5 shrink-0 text-marigold-ink" />
             <input
               id="journal-next-step"
               type="text"
@@ -196,7 +206,7 @@ export function StudentRecognition({ demo }) {
       <div className="space-y-6 px-4">
         <section className="relative rounded-[26px] bg-paper-3/70 px-4 pb-5 pt-4 ring-1 ring-line-2/60">
           <div className="mb-3 flex items-baseline justify-between">
-            <p className="font-hand text-[24px] leading-none text-ink">Mading kelas</p>
+            <p className="font-medium text-[16px] leading-snug text-ink">Mading kelas</p>
             <p className="text-[11.5px] font-bold uppercase tracking-[0.12em] text-ink-2">Minggu ini</p>
           </div>
           <div className="grid gap-4">

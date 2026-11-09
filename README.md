@@ -1,4 +1,6 @@
-# LANGKAH
+# DISIPLIN
+
+**Digital Integration System for Personal Improvement Learning and Initiative**
 
 Prototipe aplikasi penguatan karakter disiplin untuk siswa, orang tua, dan wali kelas SMP Budi Utama Yogyakarta. Konsep intervensi mengacu pada dokumen rancangan program dan mencakup tiga kegiatan:
 
@@ -11,8 +13,8 @@ Prototipe aplikasi penguatan karakter disiplin untuk siswa, orang tua, dan wali 
 | Alamat | Isi |
 | --- | --- |
 | `#/` | **Beranda** — ritme harian program (tangga 19.30 → 06.15 → catatan → balasan → Student of the Week), peran tiga pihak dan alur privasinya, prinsip disiplin positif, serta ringkasan empat teori. |
-| `#/metodologi` | **Metodologi** — cara pandang program, empat landasan teori beserta diagram dan penerapannya di LANGKAH, alur intervensi (spiral *Ingatkan · Pantau · Refleksikan · Apresiasi*), dan catatan sumber. |
-| `#/prototipe` | **Prototipe** — aplikasi LANGKAH untuk peran siswa, orang tua, dan wali kelas. |
+| `#/metodologi` | **Metodologi** — cara pandang program, empat landasan teori beserta diagram dan penerapannya di DISIPLIN, alur intervensi (spiral *Ingatkan · Pantau · Refleksikan · Apresiasi*), dan catatan sumber. |
+| `#/prototipe` | **Prototipe** — aplikasi DISIPLIN untuk peran siswa, orang tua, dan wali kelas. |
 
 Setiap halaman punya alamat sendiri, sehingga tautannya bisa dibagikan dan tombol kembali di browser berfungsi.
 
@@ -20,7 +22,7 @@ Setiap halaman punya alamat sendiri, sehingga tautannya bisa dibagikan dan tombo
 
 - **Layar lebar (≥ 1024 px):** aplikasi tampil di bingkai ponsel dengan panel presenter di sampingnya. Dari panel itu kamu bisa mengganti peran, mengikuti **Skenario demo** yang tercentang otomatis saat langkahnya benar-benar dilakukan, membaca catatan **Di layar ini** (termasuk teori yang mendasarinya), dan memulai ulang demo.
 - **Tablet:** aplikasi tampil di bingkai ponsel; pilih peran di layar ponsel.
-- **Ponsel:** aplikasi tampil penuh. Pilih peran **Siswa**, **Orang tua**, atau **Wali kelas** di layar awal; ketuk lencana peran di header untuk berganti peran dan logo LANGKAH untuk kembali ke beranda.
+- **Ponsel:** aplikasi tampil penuh. Pilih peran **Siswa**, **Orang tua**, atau **Wali kelas** di layar awal; ketuk lencana peran di header untuk berganti peran dan logo DISIPLIN untuk kembali ke beranda.
 
 Tombol *Coba sebagai …* di beranda dan tautan *Lihat …* di halaman metodologi langsung membuka peran dan layar yang relevan. Contoh alur (sama dengan skenario demo):
 
@@ -37,7 +39,7 @@ Intervensi menghubungkan pengingat digital pagi dan malam, catatan pembinaan per
 - **Positive reinforcement (Skinner):** apresiasi spesifik dan tepat waktu dapat menguatkan perilaku disiplin.
 - **Spiral curriculum (Bruner; Maskur, 2025):** refleksi dan bimbingan bertahap membantu siswa belajar dari pengalaman.
 
-Lihat halaman **Metodologi** di aplikasi untuk ringkasan penerapan masing-masing teori pada fitur LANGKAH.
+Lihat halaman **Metodologi** di aplikasi untuk ringkasan penerapan masing-masing teori pada fitur DISIPLIN.
 
 Contoh siswa, notifikasi, laporan, dan penghargaan di aplikasi ini adalah simulasi. Data hanya dikelola di memori halaman saat demo berlangsung—tidak dikirim ke server, disimpan permanen, ataupun benar-benar dikirim sebagai notifikasi. Pemilihan peran hanya untuk memperagakan tampilan, bukan sistem autentikasi atau pengamanan data produksi. Jangan masukkan informasi pribadi atau sensitif. Daftar siswa yang membutuhkan pendampingan tidak ditampilkan sebagai papan publik.
 
@@ -56,7 +58,7 @@ src/
 ├── data/program.js         # semua isi program (peran, pengingat, teori, skenario, dll.)
 ├── lib/                    # router, waktu, hook kecil, kurva gerak
 ├── components/
-│   ├── brand/              # logo tangga LANGKAH
+│   ├── brand/              # logo tangga DISIPLIN
 │   ├── site/               # header & footer situs
 │   ├── art/                # kolase hero, diagram teori, spiral alur, coretan tangan
 │   ├── motion/             # komponen gerak (teks terbelah, magnet, marquee, tirai)

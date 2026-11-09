@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Brand, LogoMark } from '../brand/Logo';
+import SoundToggle from '../ui/SoundToggle';
 import { plainClick } from '../../lib/links';
 import { ROUTES, href } from '../../lib/router';
 
@@ -31,11 +32,11 @@ export function SiteHeader({ path, onOpenPrototype }) {
   return (
     <header className={`sticky top-0 z-40 transition-[background-color,box-shadow] duration-300 ${scrolled ? 'bg-paper/95 shadow-[0_1px_0_var(--color-line)] backdrop-blur-md' : 'bg-transparent'}`}>
       <div className="mx-auto flex h-[68px] w-full max-w-[1240px] items-center justify-between gap-3 px-4 sm:h-[76px] sm:px-8">
-        <a href={href(ROUTES.home)} className="rounded-xl" aria-label="LANGKAH, ke beranda">
+        <a href={href(ROUTES.home)} className="rounded-xl" aria-label="DISIPLIN, ke beranda">
           <span className="hidden sm:block"><Brand /></span>
           <span className="flex items-center gap-2 sm:hidden">
             <LogoMark className="h-9 w-9" />
-            <span className="font-display text-[18px] font-semibold tracking-[0.06em] text-ink">LANGKAH</span>
+            <span className="font-display text-[18px] font-semibold tracking-[0.08em] text-ink">DISIPLIN</span>
           </span>
         </a>
         <nav aria-label="Navigasi situs" className="flex items-center gap-1 sm:gap-2">
@@ -46,13 +47,14 @@ export function SiteHeader({ path, onOpenPrototype }) {
           <a
             href={href(ROUTES.prototype)}
             onClick={plainClick(() => onOpenPrototype())}
-            className="group ml-1 inline-flex items-center gap-2 rounded-full bg-navy py-2.5 pl-4 pr-3.5 text-[14px] font-semibold text-paper shadow-press transition hover:bg-navy-2 sm:ml-2"
+            className="group ml-1 inline-flex items-center gap-2 rounded-full bg-navy py-2.5 pl-4 pr-3.5 text-[14px] font-semibold text-white shadow-press transition hover:brightness-110 sm:ml-2"
             data-surface="dark"
           >
             <span className="sm:hidden">Coba</span>
             <span className="hidden sm:inline">Coba prototipe</span>
             <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
           </a>
+          <SoundToggle className="ml-1 hidden sm:inline-flex" />
         </nav>
       </div>
     </header>
@@ -66,7 +68,7 @@ export function SiteFooter() {
         <div>
           <Brand />
           <p className="mt-4 max-w-sm text-[14px] leading-relaxed text-ink-3">
-            Prototipe intervensi penguatan karakter disiplin untuk siswa, orang tua, dan wali kelas SMP Budi Utama Yogyakarta.
+            DISIPLIN: Digital Integration System for Personal Improvement Learning and Initiative. Prototipe intervensi penguatan karakter disiplin untuk siswa, orang tua, dan wali kelas SMP Budi Utama Yogyakarta.
           </p>
         </div>
         <div>

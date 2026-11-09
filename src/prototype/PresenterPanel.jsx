@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { ArrowLeft, ArrowUpRight, Check, RotateCcw } from 'lucide-react';
 import { LogoMark } from '../components/brand/Logo';
 import { RoleBadge } from '../components/ui/primitives';
+import SoundToggle from '../components/ui/SoundToggle';
 import { ROLES, SCREEN_NOTES, TABS, THEORIES } from '../data/program';
 import { useEnterDelay } from '../lib/enterDelay';
 import { ROUTES, href } from '../lib/router';
@@ -29,7 +30,10 @@ export default function PresenterPanel({ demo }) {
     animate: { opacity: 1, x: 0 },
     transition: { duration: 0.6, delay: base + 0.15 + index * 0.08, ease: [0.22, 1, 0.36, 1] },
   });
+  const [picked, setPicked] = useState(null);
   const steps = useScenario(demo);
+  // Kotak yang dipilih tetap ungu selama layar ponsel masih menampilkan tujuannya.
+  const pickedValid = Boolean(picked) && demo.signedIn && picked.role === demo.role && picked.tab === demo.tab;
   const doneCount = steps.filter((step) => step.done).length;
   const nextId = steps.find((step) => !step.done)?.id;
   const noteKey = demo.signedIn ? `${demo.role}:${demo.tab}` : 'select';
@@ -41,12 +45,12 @@ export default function PresenterPanel({ demo }) {
       <a href={href(ROUTES.home)} className="group inline-flex items-center gap-2.5 self-start rounded-full py-1 pr-3 text-[13.5px] font-semibold text-ink-2 transition hover:text-ink">
         <ArrowLeft className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-0.5" />
         <LogoMark className="h-7 w-7" />
-        <span className="font-display text-[15px] font-semibold tracking-[0.06em] text-ink">LANGKAH</span>
+        <span className="font-display text-[15px] font-semibold tracking-[0.06em] text-ink">DISIPLIN</span>
       </a>
 
       <motion.div {...enter(0)} className="mt-6">
         <p className="text-[11.5px] font-bold uppercase tracking-[0.16em] text-ink-3">Prototipe</p>
-        <h1 className="mt-2 font-display text-[clamp(26px,2.2vw,32px)] font-[560] leading-[1.06] tracking-[-0.025em] text-ink">Coba LANGKAH dari tiga sudut pandang.</h1>
+        <h1 className="mt-2 font-display text-[clamp(26px,2.2vw,32px)] font-bold leading-[1.06] tracking-[-0.025em] text-ink">Coba DISIPLIN dari tiga sudut pandang.</h1>
       </motion.div>
 
       <motion.section {...enter(1)} className="mt-6" aria-labelledby="lihat-sebagai">
@@ -90,33 +94,43 @@ export default function PresenterPanel({ demo }) {
         <SectionTitle aside={<span className="flex items-center gap-2.5 text-[12.5px] font-bold text-ink tabular"><StairProgress done={doneCount} total={steps.length} size="sm" />{doneCount}/{steps.length}</span>}>
           <span id="skenario">Skenario demo</span>
         </SectionTitle>
-        <ol className="overflow-hidden rounded-[20px] bg-card ring-1 ring-line">
+        <ol className="space-y-2">
           {steps.map((step, index) => {
             const isNext = step.id === nextId;
+            const isActive = pickedValid ? step.id === picked.id : isNext;
             return (
-              <li key={step.id} className="border-b border-line last:border-b-0">
+              <li key={step.id}>
                 <button
                   type="button"
-                  onClick={() => demo.goTo(step.target)}
-                  className={`group relative flex w-full items-center gap-3 px-3.5 py-2.5 text-left transition-colors hover:bg-paper ${isNext ? 'bg-marigold-soft/60' : ''}`}
+                  onClick={() => {
+                    setPicked({ id: step.id, role: step.target.role, tab: step.target.tab });
+                    demo.goTo(step.target);
+                  }}
+                  aria-current={isActive ? 'step' : undefined}
+                  data-surface={isActive ? 'dark' : undefined}
+                  className={`group relative flex w-full items-center gap-3 overflow-hidden rounded-[18px] px-3 py-3 text-left transition duration-300 hover:-translate-y-0.5 active:scale-[0.985] ${
+                    isActive
+                      ? 'bg-navy text-white shadow-lift'
+                      : step.done
+                        ? 'bg-leaf-soft/70 ring-1 ring-leaf/25'
+                        : 'bg-card shadow-paper hover:shadow-lift'
+                  }`}
                 >
-                  {isNext && <motion.span layoutId="scenario-next" className="absolute inset-y-0 left-0 w-[3px] bg-marigold" />}
-                  <span className={`relative flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[12px] font-bold tabular transition-colors duration-300 ${step.done ? 'bg-leaf text-paper' : isNext ? 'bg-navy text-paper' : 'bg-paper-2 text-ink-3'}`}>
-                    <AnimatePresence mode="wait" initial={false}>
-                      {step.done ? (
-                        <motion.span key="done" initial={{ scale: 0, rotate: -45 }} animate={{ scale: 1, rotate: 0 }} transition={{ type: 'spring', stiffness: 500, damping: 18 }}>
-                          <Check className="h-4 w-4" strokeWidth={3} />
-                        </motion.span>
-                      ) : (
-                        <motion.span key="num" initial={{ scale: 0.6, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}>{index + 1}</motion.span>
-                      )}
-                    </AnimatePresence>
+                  <span className="relative shrink-0">
+                    {step.done ? (
+                      <motion.span initial={{ scale: 0, rotate: -45 }} animate={{ scale: 1, rotate: 0 }} transition={{ type: 'spring', stiffness: 500, damping: 18 }} className="flex h-10 w-10 items-center justify-center rounded-[13px] bg-leaf text-white">
+                        <Check className="h-5 w-5" strokeWidth={3} />
+                      </motion.span>
+                    ) : (
+                      <RoleBadge role={step.target.role} />
+                    )}
+                    <span className={`absolute -bottom-1 -right-1 flex h-[18px] min-w-[18px] items-center justify-center rounded-full px-1 text-[10px] font-extrabold tabular ring-2 ${isActive ? 'bg-white text-navy ring-navy' : 'bg-ink text-white ring-card'}`}>{index + 1}</span>
                   </span>
                   <span className="min-w-0 flex-1">
-                    <span className={`block text-[14px] font-semibold leading-snug ${step.done ? 'text-ink-3 line-through decoration-ink-3/40' : 'text-ink'}`}>{step.label}</span>
-                    <span className="mt-0.5 block text-[12px] text-ink-3">{ROLE_LABEL[step.target.role]} · {TAB_LABEL[step.target.tab]}</span>
+                    <span className={`block text-[14px] font-bold leading-snug ${isActive ? 'text-white' : step.done ? 'text-ink-2 line-through decoration-ink-3/40' : 'text-ink'}`}>{step.label}</span>
+                    <span className={`mt-0.5 block text-[12px] font-semibold ${isActive ? 'text-mist' : 'text-ink-3'}`}>{ROLE_LABEL[step.target.role]} · {TAB_LABEL[step.target.tab]}</span>
                   </span>
-                  {isNext && <span className="rounded-full bg-marigold px-2 py-0.5 text-[11px] font-bold text-ink">Berikutnya</span>}
+                  {isNext && <span className="rounded-full bg-marigold px-2.5 py-1 text-[11px] font-extrabold text-night">Berikutnya</span>}
                 </button>
               </li>
             );
@@ -124,7 +138,7 @@ export default function PresenterPanel({ demo }) {
         </ol>
         <AnimatePresence>
           {doneCount === steps.length && (
-            <motion.p initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="mt-3 font-hand text-[22px] leading-tight text-pen">
+            <motion.p initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="mt-3 font-medium text-[15px] leading-snug text-pen">
               Semua langkah selesai—satu putaran utuh!
             </motion.p>
           )}
@@ -155,10 +169,16 @@ export default function PresenterPanel({ demo }) {
       </motion.section>
 
       <div className="mt-auto flex items-center justify-between gap-3 pt-7">
-        <button type="button" onClick={demo.resetDemo} className="group inline-flex items-center gap-2 rounded-full bg-card px-4 py-2.5 text-[13px] font-bold text-ink ring-1 ring-line transition hover:ring-line-2">
+        <button type="button" onClick={() => {
+          setPicked(null);
+          demo.resetDemo();
+        }} className="group inline-flex items-center gap-2 rounded-full bg-card px-4 py-2.5 text-[13px] font-bold text-ink ring-1 ring-line transition hover:ring-line-2">
           <RotateCcw className="h-4 w-4 transition-transform duration-500 group-hover:-rotate-180" /> Mulai ulang demo
         </button>
-        <p className="text-right text-[11.5px] leading-snug text-ink-3">Data simulasi · tidak disimpan</p>
+        <div className="flex items-center gap-3">
+          <p className="text-right text-[11.5px] leading-snug text-ink-3">Data simulasi · tidak disimpan</p>
+          <SoundToggle className="h-9 w-9" />
+        </div>
       </div>
     </aside>
   );

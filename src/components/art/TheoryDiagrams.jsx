@@ -4,10 +4,10 @@ import { motion, useReducedMotion } from 'framer-motion';
 // Diagram kecil untuk empat landasan teori. Semua digambar dengan
 // "tinta" biru dongker dan aksen bintang kuning agar satu keluarga.
 
-const INK = '#1E2A5E';
-const SOFT = '#9AA1C6';
-const SUN = '#F2B134';
-const PEN = '#B03A1C';
+const INK = '#14257F';
+const SOFT = '#8C9AD0';
+const SUN = '#FFC21A';
+const PEN = '#6A3DF0';
 const LABEL = { fontFamily: 'Plus Jakarta Sans Variable, sans-serif', fontSize: 11.5, fontWeight: 650, fill: INK };
 const HAND = { fontFamily: 'Caveat Variable, cursive', fontSize: 17, fontWeight: 600, fill: PEN };
 
@@ -94,7 +94,7 @@ export function SelfRegulationDiagram({ className = '' }) {
       <motion.circle {...pop(1.5)} cx={cx} cy={cy} r="5" fill={SUN} />
       {nodes.map((deg, i) => {
         const [x, y] = polar(cx, cy, r, deg);
-        return <motion.circle key={deg} {...pop(0.1 + i * 0.45)} cx={x} cy={y} r="6.5" fill={INK} stroke="#FFFCF6" strokeWidth="2.5" />;
+        return <motion.circle key={deg} {...pop(0.1 + i * 0.45)} cx={x} cy={y} r="6.5" fill={INK} stroke="#FFFFFF" strokeWidth="2.5" />;
       })}
       <text x={cx} y="24" textAnchor="middle" {...LABEL}>Memantau perilaku</text>
       <text x={polar(cx, cy, r, 30)[0] + 6} y="158" textAnchor="middle" {...LABEL}>
@@ -114,10 +114,10 @@ export function SelfRegulationDiagram({ className = '' }) {
 function Person({ x, y, filled = true, color = INK }) {
   return (
     <g>
-      <circle cx={x} cy={y} r="13" fill={filled ? color : '#FFFCF6'} stroke={color} strokeWidth="1.8" />
+      <circle cx={x} cy={y} r="13" fill={filled ? color : '#FFFFFF'} stroke={color} strokeWidth="1.8" />
       <path
         d={`M${x - 26} ${y + 52}c0-18 11-30 26-30s26 12 26 30Z`}
-        fill={filled ? color : '#FFFCF6'}
+        fill={filled ? color : '#FFFFFF'}
         stroke={color}
         strokeWidth="1.8"
         strokeLinejoin="round"
@@ -156,13 +156,13 @@ export function ReinforcementDiagram({ className = '' }) {
         <Arrowhead id={`r-${id}`} />
         <Arrowhead id={`p-${id}`} color={PEN} />
       </defs>
-      <rect x="14" y="98" width="88" height="40" rx="20" fill="#FFFCF6" stroke={INK} strokeWidth="1.6" />
+      <rect x="14" y="98" width="88" height="40" rx="20" fill="#FFFFFF" stroke={INK} strokeWidth="1.6" />
       <text x="58" y="122" textAnchor="middle" {...LABEL}>Perilaku</text>
       <motion.path {...draw(0.3, 0.3)} d="M108 118h22" stroke={INK} strokeWidth="1.6" strokeLinecap="round" markerEnd={`url(#r-${id})`} />
       <motion.path {...pop(0.6)} d={starPath(160, 118, 20)} fill={SUN} />
       <motion.path {...draw(0.85, 0.3)} d="M190 118h22" stroke={INK} strokeWidth="1.6" strokeLinecap="round" markerEnd={`url(#r-${id})`} />
       <rect x="218" y="98" width="88" height="40" rx="20" fill={INK} />
-      <text x="262" y="122" textAnchor="middle" {...LABEL} fill="#F6F2EA">Diulang</text>
+      <text x="262" y="122" textAnchor="middle" {...LABEL} fill="#F3F6FF">Diulang</text>
       <motion.path {...fade(1.25)} d="M262 92C254 34 74 30 60 90" fill="none" stroke={INK} strokeWidth="1.4" strokeDasharray="3 5" strokeLinecap="round" markerEnd={`url(#r-${id})`} />
       <text x="160" y="164" textAnchor="middle" {...LABEL}>Apresiasi spesifik</text>
       <text x="121" y="107" textAnchor="middle" {...HAND} fontSize="15">segera</text>
@@ -202,7 +202,7 @@ export function SpiralDiagram({ className = '' }) {
       <defs><Arrowhead id={`s-${id}`} /></defs>
       <motion.path {...draw(0.1, 1.6)} d={toPath(pts)} fill="none" stroke={INK} strokeWidth="1.6" strokeLinecap="round" markerEnd={`url(#s-${id})`} />
       {marks.map(([x, y, q]) => (
-        <motion.circle key={q} {...pop(0.15 + q * 0.16)} cx={x} cy={y} r={2.5 + q * 0.42} fill={q === 9 ? SUN : '#FFFCF6'} stroke={INK} strokeWidth="1.4" />
+        <motion.circle key={q} {...pop(0.15 + q * 0.16)} cx={x} cy={y} r={2.5 + q * 0.42} fill={q === 9 ? SUN : '#FFFFFF'} stroke={INK} strokeWidth="1.4" />
       ))}
       <motion.text {...fade(1.6)} x="232" y="50" {...HAND}>makin dalam</motion.text>
       <path d="M266 57c2 10 0 19-7 29" fill="none" stroke={PEN} strokeWidth="1.4" strokeLinecap="round" />

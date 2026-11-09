@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import { motion, useReducedMotion, useScroll, useSpring } from 'framer-motion';
 import { ArrowRight, ArrowUpRight, LockKeyhole } from 'lucide-react';
 import HeroCollage from '../components/art/HeroCollage';
-import { Footstep, HandUnderline } from '../components/art/Doodles';
 import { THEORY_DIAGRAMS } from '../components/art/theoryDiagramMap';
 import { LogoMark } from '../components/brand/Logo';
 import { FlowMarquee, Magnetic, SplitText } from '../components/motion/Motion';
@@ -46,16 +45,21 @@ function Hero({ onOpenPrototype }) {
           <span className="h-2 w-2 rounded-full bg-marigold ring-4 ring-marigold/25" aria-hidden="true" />
           Program intervensi disiplin · 2026
         </motion.p>
-        <h1 className="mt-6 font-display text-[clamp(46px,7.4vw,96px)] font-[560] leading-[0.98] tracking-[-0.035em] text-ink [font-variation-settings:'SOFT'_70,'WONK'_0]">
+        <h1 className="mt-6 font-display text-[clamp(40px,5.8vw,88px)] font-bold leading-[1.04] tracking-[-0.035em] text-ink">
           <MaskLine delay={base + 0.1}>Kebiasaan baik</MaskLine>
           <MaskLine delay={base + 0.2}>tumbuh dari</MaskLine>
           <span className="relative inline-block">
-            <MaskLine delay={base + 0.3} className="-mr-[0.1em] pr-[0.1em] italic [font-variation-settings:'SOFT'_100,'WONK'_1]">langkah kecil.</MaskLine>
-            <HandUnderline className="absolute -bottom-[0.02em] left-[-2%] h-[0.22em] w-[100%]" delay={base + 1.05} />
+            <MaskLine delay={base + 0.3} className="-mr-[0.1em] pr-[0.1em] text-navy-2"><span className="text-gradient pb-[0.06em]">langkah kecil.</span></MaskLine>
+            <motion.span aria-hidden="true" className="absolute -bottom-[0.1em] left-[1%] h-[0.055em] w-[98%] origin-left rounded-full bg-marigold" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.7, delay: base + 1.05, ease: [0.22, 1, 0.36, 1] }} />
           </span>
         </h1>
         <motion.p {...rise(0.4)} className="mt-8 max-w-[540px] text-[17px] leading-[1.65] text-ink-2 sm:text-[18.5px]">
-          LANGKAH menghubungkan siswa, orang tua, dan wali kelas lewat pengingat harian, catatan pembinaan personal, dan apresiasi mingguan—untuk membangun disiplin secara positif.
+          DISIPLIN menghubungkan siswa, orang tua, dan wali kelas lewat pengingat harian, catatan pembinaan personal, dan apresiasi mingguan—untuk membangun disiplin secara positif.
+        </motion.p>
+        <motion.p {...rise(0.45)} className="mt-5 max-w-[540px] rounded-2xl border border-line bg-card px-4 py-3 text-[13.5px] leading-snug text-ink-2 shadow-paper">
+          <span className="font-extrabold tracking-[0.08em] text-navy">DISIPLIN</span>
+          <span className="text-ink-3"> = </span>
+          Digital Integration System for Personal Improvement Learning and Initiative
         </motion.p>
         <motion.div {...rise(0.5)} className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-4">
           <Magnetic>
@@ -110,7 +114,7 @@ function StairTrail({ targetRef }) {
   const d = `M0 241.5H${col}V181.5H${col * 2}V121.5H${col * 3}V61.5H${col * 4}V1.5H${width}`;
   return (
     <svg className="pointer-events-none absolute inset-x-0 top-0 z-10 hidden h-[576px] w-full overflow-visible lg:block" viewBox={`0 0 ${width} 576`} aria-hidden="true">
-      <motion.path d={d} fill="none" stroke="#F2B134" strokeWidth="3.5" strokeLinejoin="miter" style={{ pathLength: progress }} />
+      <motion.path d={d} fill="none" stroke="#FFC21A" strokeWidth="3.5" strokeLinejoin="miter" style={{ pathLength: progress }} />
     </svg>
   );
 }
@@ -119,23 +123,25 @@ function DayStairs({ onOpenPrototype }) {
   const reduce = useReducedMotion();
   const stairsRef = useRef(null);
   return (
-    <section aria-labelledby="ritme" className="relative bg-paper-2/60">
-      <div className="mx-auto w-full max-w-[1240px] px-4 py-16 sm:px-8 lg:py-24">
+    <section aria-labelledby="ritme" data-surface="dark" className="relative overflow-hidden mesh-dark text-white">
+      <span aria-hidden="true" className="pointer-events-none absolute -right-32 -top-32 h-[420px] w-[420px] rounded-full bg-marigold/25 blur-3xl" />
+      <span aria-hidden="true" className="pointer-events-none absolute -bottom-40 -left-24 h-[380px] w-[380px] rounded-full bg-pen/30 blur-3xl" />
+      <div className="relative mx-auto w-full max-w-[1240px] px-4 py-16 sm:px-8 lg:py-24">
         <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
           <Reveal className="lg:col-span-7">
-            <Overline>Ritme harian</Overline>
-            <h2 id="ritme" className="mt-3 font-display text-[clamp(34px,4.6vw,58px)] font-[560] leading-[1.02] tracking-[-0.03em] text-ink">
+            <Overline tone="marigold">Ritme harian</Overline>
+            <h2 id="ritme" className="mt-3 font-display text-[clamp(34px,4.6vw,58px)] font-bold leading-[1.02] tracking-[-0.03em] text-white">
               <SplitText text="Satu hari, lima langkah kecil." />
             </h2>
           </Reveal>
           <Reveal delay={0.1} className="lg:col-span-5">
-            <p className="max-w-md text-[16.5px] leading-relaxed text-ink-2">
+            <p className="max-w-md text-[16.5px] leading-relaxed text-mist">
               Program mengikuti ritme siswa—dari malam sebelum sekolah sampai apresiasi di akhir minggu. Pilih satu langkah untuk melihatnya di prototipe.
             </p>
           </Reveal>
         </div>
 
-        <ol ref={stairsRef} className="relative mt-12 grid gap-3 lg:mt-20 lg:grid-cols-5 lg:items-end lg:gap-0 lg:border-b-[3px] lg:border-navy">
+        <ol ref={stairsRef} className="relative mt-12 grid gap-3 lg:mt-20 lg:grid-cols-5 lg:items-end lg:gap-0 lg:border-b-[3px] lg:border-marigold">
           {!reduce && <StairTrail targetRef={stairsRef} />}
           {DAY_STEPS.map((step, index) => (
             <motion.li
@@ -147,28 +153,13 @@ function DayStairs({ onOpenPrototype }) {
               viewport={{ once: true, margin: '0px 0px -10% 0px' }}
               transition={{ duration: 0.8, delay: index * 0.12, ease: EASE }}
             >
-              {/* Sepasang jejak kaki berdiri di atas anak tangga. */}
-              <span className="pointer-events-none absolute -top-9 left-5 hidden gap-1.5 text-navy transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover/step:-translate-y-2 lg:flex" aria-hidden="true">
-                {['left', 'right'].map((side, foot) => (
-                  <motion.span
-                    key={side}
-                    className={foot ? 'mt-1.5' : ''}
-                    initial={reduce ? false : { opacity: 0, y: -14, scale: 0.6 }}
-                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ type: 'spring', stiffness: 420, damping: 18, delay: 0.7 + index * 0.32 + foot * 0.14 }}
-                  >
-                    <Footstep className="h-[22px] w-4 rotate-[78deg]" side={side} />
-                  </motion.span>
-                ))}
-              </span>
               <a
                 href={href(ROUTES.prototype)}
                 onClick={plainClick(() => onOpenPrototype(step.target))}
-                className="group relative flex h-full flex-col rounded-[22px] border border-line bg-card p-5 transition duration-300 hover:-translate-y-1 hover:shadow-paper lg:rounded-none lg:border-0 lg:border-l lg:border-t-[3px] lg:border-l-line lg:border-t-navy lg:bg-card/80 lg:px-5 lg:pb-6 lg:pt-5 lg:hover:translate-y-0 lg:hover:bg-marigold-soft/80 lg:hover:shadow-none"
+                className="group relative flex h-full flex-col rounded-[22px] border border-line bg-card p-5 transition duration-300 hover:-translate-y-1 hover:shadow-paper lg:rounded-none lg:border-0 lg:border-l lg:border-t-[3px] lg:border-l-line lg:border-t-marigold lg:bg-card lg:shadow-lift lg:px-5 lg:pb-6 lg:pt-5 lg:hover:translate-y-0 lg:hover:bg-marigold-soft/80 lg:hover:shadow-none"
               >
                 <span className="flex items-baseline justify-between gap-3">
-                  <span className="whitespace-nowrap font-display text-[32px] font-[520] leading-none tracking-[-0.02em] text-ink tabular xl:text-[34px]">{step.when}</span>
+                  <span className="whitespace-nowrap font-display text-[32px] font-bold leading-none tracking-[-0.02em] text-ink tabular xl:text-[34px]">{step.when}</span>
                   <span className="text-[12px] font-bold text-ink-3 tabular lg:hidden">{String(index + 1).padStart(2, '0')}/05</span>
                 </span>
                 <span className="mt-3 text-[11.5px] font-bold uppercase tracking-[0.16em] text-marigold-ink">{step.period}</span>
@@ -218,17 +209,17 @@ function RolesDiagram() {
       <svg viewBox={`0 0 ${VB.w} ${VB.h}`} className="absolute inset-0 h-full w-full overflow-visible" aria-hidden="true">
         <defs>
           <marker id="tri-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-            <path d="M1 1 9 5 1 9" fill="none" stroke="#1E2A5E" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M1 1 9 5 1 9" fill="none" stroke="#14257F" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
           </marker>
         </defs>
-        <motion.circle {...pop(0.2)} cx="230" cy="256" r="58" fill="none" stroke="#CBC1AD" strokeWidth="1.5" strokeDasharray="1 6" strokeLinecap="round" />
-        <path d={edge('student', 'teacher')} stroke="#1E2A5E" strokeWidth="2.5" fill="none" markerStart="url(#tri-arrow)" markerEnd="url(#tri-arrow)" />
-        <path d={edge('teacher', 'parent')} stroke="#1E2A5E" strokeWidth="2.5" fill="none" markerEnd="url(#tri-arrow)" />
-        <path d={edge('parent', 'student')} stroke="#1E2A5E" strokeWidth="2.5" strokeDasharray="2 7" strokeLinecap="round" fill="none" markerStart="url(#tri-arrow)" markerEnd="url(#tri-arrow)" />
+        <motion.circle {...pop(0.2)} cx="230" cy="256" r="58" fill="none" stroke="#BFCBEE" strokeWidth="1.5" strokeDasharray="1 6" strokeLinecap="round" />
+        <path d={edge('student', 'teacher')} stroke="#14257F" strokeWidth="2.5" fill="none" markerStart="url(#tri-arrow)" markerEnd="url(#tri-arrow)" />
+        <path d={edge('teacher', 'parent')} stroke="#14257F" strokeWidth="2.5" fill="none" markerEnd="url(#tri-arrow)" />
+        <path d={edge('parent', 'student')} stroke="#14257F" strokeWidth="2.5" strokeDasharray="2 7" strokeLinecap="round" fill="none" markerStart="url(#tri-arrow)" markerEnd="url(#tri-arrow)" />
       </svg>
       <motion.div {...pop(0.25)} className="absolute flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-1.5 text-center" style={pct([230, 256])}>
         <LogoMark className="h-8 w-8 sm:h-10 sm:w-10" />
-        <span className="hidden whitespace-nowrap font-hand text-[19px] leading-none text-ink-2 sm:block">disiplin positif</span>
+        <span className="hidden whitespace-nowrap font-medium text-[13px] leading-snug text-ink-2 sm:block">disiplin positif</span>
       </motion.div>
       {ROLES.map((role, index) => (
         <div key={role.id} className="absolute -translate-x-1/2 -translate-y-1/2" style={pct(NODE[role.id])}>
@@ -260,7 +251,7 @@ function Roles({ onOpenPrototype }) {
         <div className="lg:col-span-6">
           <Reveal>
             <Overline>Kolaborasi</Overline>
-            <h2 id="peran" className="mt-3 font-display text-[clamp(34px,4.6vw,58px)] font-[560] leading-[1.02] tracking-[-0.03em] text-ink">
+            <h2 id="peran" className="mt-3 font-display text-[clamp(34px,4.6vw,58px)] font-bold leading-[1.02] tracking-[-0.03em] text-ink">
               <SplitText text="Tiga pihak, satu arah." />
             </h2>
             <p className="mt-5 max-w-lg text-[16.5px] leading-relaxed text-ink-2">
@@ -271,14 +262,15 @@ function Roles({ onOpenPrototype }) {
             <RolesDiagram />
           </Reveal>
         </div>
-        <ul className="divide-y divide-line self-center border-y border-line lg:col-span-6 lg:col-start-7">
+        <ul className="space-y-4 self-center lg:col-span-6 lg:col-start-7">
           {ROLES.map((role, index) => (
             <Reveal as="li" key={role.id} delay={index * 0.1}>
               <a
                 href={href(ROUTES.prototype)}
                 onClick={plainClick(() => onOpenPrototype({ role: role.id }))}
-                className="group flex gap-5 py-7 transition-colors sm:py-8"
+                className="group relative flex gap-5 overflow-hidden rounded-[26px] bg-card p-6 pl-8 shadow-paper ring-1 ring-line transition duration-300 hover:-translate-y-1 hover:shadow-lift sm:p-7 sm:pl-9"
               >
+                <span aria-hidden="true" className={`absolute inset-y-0 left-0 w-2 ${{ student: 'bg-marigold', parent: 'bg-leaf', teacher: 'bg-pen' }[role.id]}`} />
                 <RoleBadge role={role.id} size="lg" />
                 <span className="min-w-0 flex-1">
                   <span className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
@@ -310,12 +302,12 @@ function StairsArt({ className = '' }) {
 
 function Principles() {
   return (
-    <section aria-labelledby="prinsip" data-surface="dark" className="relative overflow-hidden bg-navy text-paper">
+    <section aria-labelledby="prinsip" data-surface="dark" className="relative overflow-hidden mesh-dark text-paper">
       <StairsArt className="pointer-events-none absolute -bottom-6 right-[-60px] w-[520px] text-navy-2/60 sm:w-[640px]" />
       <div className="relative mx-auto w-full max-w-[1240px] px-4 py-16 sm:px-8 lg:py-24">
         <Reveal>
           <Overline tone="marigold">Disiplin positif</Overline>
-          <h2 id="prinsip" className="mt-3 max-w-3xl font-display text-[clamp(34px,4.6vw,58px)] font-[560] leading-[1.02] tracking-[-0.03em]">
+          <h2 id="prinsip" className="mt-3 max-w-3xl font-display text-[clamp(34px,4.6vw,58px)] font-bold leading-[1.02] tracking-[-0.03em]">
             <SplitText text="Positif, bukan menghukum." />
           </h2>
         </Reveal>
@@ -341,7 +333,7 @@ function Theories() {
       <div className="flex flex-wrap items-end justify-between gap-6">
         <Reveal>
           <Overline>Landasan teori</Overline>
-          <h2 id="teori" className="mt-3 font-display text-[clamp(34px,4.6vw,58px)] font-[560] leading-[1.02] tracking-[-0.03em] text-ink">
+          <h2 id="teori" className="mt-3 font-display text-[clamp(34px,4.6vw,58px)] font-bold leading-[1.02] tracking-[-0.03em] text-ink">
             <SplitText text="Berpijak pada empat teori." />
           </h2>
         </Reveal>
@@ -358,7 +350,7 @@ function Theories() {
           return (
             <Reveal key={theory.id} delay={index * 0.08} className="w-[82%] shrink-0 snap-start sm:w-auto">
               <a href={href(ROUTES.methodology)} className="group flex h-full flex-col rounded-[24px] border border-line bg-card p-5 transition duration-300 hover:-translate-y-1 hover:shadow-paper">
-                <span className="rounded-[16px] bg-paper px-2 py-3">
+                <span className={`rounded-[16px] px-2 py-3 ${['bg-pen-soft', 'bg-marigold-soft', 'bg-leaf-soft', 'bg-rose-soft'][index % 4]}`}>
                   <Diagram className="h-auto w-full" />
                 </span>
                 <span className="mt-5 text-[12px] font-bold tracking-[0.12em] text-ink-3 tabular">{theory.number}</span>
@@ -376,13 +368,13 @@ function Theories() {
 function FinalCall({ onOpenPrototype }) {
   return (
     <section aria-labelledby="mulai" className="mx-auto w-full max-w-[1240px] px-4 pb-20 sm:px-8 lg:pb-28">
-      <Reveal className="relative overflow-hidden rounded-[32px] bg-marigold px-6 py-12 text-ink sm:px-12 sm:py-16 lg:px-16">
-        <StairsArt className="pointer-events-none absolute -bottom-10 -right-10 w-[340px] text-marigold-2 sm:w-[460px]" />
+      <Reveal data-surface="dark" className="relative overflow-hidden rounded-[32px] mesh-dark px-6 py-12 text-white sm:px-12 sm:py-16 lg:px-16">
+        <StairsArt className="pointer-events-none absolute -bottom-10 -right-10 w-[340px] text-white/10 sm:w-[460px]" />
         <div className="relative max-w-2xl">
-          <h2 id="mulai" className="font-display text-[clamp(36px,5.4vw,68px)] font-[560] leading-[1] tracking-[-0.03em]">
-            Mulai dari <span className="italic [font-variation-settings:'SOFT'_100,'WONK'_1]">satu langkah.</span>
+          <h2 id="mulai" className="font-display text-[clamp(36px,5.4vw,68px)] font-bold leading-[1] tracking-[-0.03em]">
+            Mulai dari <span className="text-marigold">satu langkah.</span>
           </h2>
-          <p className="mt-4 max-w-md text-[17px] leading-relaxed text-ink/80">Masuk ke prototipe dari sudut pandang yang ingin kamu lihat lebih dulu.</p>
+          <p className="mt-4 max-w-md text-[17px] leading-relaxed text-mist">Masuk ke prototipe dari sudut pandang yang ingin kamu lihat lebih dulu.</p>
         </div>
         <div className="relative mt-9 flex flex-wrap gap-3">
           {ROLES.map((role) => (
@@ -405,7 +397,11 @@ function FinalCall({ onOpenPrototype }) {
 
 export default function LandingPage({ onOpenPrototype }) {
   return (
-    <main id="konten" tabIndex={-1} className="outline-none">
+    <main id="konten" tabIndex={-1} className="relative outline-none">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-[900px] overflow-hidden">
+        <span className="absolute -right-24 -top-24 h-[460px] w-[460px] rounded-full bg-marigold/25 blur-3xl" />
+        <span className="absolute -left-32 top-[260px] h-[380px] w-[380px] rounded-full bg-rose/20 blur-3xl" />
+      </div>
       <Hero onOpenPrototype={onOpenPrototype} />
       <FlowMarquee words={FLOW.map((step) => step.title)} />
       <DayStairs onOpenPrototype={onOpenPrototype} />

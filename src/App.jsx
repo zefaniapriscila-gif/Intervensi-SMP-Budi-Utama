@@ -11,9 +11,9 @@ import { ROUTES, navigate, useRoute } from './lib/router';
 import { DESKTOP_QUERY } from './lib/useMediaQuery';
 
 const TITLES = {
-  [ROUTES.home]: 'LANGKAH · Penguatan Karakter Disiplin',
-  [ROUTES.methodology]: 'Metodologi · LANGKAH',
-  [ROUTES.prototype]: 'Prototipe · LANGKAH',
+  [ROUTES.home]: 'DISIPLIN · Penguatan Karakter Disiplin',
+  [ROUTES.methodology]: 'Metodologi · DISIPLIN',
+  [ROUTES.prototype]: 'Prototipe · DISIPLIN',
 };
 
 // Varian halaman: tirai tangga (default) atau pudar sederhana bila

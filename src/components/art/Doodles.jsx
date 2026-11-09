@@ -4,7 +4,7 @@ import { motion, useReducedMotion } from 'framer-motion';
 // Coretan tangan kecil yang dipakai di seluruh situs: garis bawah
 // spidol, panah anotasi, paraf guru, stempel, dan segel piagam.
 
-export function HandUnderline({ className = '', color = '#F2B134', delay = 0.6, strokeWidth = 7 }) {
+export function HandUnderline({ className = '', color = '#FFC21A', delay = 0.6, strokeWidth = 7 }) {
   const reduce = useReducedMotion();
   return (
     <svg viewBox="0 0 300 16" preserveAspectRatio="none" className={className} aria-hidden="true">
@@ -51,7 +51,7 @@ export function HandArrow({ className = '', color = 'currentColor', flip = false
   );
 }
 
-export function Paraf({ className = '', color = '#B03A1C' }) {
+export function Paraf({ className = '', color = '#6A3DF0' }) {
   return (
     <svg viewBox="0 0 84 30" className={className} aria-hidden="true">
       <path
@@ -67,7 +67,7 @@ export function Paraf({ className = '', color = '#B03A1C' }) {
 }
 
 // Stempel karet: tepi sedikit kasar lewat displacement filter.
-export function Stamp({ label = 'SIAP!', sub = 'untuk besok', color = '#B03A1C', className = '' }) {
+export function Stamp({ label = 'SIAP!', sub = 'untuk besok', color = '#6A3DF0', className = '' }) {
   const id = useId().replace(/:/g, '');
   const fontSize = label.length > 6 ? 23 : 30;
   const spacing = label.length > 6 ? 1.2 : 2;
@@ -110,12 +110,12 @@ function rosettePath(cx, cy, outer, inner, points) {
 
 // Segel piagam Student of the Week.
 export function Seal({ className = '', tone = 'marigold' }) {
-  const fill = tone === 'leaf' ? '#2E8A5F' : '#F2B134';
-  const ink = tone === 'leaf' ? '#F6F2EA' : '#1E2A5E';
+  const fill = tone === 'leaf' ? '#0FA573' : '#FFC21A';
+  const ink = tone === 'leaf' ? '#F3F6FF' : '#14257F';
   return (
     <svg viewBox="0 0 64 80" className={className} aria-hidden="true">
-      <path d="M20 44 12 76l10-6 6 9 6-30Z" fill={tone === 'leaf' ? '#257450' : '#B03A1C'} />
-      <path d="M44 44l8 32-10-6-6 9-6-30Z" fill={tone === 'leaf' ? '#257450' : '#B03A1C'} opacity="0.88" />
+      <path d="M20 44 12 76l10-6 6 9 6-30Z" fill={tone === 'leaf' ? '#0B7A55' : '#6A3DF0'} />
+      <path d="M44 44l8 32-10-6-6 9-6-30Z" fill={tone === 'leaf' ? '#0B7A55' : '#6A3DF0'} opacity="0.88" />
       <path d={rosettePath(32, 32, 30, 26.5, 18)} fill={fill} />
       <circle cx="32" cy="32" r="21" fill="none" stroke={ink} strokeWidth="1" strokeDasharray="1.5 2.5" opacity="0.6" />
       <path d="m32 19.5 3.6 7.5 8.2 1.1-6 5.7 1.5 8.1L32 38l-7.3 3.9 1.5-8.1-6-5.7 8.2-1.1Z" fill={ink} />

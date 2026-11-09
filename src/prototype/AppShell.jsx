@@ -30,10 +30,10 @@ function AppHeader({ demo, scrolled, safeTop = false }) {
   const tab = TABS.find((item) => item.id === demo.tab);
   return (
     <header className={`sticky top-0 z-30 flex shrink-0 items-center justify-between gap-3 bg-paper/92 px-4 backdrop-blur-md transition-shadow duration-300 ${safeTop ? 'h-[calc(58px+env(safe-area-inset-top))] pt-[env(safe-area-inset-top)]' : 'h-[58px]'} ${scrolled ? 'shadow-[0_1px_0_var(--color-line)]' : ''}`}>
-      <a href={href(ROUTES.home)} className="flex min-w-0 items-center gap-2.5 rounded-xl" aria-label="Kembali ke beranda LANGKAH">
+      <a href={href(ROUTES.home)} className="flex min-w-0 items-center gap-2.5 rounded-xl" aria-label="Kembali ke beranda DISIPLIN">
         <LogoMark className="h-8 w-8 shrink-0" />
         <span className="min-w-0 leading-none">
-          <span className="block font-display text-[15px] font-semibold tracking-[0.06em] text-ink">LANGKAH</span>
+          <span className="block font-display text-[15px] font-semibold tracking-[0.06em] text-ink">DISIPLIN</span>
           <AnimatePresence mode="wait" initial={false}>
             <motion.span
               key={tab?.id}
@@ -153,7 +153,7 @@ export default function AppShell({ demo, mode = 'framed' }) {
           <main
             id="konten"
             tabIndex={0}
-            aria-label="Layar aplikasi LANGKAH"
+            aria-label="Layar aplikasi DISIPLIN"
             ref={scrollRef}
             onScroll={(event) => setScrolled(event.currentTarget.scrollTop > 4)}
             className="no-scrollbar min-h-0 flex-1 overflow-y-auto overscroll-contain outline-none focus-visible:shadow-[inset_0_0_0_2px_var(--color-navy)]"
